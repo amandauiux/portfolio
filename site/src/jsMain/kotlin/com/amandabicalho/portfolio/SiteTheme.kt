@@ -1,58 +1,82 @@
 package com.amandabicalho.portfolio
 
-import com.varabyte.kobweb.compose.ui.graphics.Color
+import androidx.compose.runtime.Composable
+import com.amandabicalho.portfolio.core.ui.theme.Elevation
+import com.amandabicalho.portfolio.core.ui.theme.Elevations
+import com.amandabicalho.portfolio.core.ui.theme.Theme
+import com.amandabicalho.portfolio.core.ui.theme.color.copy
+import com.amandabicalho.portfolio.core.ui.theme.color.from
+import com.amandabicalho.portfolio.core.ui.unit.dp
+import com.amandabicalho.portfolio.ui.theme.DarkColorScheme
+import com.amandabicalho.portfolio.ui.theme.LightColorScheme
+import com.amandabicalho.portfolio.ui.theme.Typography
+import com.varabyte.kobweb.compose.css.BoxShadow
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.silk.init.InitSilk
 import com.varabyte.kobweb.silk.init.InitSilkContext
-import com.varabyte.kobweb.silk.theme.colors.ColorMode
-import com.varabyte.kobweb.silk.theme.colors.palette.background
-import com.varabyte.kobweb.silk.theme.colors.palette.color
+import com.varabyte.kobweb.silk.style.breakpoint.BreakpointSizes
 
-/**
- * @property nearBackground A useful color to apply to a container that should differentiate itself from the background
- *   but just a little.
- */
-class SitePalette(
-    val nearBackground: Color,
-    val cobweb: Color,
-    val brand: Brand,
-) {
-    class Brand(
-        val primary: Color = Color.rgb(0x3C83EF),
-        val accent: Color = Color.rgb(0xF3DB5B),
-    )
-}
-
-object SitePalettes {
-    val light = SitePalette(
-        nearBackground = Color.rgb(0xF4F6FA),
-        cobweb = Colors.LightGray,
-        brand = SitePalette.Brand(
-            primary = Color.rgb(0x3C83EF),
-            accent = Color.rgb(0xFCBA03),
+private val ElevationsLight = Elevations(
+    level1 = Elevation(
+        BoxShadow.of(
+            offsetX = 0.dp,
+            offsetY = 1.dp,
+            blurRadius = 3.dp,
+            spreadRadius = 1.dp,
+            color = Colors.Black.copy(alpha = 0.15f),
+        ),
+        BoxShadow.of(
+            offsetX = 0.dp,
+            offsetY = 1.dp,
+            blurRadius = 2.dp,
+            spreadRadius = 0.dp,
+            color = Colors.Black.copy(alpha = 0.3f),
         )
-    )
-    val dark = SitePalette(
-        nearBackground = Color.rgb(0x13171F),
-        cobweb = Colors.LightGray.inverted(),
-        brand = SitePalette.Brand(
-            primary = Color.rgb(0x3C83EF),
-            accent = Color.rgb(0xF3DB5B),
-        )
-    )
-}
+    ),
+)
 
-fun ColorMode.toSitePalette(): SitePalette {
-    return when (this) {
-        ColorMode.LIGHT -> SitePalettes.light
-        ColorMode.DARK -> SitePalettes.dark
-    }
-}
+private val ElevationsDark = Elevations(
+    level1 = Elevation(
+        BoxShadow.of(
+            offsetX = 0.dp,
+            offsetY = 4.dp,
+            blurRadius = 4.dp,
+            spreadRadius = 0.dp,
+            color = Colors.Black.copy(alpha = 0.30f),
+        ),
+        BoxShadow.of(
+            offsetX = 0.dp,
+            offsetY = 8.dp,
+            blurRadius = 12.dp,
+            spreadRadius = 6.dp,
+            color = Colors.Black.copy(alpha = 0.15f),
+        ),
+    ),
+)
+
+private val Breakpoints = BreakpointSizes(
+    sm = 320.dp,
+    md = 768.dp,
+    lg = 1024.dp,
+    xl = 1300.dp,
+)
 
 @InitSilk
 fun initTheme(ctx: InitSilkContext) {
-    ctx.theme.palettes.light.background = Color.rgb(0xFAFAFA)
-    ctx.theme.palettes.light.color = Colors.Black
-    ctx.theme.palettes.dark.background = Color.rgb(0x06080B)
-    ctx.theme.palettes.dark.color = Colors.White
+    ctx.theme.palettes.light.from(LightColorScheme)
+    ctx.theme.palettes.dark.from(DarkColorScheme)
+}
+
+@Composable
+fun Theme(
+    content: @Composable () -> Unit,
+) {
+    Theme(
+        themedColorScheme = LightColorScheme to DarkColorScheme,
+        typography = Typography,
+        breakpoints = Breakpoints,
+        themedElevations = ElevationsLight to ElevationsDark,
+    ) {
+        content()
+    }
 }

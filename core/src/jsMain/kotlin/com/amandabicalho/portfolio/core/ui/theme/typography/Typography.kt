@@ -5,9 +5,6 @@ import androidx.compose.runtime.staticCompositionLocalOf
 
 @Immutable
 data class Typography(
-    val displayLarge: TextStyle = TypographyTokens.DisplayLarge,
-    val displayMedium: TextStyle = TypographyTokens.DisplayMedium,
-    val displaySmall: TextStyle = TypographyTokens.DisplaySmall,
     val headlineLarge: TextStyle = TypographyTokens.HeadlineLarge,
     val headlineMedium: TextStyle = TypographyTokens.HeadlineMedium,
     val headlineSmall: TextStyle = TypographyTokens.HeadlineSmall,
@@ -17,9 +14,6 @@ data class Typography(
     val bodyLarge: TextStyle = TypographyTokens.BodyLarge,
     val bodyMedium: TextStyle = TypographyTokens.BodyMedium,
     val bodySmall: TextStyle = TypographyTokens.BodySmall,
-    val labelLarge: TextStyle = TypographyTokens.LabelLarge,
-    val labelMedium: TextStyle = TypographyTokens.LabelMedium,
-    val labelSmall: TextStyle = TypographyTokens.LabelSmall,
 )
 
 internal val LocalTypography = staticCompositionLocalOf { Typography() }

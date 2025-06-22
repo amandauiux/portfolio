@@ -4,7 +4,7 @@ import org.jetbrains.compose.web.css.CSSSizeValue
 import org.jetbrains.compose.web.css.CSSUnit
 import org.jetbrains.compose.web.css.cssRem
 
-internal const val DefaultFontSize = 16
+const val DefaultFontSize = 16
 
 value class TextUnit(private val sp: CSSSizeValue<CSSUnit.rem>) : CSSSizeValue<CSSUnit.rem> by sp {
     override fun toString(): String = sp.toString()

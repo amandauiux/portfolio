@@ -1,4 +1,5 @@
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
+import kotlinx.html.fontLink
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -14,6 +15,11 @@ version = "1.0-SNAPSHOT"
 kobweb {
     app {
         index {
+            head.add {
+                fontLink(
+                    href = "https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Manrope:wght@200..800&display=swap",
+                )
+            }
             description.set("Powered by Kobweb")
         }
     }
@@ -30,6 +36,7 @@ kotlin {
 //        }
 
         jsMain.dependencies {
+            implementation(projects.core)
             implementation(libs.compose.runtime)
             implementation(libs.compose.html.core)
             implementation(libs.kobweb.core)

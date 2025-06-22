@@ -13,14 +13,20 @@ import com.amandabicalho.portfolio.core.ui.theme.typography.LocalTypography
 import com.amandabicalho.portfolio.core.ui.theme.typography.Typography
 import com.varabyte.kobweb.compose.KobwebComposeStyles
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxHeight
 import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.core.KobwebApp
 import com.varabyte.kobweb.silk.ColorModeAware
 import com.varabyte.kobweb.silk.SilkFoundationStyles
+import com.varabyte.kobweb.silk.components.layout.Surface
 import com.varabyte.kobweb.silk.init.InitSilk
 import com.varabyte.kobweb.silk.init.InitSilkContext
 import com.varabyte.kobweb.silk.style.breakpoint.BreakpointValues
+import com.varabyte.kobweb.silk.style.common.SmoothColorStyle
+import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
+import com.varabyte.kobweb.silk.theme.colors.palette.Palette
+import com.varabyte.kobweb.silk.theme.colors.palette.Palettes
 import kotlinx.browser.document
 import kotlinx.browser.localStorage
 import kotlinx.browser.window
@@ -29,10 +35,10 @@ import org.jetbrains.compose.web.css.CSSUnit
 
 private const val COLOR_MODE_KEY = "portfolio:colorMode"
 
-data class ThemedValue<T>(
-    val light: T,
-    val dark: T,
-)
+data class ThemedValue<out T : Palette>(
+    override val light: T,
+    override val dark: T,
+) : Palettes
 
 @InitSilk
 fun initCssColorScheme(context: InitSilkContext) =
@@ -74,8 +80,9 @@ fun Theme(
     content: @Composable (colorMode: ColorMode) -> Unit,
 ) {
     KobwebApp {
-        SilkFoundationStyles()
         KobwebComposeStyles()
+        SilkFoundationStyles()
+        ColorModeAware()
         val colorMode by ColorMode.currentState
         LaunchedEffect(colorMode) {
             localStorage.setItem(COLOR_MODE_KEY, colorMode.name)
@@ -89,7 +96,7 @@ fun Theme(
             ColorMode.DARK -> themedColorScheme.dark to themedElevations.dark
         }
 
-        InitSilkWidgetVariables()
+//        InitSilkWidgetVariables()
 
         CompositionLocalProvider(
             LocalColorScheme provides colorScheme,
@@ -97,7 +104,9 @@ fun Theme(
             LocalElevations provides elevations,
             LocalBreakpointValues provides breakpoints,
         ) {
-            content(colorMode)
+            Surface(SmoothColorStyle.toModifier().fillMaxHeight()) {
+                content(colorMode)
+            }
         }
     }
 }

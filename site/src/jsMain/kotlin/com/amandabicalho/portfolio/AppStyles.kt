@@ -1,43 +1,79 @@
 package com.amandabicalho.portfolio
 
+import com.amandabicalho.portfolio.core.ui.theme.typography.toModifier
+import com.amandabicalho.portfolio.core.ui.unit.DefaultFontSize
+import com.amandabicalho.portfolio.core.ui.unit.dp
+import com.amandabicalho.portfolio.ui.theme.DarkColorScheme
+import com.amandabicalho.portfolio.ui.theme.LightColorScheme
+import com.amandabicalho.portfolio.ui.theme.Typography
+import com.varabyte.kobweb.compose.css.BoxSizing
+import com.varabyte.kobweb.compose.css.CSSLengthOrPercentageNumericValue
 import com.varabyte.kobweb.compose.css.ScrollBehavior
-import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.graphics.Colors
-import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.silk.components.forms.ButtonStyle
-import com.varabyte.kobweb.silk.components.forms.ButtonVars
+import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
+import com.varabyte.kobweb.compose.ui.modifiers.boxSizing
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
+import com.varabyte.kobweb.compose.ui.modifiers.fontSize
+import com.varabyte.kobweb.compose.ui.modifiers.margin
+import com.varabyte.kobweb.compose.ui.modifiers.maxWidth
+import com.varabyte.kobweb.compose.ui.modifiers.outline
+import com.varabyte.kobweb.compose.ui.modifiers.padding
+import com.varabyte.kobweb.compose.ui.modifiers.scrollBehavior
 import com.varabyte.kobweb.silk.components.layout.HorizontalDividerStyle
 import com.varabyte.kobweb.silk.init.InitSilk
 import com.varabyte.kobweb.silk.init.InitSilkContext
 import com.varabyte.kobweb.silk.init.registerStyleBase
-import com.varabyte.kobweb.silk.style.CssStyle
-import com.varabyte.kobweb.silk.style.addVariantBase
-import com.varabyte.kobweb.silk.style.base
-import com.varabyte.kobweb.silk.theme.colors.palette.color
-import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
+import com.varabyte.kobweb.silk.style.CssStyleScopeBase
+import com.varabyte.kobweb.silk.style.vars.color.BackgroundColorVar
+import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.modifyStyleBase
-import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.CSSMediaQuery
+import org.jetbrains.compose.web.css.StylePropertyValue
+import org.jetbrains.compose.web.css.keywords.auto
+import org.jetbrains.compose.web.css.px
 
 @InitSilk
 fun initSiteStyles(ctx: InitSilkContext) {
     // This site does not need scrolling itself, but this is a good demonstration for how you might enable this in your
     // own site. Note that we only enable smooth scrolling unless the user has requested reduced motion, which is
     // considered a best practice.
-    ctx.stylesheet.registerStyle("html") {
-        cssRule(CSSMediaQuery.MediaFeature("prefers-reduced-motion", StylePropertyValue("no-preference"))) {
-            Modifier.scrollBehavior(ScrollBehavior.Smooth)
+    ctx.stylesheet.apply {
+        registerStyle("html") {
+            cssRule(CSSMediaQuery.MediaFeature("prefers-reduced-motion", StylePropertyValue("no-preference"))) {
+                Modifier.scrollBehavior(ScrollBehavior.Smooth)
+            }
         }
-    }
 
-    ctx.stylesheet.registerStyleBase("body") {
-        Modifier
-            .fontFamily(
-                "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-                "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "sans-serif"
-            )
-            .fontSize(18.px)
-            .lineHeight(1.5)
+        layer("reset") {
+            registerStyleBase("*") {
+                Modifier
+                    .margin(0.dp)
+                    .padding(0.dp)
+                    .outline(0.dp)
+                    .boxSizing(BoxSizing.BorderBox)
+            }
+        }
+
+        layer("base") {
+            registerStyleBase(":root") {
+                Modifier.fontSize(DefaultFontSize.px)
+            }
+            registerStyleBase("body") {
+                Typography.bodyLarge
+                    .copy(lineHeight = null)
+                    .toModifier()
+                    .fillMaxSize()
+                    .backgroundColor(BackgroundColorVar.value())
+            }
+            registerStyleBase("#root") {
+                Modifier.maxWidth(1512.dp)
+                    .margin(
+                        topBottom = 0.unsafeCast<CSSLengthOrPercentageNumericValue>(),
+                        leftRight = auto.unsafeCast<CSSLengthOrPercentageNumericValue>(),
+                    )
+            }
+        }
     }
 
     // Silk dividers only extend 90% by default; we want full width dividers in our site
@@ -46,24 +82,13 @@ fun initSiteStyles(ctx: InitSilkContext) {
     }
 }
 
-val HeadlineTextStyle = CssStyle.base {
-    Modifier
-        .fontSize(3.cssRem)
-        .textAlign(TextAlign.Start)
-        .lineHeight(1.2) // 1.5x doesn't look as good on very large text
-}
-
-val SubheadlineTextStyle = CssStyle.base {
-    Modifier
-        .fontSize(1.cssRem)
-        .textAlign(TextAlign.Start)
-        .color(colorMode.toPalette().color.toRgb().copyf(alpha = 0.8f))
-}
-
-val CircleButtonVariant = ButtonStyle.addVariantBase {
-    Modifier.padding(0.px).borderRadius(50.percent)
-}
-
-val UncoloredButtonVariant = ButtonStyle.addVariantBase {
-    Modifier.setVariable(ButtonVars.BackgroundDefaultColor, Colors.Transparent)
-}
+/**
+ * Workaround to enable [com.varabyte.kobweb.silk.components.style.ComponentStyle]
+ * to use [Theme.colorScheme].
+ */
+val CssStyleScopeBase.colorScheme
+    get() = if (colorMode == ColorMode.DARK) {
+        DarkColorScheme
+    } else {
+        LightColorScheme
+    }
