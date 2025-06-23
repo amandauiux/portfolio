@@ -5,6 +5,8 @@ import com.varabyte.kobweb.compose.ui.graphics.Color
 
 val Color.Companion.Unspecified: Color
     get() = "unset".unsafeCast<Color>()
+val Color.Companion.Transparent: Color
+    get() = "transparent".unsafeCast<Color>()
 
 /**
  * Copies the existing color, changing only the provided values.

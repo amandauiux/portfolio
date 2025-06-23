@@ -7,7 +7,6 @@ import com.amandabicalho.portfolio.ui.theme.DarkColorScheme
 import com.amandabicalho.portfolio.ui.theme.LightColorScheme
 import com.amandabicalho.portfolio.ui.theme.Typography
 import com.varabyte.kobweb.compose.css.BoxSizing
-import com.varabyte.kobweb.compose.css.CSSLengthOrPercentageNumericValue
 import com.varabyte.kobweb.compose.css.ScrollBehavior
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
@@ -16,7 +15,6 @@ import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.margin
-import com.varabyte.kobweb.compose.ui.modifiers.maxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.outline
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.scrollBehavior
@@ -30,7 +28,6 @@ import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.modifyStyleBase
 import org.jetbrains.compose.web.css.CSSMediaQuery
 import org.jetbrains.compose.web.css.StylePropertyValue
-import org.jetbrains.compose.web.css.keywords.auto
 import org.jetbrains.compose.web.css.px
 
 @InitSilk
@@ -65,13 +62,6 @@ fun initSiteStyles(ctx: InitSilkContext) {
                     .toModifier()
                     .fillMaxSize()
                     .backgroundColor(BackgroundColorVar.value())
-            }
-            registerStyleBase("#root") {
-                Modifier.maxWidth(1512.dp)
-                    .margin(
-                        topBottom = 0.unsafeCast<CSSLengthOrPercentageNumericValue>(),
-                        leftRight = auto.unsafeCast<CSSLengthOrPercentageNumericValue>(),
-                    )
             }
         }
     }
