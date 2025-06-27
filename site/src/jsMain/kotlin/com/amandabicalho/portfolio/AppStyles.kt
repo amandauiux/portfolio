@@ -82,3 +82,10 @@ val CssStyleScopeBase.colorScheme
     } else {
         LightColorScheme
     }
+
+/**
+ * Workaround to enable [CssStyleScopeBase]
+ * to use [Theme.typography].
+ */
+val CssStyleScopeBase.typography
+    get() = Typography

@@ -11,10 +11,17 @@ import com.amandabicalho.portfolio.ui.theme.DarkColorScheme
 import com.amandabicalho.portfolio.ui.theme.LightColorScheme
 import com.amandabicalho.portfolio.ui.theme.Typography
 import com.varabyte.kobweb.compose.css.BoxShadow
+import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
+import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxHeight
+import com.varabyte.kobweb.silk.components.layout.Surface
 import com.varabyte.kobweb.silk.init.InitSilk
 import com.varabyte.kobweb.silk.init.InitSilkContext
+import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.BreakpointSizes
+import com.varabyte.kobweb.silk.style.common.SmoothColorStyle
+import com.varabyte.kobweb.silk.style.toModifier
 
 private val ElevationsLight = Elevations(
     level1 = Elevation(
@@ -67,6 +74,15 @@ fun initTheme(ctx: InitSilkContext) {
     ctx.theme.palettes.dark.from(DarkColorScheme)
 }
 
+val MainStyle = CssStyle(extraModifier = { SmoothColorStyle.toModifier() }) {
+    base {
+        Modifier.fillMaxHeight()
+    }
+    cssRule("*::selection") {
+        Modifier.backgroundColor(colorScheme.primary[10].copy(alpha = 0.2f))
+    }
+}
+
 @Composable
 fun Theme(
     content: @Composable () -> Unit,
@@ -77,6 +93,8 @@ fun Theme(
         breakpoints = Breakpoints,
         themedElevations = ElevationsLight to ElevationsDark,
     ) {
-        content()
+        Surface(MainStyle.toModifier()) {
+            content()
+        }
     }
 }

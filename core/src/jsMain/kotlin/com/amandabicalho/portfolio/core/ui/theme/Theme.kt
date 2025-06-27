@@ -13,17 +13,13 @@ import com.amandabicalho.portfolio.core.ui.theme.typography.LocalTypography
 import com.amandabicalho.portfolio.core.ui.theme.typography.Typography
 import com.varabyte.kobweb.compose.KobwebComposeStyles
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxHeight
 import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.core.KobwebApp
 import com.varabyte.kobweb.silk.ColorModeAware
 import com.varabyte.kobweb.silk.SilkFoundationStyles
-import com.varabyte.kobweb.silk.components.layout.Surface
 import com.varabyte.kobweb.silk.init.InitSilk
 import com.varabyte.kobweb.silk.init.InitSilkContext
 import com.varabyte.kobweb.silk.style.breakpoint.BreakpointValues
-import com.varabyte.kobweb.silk.style.common.SmoothColorStyle
-import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.palette.Palette
 import com.varabyte.kobweb.silk.theme.colors.palette.Palettes
@@ -96,17 +92,13 @@ fun Theme(
             ColorMode.DARK -> themedColorScheme.dark to themedElevations.dark
         }
 
-//        InitSilkWidgetVariables()
-
         CompositionLocalProvider(
             LocalColorScheme provides colorScheme,
             LocalTypography provides typography,
             LocalElevations provides elevations,
             LocalBreakpointValues provides breakpoints,
         ) {
-            Surface(SmoothColorStyle.toModifier().fillMaxHeight()) {
-                content(colorMode)
-            }
+            content(colorMode)
         }
     }
 }
