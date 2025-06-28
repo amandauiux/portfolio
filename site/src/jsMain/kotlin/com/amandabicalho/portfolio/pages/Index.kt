@@ -1,8 +1,8 @@
 package com.amandabicalho.portfolio.pages
 
 import androidx.compose.runtime.Composable
-import com.amandabicalho.portfolio.components.layouts.PageLayoutData
 import com.amandabicalho.portfolio.core.ui.unit.dp
+import com.amandabicalho.portfolio.designsystem.components.template.PageLayoutData
 import com.varabyte.kobweb.compose.css.StyleVariable
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -51,7 +51,7 @@ fun initHomePage(ctx: InitRouteContext) {
 }
 
 @Page
-@Layout(".components.layouts.PageLayout")
+@Layout(".designsystem.components.template.PageLayout")
 @Composable
 fun HomePage() {
     Row(HeroContainerStyle.toModifier()) {

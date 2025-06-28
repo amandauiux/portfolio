@@ -1,4 +1,4 @@
-package com.amandabicalho.portfolio.components.layouts
+package com.amandabicalho.portfolio.designsystem.components.template
 
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.colorScheme
@@ -108,7 +108,7 @@ fun initMarkdownLayout(ctx: InitRouteContext) {
 }
 
 @Composable
-@Layout(".components.layouts.PageLayout")
+@Layout(".designsystem.components.template.PageLayout")
 fun MarkdownLayout(content: @Composable () -> Unit) {
     Div(MarkdownStyle.toAttrs()) {
         content()

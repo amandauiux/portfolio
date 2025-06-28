@@ -1,5 +1,5 @@
 ---
-layout: .components.layouts.MarkdownLayout
+layout: .designsystem.components.template.MarkdownLayout
 title: About
 ---
 

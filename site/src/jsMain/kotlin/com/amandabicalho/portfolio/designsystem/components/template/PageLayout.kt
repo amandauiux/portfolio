@@ -1,12 +1,12 @@
-package com.amandabicalho.portfolio.components.layouts
+package com.amandabicalho.portfolio.designsystem.components.template
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import com.amandabicalho.portfolio.components.sections.Footer
-import com.amandabicalho.portfolio.designsystem.components.organism.NavHeader
 import com.amandabicalho.portfolio.core.designsystem.components.organism.SideBar
 import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.ui.unit.dp
+import com.amandabicalho.portfolio.designsystem.components.organism.NavHeader
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.ColumnScope
