@@ -6,6 +6,9 @@ import com.amandabicalho.portfolio.core.ui.theme.typography.FontFamily
 val Archivo = FontFamily(
     Font("Archivo", "sans-serif")
 )
+val ArchivoNarrow = FontFamily(
+    Font("Archivo Narrow", "sans-serif")
+)
 
 val Manrope = FontFamily(
     Font("Manrope", "sans-serif")

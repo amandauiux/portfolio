@@ -15,6 +15,7 @@ internal val LightColorScheme = ColorScheme(
     background = Color.argb(0xFFFFFCF7),
     gray = Color.argb(0xFFE5E4E4),
     white = Color.argb(0xFFE5E4E4),
+    black = Color.argb(0xFF141414),
 )
 
 internal val DarkColorScheme = LightColorScheme

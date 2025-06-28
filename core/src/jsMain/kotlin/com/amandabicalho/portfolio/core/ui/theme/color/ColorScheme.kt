@@ -16,6 +16,7 @@ data class ColorScheme(
     val background: Color,
     val gray: Color,
     val white: Color,
+    val black: Color,
 ) : Palette {
     infix fun to(other: ColorScheme) = ThemedValue(light = this, dark = other)
 
@@ -25,6 +26,7 @@ data class ColorScheme(
         ::background.name -> background
         ::gray.name -> gray
         ::white.name -> white
+        ::black.name -> black
         else -> null
     }
 }

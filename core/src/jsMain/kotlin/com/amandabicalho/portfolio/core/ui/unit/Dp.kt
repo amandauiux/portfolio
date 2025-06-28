@@ -1,11 +1,14 @@
 package com.amandabicalho.portfolio.core.ui.unit
 
+import org.jetbrains.compose.web.css.CSSLengthValue
 import org.jetbrains.compose.web.css.CSSSizeValue
 import org.jetbrains.compose.web.css.CSSUnit
 import org.jetbrains.compose.web.css.cssRem
 
 value class Dp(private val dp: CSSSizeValue<CSSUnit.rem>) : CSSSizeValue<CSSUnit.rem> by dp {
     override fun toString(): String = dp.toString()
+
+    val asCSSLengthValue: CSSLengthValue get() = dp.unsafeCast<CSSLengthValue>()
 
     companion object {
         val Unspecified: Dp = "unset".unsafeCast<Dp>()

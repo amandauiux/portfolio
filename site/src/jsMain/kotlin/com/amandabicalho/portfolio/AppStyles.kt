@@ -1,5 +1,8 @@
 package com.amandabicalho.portfolio
 
+import com.amandabicalho.portfolio.core.designsystem.components.atom.button.SwitchButtonVars
+import com.amandabicalho.portfolio.core.extensions.margin
+import com.amandabicalho.portfolio.core.ui.theme.color.Transparent
 import com.amandabicalho.portfolio.core.ui.theme.typography.toModifier
 import com.amandabicalho.portfolio.core.ui.unit.DefaultFontSize
 import com.amandabicalho.portfolio.core.ui.unit.dp
@@ -9,25 +12,41 @@ import com.amandabicalho.portfolio.ui.theme.Typography
 import com.varabyte.kobweb.compose.css.BoxSizing
 import com.varabyte.kobweb.compose.css.ScrollBehavior
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.graphics.Color
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
+import com.varabyte.kobweb.compose.ui.modifiers.border
+import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
 import com.varabyte.kobweb.compose.ui.modifiers.boxSizing
+import com.varabyte.kobweb.compose.ui.modifiers.content
+import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
-import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.outline
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.scrollBehavior
+import com.varabyte.kobweb.compose.ui.modifiers.setVariable
+import com.varabyte.kobweb.compose.ui.modifiers.size
+import com.varabyte.kobweb.compose.ui.modifiers.transform
+import com.varabyte.kobweb.compose.ui.modifiers.translateX
+import com.varabyte.kobweb.silk.components.forms.SwitchThumbStyle
+import com.varabyte.kobweb.silk.components.forms.SwitchTrackStyle
+import com.varabyte.kobweb.silk.components.forms.SwitchVars
 import com.varabyte.kobweb.silk.components.layout.HorizontalDividerStyle
 import com.varabyte.kobweb.silk.init.InitSilk
 import com.varabyte.kobweb.silk.init.InitSilkContext
 import com.varabyte.kobweb.silk.init.registerStyleBase
 import com.varabyte.kobweb.silk.style.CssStyleScopeBase
+import com.varabyte.kobweb.silk.style.selectors.after
 import com.varabyte.kobweb.silk.style.vars.color.BackgroundColorVar
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
+import com.varabyte.kobweb.silk.theme.modifyStyle
 import com.varabyte.kobweb.silk.theme.modifyStyleBase
 import org.jetbrains.compose.web.css.CSSMediaQuery
+import org.jetbrains.compose.web.css.DisplayStyle
+import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.StylePropertyValue
+import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 
 @InitSilk
@@ -69,6 +88,47 @@ fun initSiteStyles(ctx: InitSilkContext) {
     // Silk dividers only extend 90% by default; we want full width dividers in our site
     ctx.theme.modifyStyleBase(HorizontalDividerStyle) {
         Modifier.fillMaxWidth()
+    }
+
+    ctx.theme.modifyStyleBase(SwitchTrackStyle) {
+        Modifier
+            .setVariable(SwitchVars.TrackBackgroundColor, Color.Transparent)
+            .backgroundColor(Color.Transparent)
+            .border {
+                width(1.dp)
+                color(colorScheme.black)
+                style(LineStyle.Solid)
+            }
+            .padding(0.dp)
+    }
+
+    ctx.theme.modifyStyle(SwitchThumbStyle) {
+        base {
+            Modifier
+                .margin(horizontal = 2.5.dp, vertical = 1.89.dp)
+                .size(22.dp)
+                .backgroundColor(colorScheme.primary[10])
+                .borderRadius(100.percent)
+                .translateX(SwitchButtonVars.ThumbOffset.value())
+        }
+        after {
+            Modifier
+                .content(" ")
+                .display(DisplayStyle.Block)
+                .size(20.dp)
+                .border {
+                    width(1.dp)
+                    color(colorScheme.black)
+                    style(LineStyle.Solid)
+                }
+                .borderRadius(100.percent)
+                .transform {
+                    translate(
+                        tx = SwitchButtonVars.ThumbOutlineTranslationX.value(),
+                        ty = SwitchButtonVars.ThumbOutlineTranslationY.value(),
+                    )
+                }
+        }
     }
 }
 

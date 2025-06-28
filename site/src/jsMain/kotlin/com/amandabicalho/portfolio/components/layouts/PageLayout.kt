@@ -3,6 +3,7 @@ package com.amandabicalho.portfolio.components.layouts
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import com.amandabicalho.portfolio.components.sections.Footer
+import com.amandabicalho.portfolio.designsystem.components.organism.NavHeader
 import com.amandabicalho.portfolio.core.designsystem.components.organism.SideBar
 import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.ui.unit.dp
@@ -67,6 +68,7 @@ fun PageLayout(ctx: PageContext, content: @Composable ColumnScope.() -> Unit) {
                 .gridRow(1)
                 .gridColumn(2),
         ) {
+            NavHeader()
             content()
         }
         Footer(

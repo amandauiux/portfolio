@@ -1,10 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,600;1,600&family=Archivo:ital,wght@0,100..900;1,100..900&family=Manrope:wght@200..800&display=swap');
+
 @font-face {
-    font-family: "Archivo", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
-    font-variation-settings:
-        "wdth" 100;
+  font-family: "Archivo", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+@font-face {
+  font-family: "Archivo Narrow", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
 }
 
 @font-face {
