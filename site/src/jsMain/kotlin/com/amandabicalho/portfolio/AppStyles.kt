@@ -22,6 +22,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
+ import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.outline
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.scrollBehavior
@@ -81,6 +82,37 @@ fun initSiteStyles(ctx: InitSilkContext) {
                     .toModifier()
                     .fillMaxSize()
                     .backgroundColor(BackgroundColorVar.value())
+            }
+            registerStyleBase("h1") {
+                Typography
+                    .headlineLarge
+                    .toModifier()
+                    .margin(all = 0.dp)
+            }
+            registerStyleBase("h2") {
+                Typography.headlineMedium
+                    .toModifier()
+                    .margin(all = 0.dp)
+            }
+            registerStyleBase("h3") {
+                Typography.headlineSmall
+                    .toModifier()
+                    .margin(all = 0.dp)
+            }
+            registerStyleBase("h4") {
+                Typography.titleLarge
+                    .toModifier()
+                    .margin(all = 0.dp)
+            }
+            registerStyleBase("h5") {
+                Typography.titleMedium
+                    .toModifier()
+                    .margin(all = 0.dp)
+            }
+            registerStyleBase("h6") {
+                Typography.titleSmall
+                    .toModifier()
+                    .margin(all = 0.dp)
             }
         }
     }
