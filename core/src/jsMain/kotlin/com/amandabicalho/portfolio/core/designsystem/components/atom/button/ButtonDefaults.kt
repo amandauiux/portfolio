@@ -29,6 +29,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.transition
 import com.varabyte.kobweb.compose.ui.modifiers.userSelect
 import com.varabyte.kobweb.compose.ui.modifiers.verticalAlign
 import com.varabyte.kobweb.compose.ui.styleModifier
+import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.silk.components.forms.ButtonVars
 import com.varabyte.kobweb.silk.style.ComponentKind
 import com.varabyte.kobweb.silk.style.CssStyle
@@ -92,8 +93,13 @@ object ButtonDefaults {
     object Vars {
         val ContainerColor by StyleVariable<Color>("button")
         val ContentColor by StyleVariable<Color>("button")
+        val BorderColor by StyleVariable<Color>("button")
         val DisabledContainerColor by StyleVariable<Color>("button")
         val DisabledContentColor by StyleVariable<Color>("button")
+        val DisabledBorderColor by StyleVariable<Color>("button")
+        val HoverContainerColor by StyleVariable<Color>("button")
+        val HoverContentColor by StyleVariable<Color>("button")
+        val HoverBorderColor by StyleVariable<Color>("button")
         val DefaultElevation by StyleVariable<String>("button")
         val PressedElevation by StyleVariable<String>("button")
         val FocusedElevation by StyleVariable<String>("button")
@@ -143,6 +149,29 @@ object ButtonDefaults {
     )
 
     @Composable
+    fun outlinedButtonColors(
+        containerColor: Color = Colors.Transparent,
+        contentColor: Color = Theme.colorScheme.primary[50],
+        borderColor: Color = Theme.colorScheme.primary[50],
+        disabledContainerColor: Color = Colors.Transparent,
+        disabledContentColor: Color = contentColor.copy(alpha = 0.5f),
+        disabledBorderColor: Color = Theme.colorScheme.primary[50].copy(alpha = 0.5f),
+        hoverContainerColor: Color = Theme.colorScheme.primary[20],
+        hoverContentColor: Color = Theme.colorScheme.white,
+        hoverBorderColor: Color = Theme.colorScheme.text,
+    ): ButtonColors = ButtonColors(
+        containerColor = containerColor,
+        contentColor = borderColor,
+        borderColor = contentColor,
+        disabledContainerColor = disabledContainerColor,
+        disabledContentColor = disabledContentColor,
+        disabledBorderColor = disabledBorderColor,
+        hoverContainerColor = hoverContainerColor,
+        hoverContentColor = hoverContentColor,
+        hoverBorderColor = hoverBorderColor,
+    )
+
+    @Composable
     fun buttonElevation(
         defaultElevation: Elevation = Theme.elevations.level0,
         pressedElevation: Elevation = Theme.elevations.level0,
@@ -163,14 +192,30 @@ object ButtonDefaults {
 data class ButtonColors internal constructor(
     private val containerColor: Color,
     private val contentColor: Color,
+    private val borderColor: Color = Color.Unspecified,
     private val disabledContainerColor: Color,
     private val disabledContentColor: Color,
+    private val disabledBorderColor: Color = Color.Unspecified,
+    private val hoverContainerColor: Color = Color.Unspecified,
+    private val hoverContentColor: Color = Color.Unspecified,
+    private val hoverBorderColor: Color = Color.Unspecified,
 ) {
     fun toModifier(): Modifier = Modifier
         .setVariable(Vars.ContainerColor, containerColor)
         .setVariable(Vars.ContentColor, contentColor)
+        .thenIf(borderColor != Color.Unspecified) {
+            Modifier.setVariable(Vars.BorderColor, contentColor)
+        }
         .setVariable(Vars.DisabledContainerColor, disabledContainerColor)
         .setVariable(Vars.DisabledContentColor, disabledContentColor)
+        .thenIf(disabledBorderColor != Color.Unspecified) {
+            Modifier.setVariable(Vars.DisabledBorderColor, contentColor)
+        }
+        .setVariable(Vars.HoverContainerColor, hoverContainerColor)
+        .setVariable(Vars.HoverContentColor, hoverContentColor)
+        .thenIf(hoverBorderColor != Color.Unspecified) {
+            Modifier.setVariable(Vars.HoverBorderColor, hoverBorderColor)
+        }
 }
 
 @Immutable
