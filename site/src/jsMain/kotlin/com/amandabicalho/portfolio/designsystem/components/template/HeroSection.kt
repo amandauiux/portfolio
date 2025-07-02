@@ -24,21 +24,27 @@ val HeroContainerStyle = CssStyle {
 }
 
 @Composable
-fun HeroSection(modifier: Modifier = Modifier) {
+fun HeroSection(
+    title: String,
+    modifier: Modifier = Modifier,
+    subtitle: String? = null,
+) {
     Header(
         attrs = modifier.toAttrs(),
     ) {
         Column(HeroContainerStyle.toModifier()) {
             Text(
-                text = "Lorem ipsum UX UI Designer",
+                text = title,
                 style = Theme.typography.headlineLarge.copy(
                     color = Theme.colorScheme.primary[30],
                 ),
             )
-            Text(
-                text = "Hey, I’m Amanda, a strategic UX UI Designer delivering top-tier Websites, Mobile experiences, and good vibes, who loves learning about visual design and user behaviour.",
-                style = Theme.typography.titleSmall,
-            )
+            subtitle?.let { subtitle ->
+                Text(
+                    text = subtitle,
+                    style = Theme.typography.titleSmall,
+                )
+            }
         }
     }
 }
