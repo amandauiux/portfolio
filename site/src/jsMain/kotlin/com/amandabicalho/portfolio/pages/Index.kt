@@ -6,6 +6,7 @@ import com.amandabicalho.portfolio.core.ui.unit.dp
 import com.amandabicalho.portfolio.designsystem.components.template.PageLayoutData
 import com.amandabicalho.portfolio.designsystem.components.template.home.FeaturedWork
 import com.amandabicalho.portfolio.designsystem.components.template.home.HeroSection
+import com.amandabicalho.portfolio.designsystem.components.template.home.HighlightSection
 import com.amandabicalho.portfolio.designsystem.components.template.home.WhatIDo
 import com.varabyte.kobweb.compose.css.Background
 import com.varabyte.kobweb.compose.css.BackgroundImage
@@ -74,6 +75,13 @@ val HomeWhatIDoStyle = CssStyle {
     }
 }
 
+val HomeHighlightsStyle = CssStyle {
+    base {
+        Modifier
+            .padding(horizontal = 36.dp)
+    }
+}
+
 @InitRoute
 fun initHomePage(ctx: InitRouteContext) {
     ctx.data.add(PageLayoutData("Home"))
@@ -90,7 +98,10 @@ fun HomePage() {
             onViewAllProjectClick = {},
         )
         WhatIDo(
-            modifier = HomeWhatIDoStyle.toModifier()
+            modifier = HomeWhatIDoStyle.toModifier(),
+        )
+        HighlightSection(
+            modifier = HomeHighlightsStyle.toModifier(),
         )
         Spacer()
     }
