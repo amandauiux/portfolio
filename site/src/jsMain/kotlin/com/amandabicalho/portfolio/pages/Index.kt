@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.ui.unit.dp
 import com.amandabicalho.portfolio.designsystem.components.template.PageLayoutData
-import com.varabyte.kobweb.compose.css.StyleVariable
-import com.varabyte.kobweb.compose.foundation.layout.Row
+import com.amandabicalho.portfolio.designsystem.components.template.home.FeaturedWork
+import com.amandabicalho.portfolio.designsystem.components.template.home.HeroSection
 import com.varabyte.kobweb.compose.css.Background
 import com.varabyte.kobweb.compose.css.BackgroundImage
 import com.varabyte.kobweb.compose.css.functions.linearGradient
@@ -58,6 +58,13 @@ val HomeHeaderStyle = CssStyle {
     }
 }
 
+val HomeFeaturedWorkStyle = CssStyle {
+    base {
+        Modifier
+            .padding(horizontal = 36.dp)
+    }
+}
+
 @InitRoute
 fun initHomePage(ctx: InitRouteContext) {
     ctx.data.add(PageLayoutData("Home"))
@@ -67,9 +74,11 @@ fun initHomePage(ctx: InitRouteContext) {
 @Layout(".designsystem.components.template.PageLayout")
 @Composable
 fun HomePage() {
-    Row(HeroContainerStyle.toModifier()) {
-        Text("Welcome to my portfolio!")
     Column(modifier = HomeContainerStyle.toModifier()) {
         HeroSection(modifier = HomeHeaderStyle.toModifier())
+        FeaturedWork(
+            modifier = HomeFeaturedWorkStyle.toModifier(),
+            onViewAllProjectClick = {},
+        )
     }
 }
