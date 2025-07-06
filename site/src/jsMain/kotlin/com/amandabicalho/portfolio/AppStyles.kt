@@ -6,6 +6,7 @@ import com.amandabicalho.portfolio.core.ui.theme.color.Transparent
 import com.amandabicalho.portfolio.core.ui.theme.typography.toModifier
 import com.amandabicalho.portfolio.core.ui.unit.DefaultFontSize
 import com.amandabicalho.portfolio.core.ui.unit.dp
+import com.amandabicalho.portfolio.core.ui.unit.sp
 import com.amandabicalho.portfolio.ui.theme.DarkColorScheme
 import com.amandabicalho.portfolio.ui.theme.LightColorScheme
 import com.amandabicalho.portfolio.ui.theme.Typography
@@ -22,7 +23,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
- import com.varabyte.kobweb.compose.ui.modifiers.margin
+import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.outline
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.scrollBehavior
@@ -38,6 +39,7 @@ import com.varabyte.kobweb.silk.init.InitSilk
 import com.varabyte.kobweb.silk.init.InitSilkContext
 import com.varabyte.kobweb.silk.init.registerStyleBase
 import com.varabyte.kobweb.silk.style.CssStyleScopeBase
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.selectors.after
 import com.varabyte.kobweb.silk.style.vars.color.BackgroundColorVar
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
@@ -52,9 +54,6 @@ import org.jetbrains.compose.web.css.px
 
 @InitSilk
 fun initSiteStyles(ctx: InitSilkContext) {
-    // This site does not need scrolling itself, but this is a good demonstration for how you might enable this in your
-    // own site. Note that we only enable smooth scrolling unless the user has requested reduced motion, which is
-    // considered a best practice.
     ctx.stylesheet.apply {
         registerStyle("html") {
             cssRule(CSSMediaQuery.MediaFeature("prefers-reduced-motion", StylePropertyValue("no-preference"))) {
@@ -76,43 +75,85 @@ fun initSiteStyles(ctx: InitSilkContext) {
             registerStyleBase(":root") {
                 Modifier.fontSize(DefaultFontSize.px)
             }
-            registerStyleBase("body") {
-                Typography.bodyLarge
-                    .copy(lineHeight = null)
-                    .toModifier()
-                    .fillMaxSize()
-                    .backgroundColor(BackgroundColorVar.value())
+            registerStyle("body") {
+                base {
+                    Typography.bodyLarge
+                        .toModifier()
+                        .fillMaxSize()
+                        .backgroundColor(BackgroundColorVar.value())
+                }
+                Breakpoint.MD {
+                    Typography.bodyLarge.copy( // Desktop
+                        fontSize = 18.sp,
+                        lineHeight = 27.sp,
+                    ).toModifier()
+                }
             }
-            registerStyleBase("h1") {
-                Typography
-                    .headlineLarge
-                    .toModifier()
-                    .margin(all = 0.dp)
+            registerStyle("h1") {
+                base {
+                    Typography.headlineLarge.toModifier().margin(all = 0.dp) // Mobile-first
+                }
+                Breakpoint.MD {
+                    Typography.headlineLarge.copy( // Desktop
+                        fontSize = 96.sp,
+                        lineHeight = 115.2.sp,
+                    ).toModifier()
+                }
             }
-            registerStyleBase("h2") {
-                Typography.headlineMedium
-                    .toModifier()
-                    .margin(all = 0.dp)
+            registerStyle("h2") {
+                base {
+                    Typography.headlineMedium.toModifier().margin(all = 0.dp) // Mobile-first
+                }
+                Breakpoint.MD {
+                    Typography.headlineMedium.copy( // Desktop
+                        fontSize = 80.sp,
+                        lineHeight = 96.sp,
+                    ).toModifier()
+                }
             }
-            registerStyleBase("h3") {
-                Typography.headlineSmall
-                    .toModifier()
-                    .margin(all = 0.dp)
+            registerStyle("h3") {
+                base {
+                    Typography.headlineSmall.toModifier().margin(all = 0.dp) // Mobile-first
+                }
+                Breakpoint.MD {
+                    Typography.headlineSmall.copy( // Desktop
+                        fontSize = 60.sp,
+                        lineHeight = 72.sp,
+                    ).toModifier()
+                }
             }
-            registerStyleBase("h4") {
-                Typography.titleLarge
-                    .toModifier()
-                    .margin(all = 0.dp)
+            registerStyle("h4") {
+                base {
+                    Typography.titleLarge.toModifier().margin(all = 0.dp) // Mobile-first
+                }
+                Breakpoint.MD {
+                    Typography.titleLarge.copy( // Desktop
+                        fontSize = 36.sp,
+                        lineHeight = 46.8.sp,
+                    ).toModifier()
+                }
             }
-            registerStyleBase("h5") {
-                Typography.titleMedium
-                    .toModifier()
-                    .margin(all = 0.dp)
+            registerStyle("h5") {
+                base {
+                    Typography.titleMedium.toModifier().margin(all = 0.dp) // Mobile-first
+                }
+                Breakpoint.MD {
+                    Typography.titleMedium.copy( // Desktop
+                        fontSize = 32.sp,
+                        lineHeight = 41.6.sp,
+                    ).toModifier()
+                }
             }
-            registerStyleBase("h6") {
-                Typography.titleSmall
-                    .toModifier()
-                    .margin(all = 0.dp)
+            registerStyle("h6") {
+                base {
+                    Typography.titleSmall.toModifier().margin(all = 0.dp) // Mobile-first
+                }
+                Breakpoint.MD {
+                    Typography.titleSmall.copy( // Desktop
+                        fontSize = 24.sp,
+                        lineHeight = 31.2.sp,
+                    ).toModifier()
+                }
             }
         }
     }

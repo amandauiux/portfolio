@@ -10,64 +10,64 @@ val Typography = Typography(
     headlineLarge = TextStyle(
         fontFamily = Archivo,
         fontWeight = FontWeight.Medium,
-        fontSize = 96.sp,
-        lineHeight = 115.2.sp,
+        fontSize = 42.sp, // Mobile: 42px
+        lineHeight = 50.4.sp, // Mobile: 42px * 1.2
         letterSpacing = 0.sp,
     ),
     headlineMedium = TextStyle(
         fontFamily = Archivo,
         fontWeight = FontWeight.Medium,
-        fontSize = 80.sp,
-        lineHeight = 96.sp,
+        fontSize = 36.sp, // Mobile: 36px
+        lineHeight = 43.2.sp, // Mobile: 36px * 1.2
         letterSpacing = 0.sp,
     ),
     headlineSmall = TextStyle(
         fontFamily = Archivo,
         fontWeight = FontWeight.Medium,
-        fontSize = 60.sp,
-        lineHeight = 72.sp,
+        fontSize = 28.sp, // Mobile: 28px
+        lineHeight = 33.6.sp, // Mobile: 28px * 1.2
         letterSpacing = 0.sp,
     ),
     titleLarge = TextStyle(
         fontFamily = Archivo,
         fontWeight = FontWeight.Regular,
-        fontSize = 36.sp,
-        lineHeight = 46.8.sp,
+        fontSize = 26.sp, // Mobile: 26px
+        lineHeight = 33.8.sp, // Mobile: 26px * 1.3
         letterSpacing = 0.sp,
     ),
     titleMedium = TextStyle(
         fontFamily = Archivo,
         fontWeight = FontWeight.Medium,
-        fontSize = 32.sp,
-        lineHeight = 41.6.sp,
+        fontSize = 24.sp, // Mobile: 24px
+        lineHeight = 31.2.sp, // Mobile: 24px * 1.3
         letterSpacing = 0.sp,
     ),
     titleSmall = TextStyle(
         fontFamily = Archivo,
         fontWeight = FontWeight.Regular,
-        fontSize = 24.sp,
-        lineHeight = 31.2.sp,
+        fontSize = 20.sp, // Mobile: 20px
+        lineHeight = 26.sp, // Mobile: 20px * 1.3
         letterSpacing = 0.sp,
     ),
     bodyLarge = TextStyle(
         fontFamily = Manrope,
         fontWeight = FontWeight.Regular,
-        fontSize = 18.sp,
-        lineHeight = 27.sp,
+        fontSize = 16.sp, // Mobile: 16px
+        lineHeight = 24.sp, // Mobile: 16px * 1.5
         letterSpacing = 0.sp,
     ),
     bodyMedium = TextStyle(
         fontFamily = Manrope,
         fontWeight = FontWeight.Regular,
-        fontSize = 16.sp,
-        lineHeight = 24.sp,
+        fontSize = 14.sp, // Mobile: 14px
+        lineHeight = 21.sp, // Mobile: 14px * 1.5
         letterSpacing = 0.sp,
     ),
     bodySmall = TextStyle(
         fontFamily = Manrope,
         fontWeight = FontWeight.Regular,
-        fontSize = 14.sp,
-        lineHeight = 21.sp,
+        fontSize = 14.sp, // Mobile: 14px
+        lineHeight = 21.sp, // Mobile: 14px * 1.5
         letterSpacing = 0.sp,
     ),
 )
