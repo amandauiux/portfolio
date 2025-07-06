@@ -10,7 +10,7 @@ fun LogoButton(
     modifier: Modifier = Modifier,
 ) {
     Link(
-        path = "https://amandabicalho.dev",
+        path = "/",
         modifier = modifier,
     ) {
         Logo()

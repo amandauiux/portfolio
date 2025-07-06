@@ -1,10 +1,6 @@
 package com.amandabicalho.portfolio.designsystem.components.organism
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import com.amandabicalho.portfolio.colorScheme
 import com.amandabicalho.portfolio.core.designsystem.components.atom.button.SwitchButton
 import com.amandabicalho.portfolio.core.designsystem.components.atom.button.TextButton
@@ -29,7 +25,6 @@ import com.varabyte.kobweb.compose.ui.modifiers.height
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.toModifier
-import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import org.jetbrains.compose.web.css.AlignSelf
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.dom.Nav
@@ -59,7 +54,13 @@ val NavHeaderBrandingStyle = CssStyle.base {
 
 
 @Composable
-fun NavHeader() {
+fun NavHeader(
+    isDark: Boolean,
+    onWorkClick: () -> Unit,
+    onAboutClick: () -> Unit,
+    onContactClick: () -> Unit,
+    onThemeToggleClick: () -> Unit,
+) {
     Row(
         NavHeaderStyle.toModifier(),
         verticalAlignment = Alignment.CenterVertically,
@@ -78,23 +79,17 @@ fun NavHeader() {
                     NavTextButton(
                         text = "Work",
                         modifier = Modifier.alignSelf(AlignSelf.Center),
-                        onClick = {
-                            // Navigate to home
-                        },
+                        onClick = onWorkClick,
                     )
                     NavTextButton(
                         text = "About",
                         modifier = Modifier.alignSelf(AlignSelf.Center),
-                        onClick = {
-                            // Navigate to about
-                        },
+                        onClick = onAboutClick,
                     )
                     NavTextButton(
                         text = "Contact",
                         modifier = Modifier.alignSelf(AlignSelf.Center),
-                        onClick = {
-                            // Navigate to projects
-                        },
+                        onClick = onContactClick,
                     )
                 }
             }
@@ -102,12 +97,10 @@ fun NavHeader() {
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                val colorMode by ColorMode.currentState
                 Sun()
-                var enabled by remember { mutableStateOf(colorMode.isDark) }
                 SwitchButton(
-                    checked = enabled,
-                    onCheckChange = { enabled = it },
+                    checked = isDark,
+                    onCheckChange = { onThemeToggleClick() },
                 )
                 Moon()
             }

@@ -2,9 +2,10 @@ package com.amandabicalho.portfolio.designsystem.components.template
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import com.amandabicalho.portfolio.components.sections.Footer
 import com.amandabicalho.portfolio.core.designsystem.components.organism.SideBar
-import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.ui.unit.dp
 import com.amandabicalho.portfolio.designsystem.components.organism.NavHeader
 import com.varabyte.kobweb.compose.foundation.layout.Box
@@ -24,26 +25,15 @@ import com.varabyte.kobweb.core.PageContext
 import com.varabyte.kobweb.core.data.getValue
 import com.varabyte.kobweb.core.layout.Layout
 import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.toModifier
+import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import kotlinx.browser.document
 import org.jetbrains.compose.web.css.fr
 import org.jetbrains.compose.web.css.vh
 
-val PageContentStyle = CssStyle {
-    base { Modifier.fillMaxSize().padding(start = 2.dp, top = 4.dp) }
-}
-
-class PageLayoutData(val title: String)
-
-@Composable
-@Layout
-fun PageLayout(ctx: PageContext, content: @Composable ColumnScope.() -> Unit) {
-    val data = ctx.data.getValue<PageLayoutData>()
-    LaunchedEffect(data.title) {
-        document.title = "${data.title} | Amanda Bicalho Portfolio"
-    }
-
-    Box(
-        modifier = Modifier
+val PageContainerStyle = CssStyle {
+    base {
+        Modifier
             .fillMaxHeight()
             .minHeight(100.vh)
             .gridTemplateColumns {
@@ -54,65 +44,62 @@ fun PageLayout(ctx: PageContext, content: @Composable ColumnScope.() -> Unit) {
                 size(1.fr) // Main content area takes up all available space
                 size(minContent) // Footer takes up only as much space as it needs
             }
-    ) {
-        SideBar(
-            modifier = Modifier
-                .gridRow(start = 1, end = "last-line")
-                .gridColumn(1)
-                .fillMaxHeight()
-                .zIndex(1),
-        )
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .gridRow(1)
-                .gridColumn(2),
-        ) {
-            NavHeader()
-            content()
-        }
-        Footer(
-            modifier = Modifier
-                .fillMaxWidth()
-                .gridRow(2)
-                .gridColumn(2),
-        )
+    }
+}
+
+val PageSideBarStyle = CssStyle {
+    base {
+        Modifier
+            .gridRow(start = 1, end = "last-line")
+            .gridColumn(1)
+            .fillMaxHeight()
+            .zIndex(1)
+    }
+}
+
+val PageContentStyle = CssStyle {
+    base {
+        Modifier
+            .fillMaxSize()
+            .gridRow(1)
+            .gridColumn(2)
+    }
+}
+
+val PageFooterStyle = CssStyle {
+    base {
+        Modifier
+            .fillMaxWidth()
+            .gridRow(2)
+            .gridColumn(2)
+    }
+}
+
+class PageLayoutData(val title: String)
+
+@Composable
+@Layout
+fun PageLayout(context: PageContext, content: @Composable ColumnScope.() -> Unit) {
+    val data = context.data.getValue<PageLayoutData>()
+    var colorMode by ColorMode.currentState
+    LaunchedEffect(data.title) {
+        document.title = "${data.title} | Amanda Bicalho Portfolio"
     }
 
-//    Box(
-//        Modifier
-//            .fillMaxWidth()
-//            .minHeight(100.vh)
-//            // Create a box with two rows: the main content (fills as much space as it can) and the footer (which reserves
-//            // space at the bottom). "min-content" means the use the height of the row, which we use for the footer.
-//            // Since this box is set to *at least* 100%, the footer will always appear at least on the bottom but can be
-//            // pushed further down if the first row grows beyond the page.
-//            // Grids are powerful but have a bit of a learning curve. For more info, see:
-//            // https://css-tricks.com/snippets/css/complete-guide-grid/
-//            .gridTemplateRows {
-//                size(1.fr)
-//                size(minContent)
-//            },
-//        contentAlignment = Alignment.Center
-//    ) {
-//        Row {
-//            SideBar()
-//            Column(
-//                // Isolate the content, because otherwise the absolute-positioned SVG above will render on top of it.
-//                // This is confusing but how browsers work. Read up on stacking contexts for more info.
-//                // https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_positioned_layout/Understanding_z-index/Stacking_context
-//                // Some people might have used z-index instead, but best practice is to avoid that if possible, because
-//                // as a site gets complex, Z-fighting can be a huge pain to track down.
-//                Modifier.fillMaxSize().gridRow(1),
-//                horizontalAlignment = Alignment.CenterHorizontally,
-//            ) {
-//                NavHeader()
-//                Div(PageContentStyle.toAttrs()) {
-//                    content()
-//                }
-//            }
-//        }
-//        // Associate the footer with the row that will get pushed off the bottom of the page if it can't fit.
-//        Footer(modifier = Modifier.fillMaxWidth().gridRow(2))
-//    }
+    Box(
+        modifier = PageContainerStyle.toModifier(),
+    ) {
+        SideBar(modifier = PageSideBarStyle.toModifier())
+        Column(modifier = PageContentStyle.toModifier()) {
+            NavHeader(
+                isDark = colorMode.isDark,
+                onWorkClick = { context.router.navigateTo("/work") },
+                onAboutClick = { context.router.navigateTo("/about") },
+                onContactClick = { context.router.navigateTo("/contact") },
+                onThemeToggleClick = { colorMode = colorMode.opposite },
+            )
+            content()
+        }
+        Footer(modifier = PageFooterStyle.toModifier())
+    }
 }
