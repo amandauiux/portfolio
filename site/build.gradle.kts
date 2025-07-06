@@ -33,9 +33,9 @@ kotlin {
     configAsKobwebApplication("portfolio" /*, includeServer = true*/)
 
     sourceSets {
-//        commonMain.dependencies {
-//          // Add shared dependencies between JS and JVM here if building a fullstack app
-//        }
+        commonMain.dependencies {
+            implementation(libs.kotlinx.datetime)
+        }
 
         jsMain.dependencies {
             implementation(projects.core)
