@@ -1,8 +1,8 @@
 package com.amandabicalho.portfolio.designsystem.components.template.home
 
 import androidx.compose.runtime.Composable
-import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridSection
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridDefaults
+import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridSection
 import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.theme.typography.Regular
@@ -46,7 +46,7 @@ val HighlightSectionHighlightList = CssStyle {
     base {
         Modifier
             .gridColumn(start = GridDefaults.LEFT_AREA, end = GridDefaults.RIGHT_AREA)
-            .padding(start = 12.dp)
+            .padding(start = 24.dp)
             .margin(0.dp)
     }
     Breakpoint.MD {
