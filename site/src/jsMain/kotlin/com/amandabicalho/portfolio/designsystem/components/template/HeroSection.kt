@@ -11,13 +11,20 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.gridArea
+import com.varabyte.kobweb.compose.ui.modifiers.gridColumn
 import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 
 val HeroContainerStyle = CssStyle {
     base {
         Modifier
             .fillMaxWidth()
+            .gap(12.dp)
+            .gridColumn(start = GridSectionDefaults.LEFT_AREA, end = GridSectionDefaults.RIGHT_AREA)
+    }
+    Breakpoint.MD {
+        Modifier
             .gap(20.dp)
             .gridArea(GridSectionDefaults.LEFT_AREA)
     }

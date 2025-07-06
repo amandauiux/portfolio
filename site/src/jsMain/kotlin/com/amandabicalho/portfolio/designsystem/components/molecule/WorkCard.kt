@@ -14,8 +14,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
-import com.varabyte.kobweb.compose.ui.modifiers.height
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.objectFit
 import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.modifiers.size
@@ -47,8 +46,7 @@ val WorkCardTagContainerStyle = CssStyle {
 val WorkCardImageStyle = CssStyle {
     base {
         Modifier
-            .fillMaxWidth()
-            .height(416.dp)
+            .fillMaxSize()
             .objectFit(ObjectFit.Cover)
     }
 }

@@ -13,41 +13,44 @@ import com.varabyte.kobweb.compose.css.ListStyle
 import com.varabyte.kobweb.compose.css.ListStyleImage
 import com.varabyte.kobweb.compose.css.functions.url
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.display
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.gridArea
-import com.varabyte.kobweb.compose.ui.modifiers.gridTemplateColumns
-import com.varabyte.kobweb.compose.ui.modifiers.justifyContent
+import com.varabyte.kobweb.compose.ui.modifiers.gridColumn
 import com.varabyte.kobweb.compose.ui.modifiers.listStyle
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
-import org.jetbrains.compose.web.css.DisplayStyle
-import org.jetbrains.compose.web.css.JustifyContent
-import org.jetbrains.compose.web.css.fr
 import org.jetbrains.compose.web.dom.Li
 import org.jetbrains.compose.web.dom.Ul
 
 val HighlightSectionStyle = CssStyle {
     base {
         Modifier
-            .fillMaxWidth()
-            .display(DisplayStyle.Grid)
-            .gridTemplateColumns {
-                repeat(2) {
-                    size(1.fr)
-                }
-            }
-            .justifyContent(JustifyContent.SpaceBetween)
+    }
+}
+
+val HighlightSectionTitleStyle = CssStyle {
+    base {
+        Modifier
+            .gridColumn(start = GridSectionDefaults.LEFT_AREA, end = GridSectionDefaults.RIGHT_AREA)
+    }
+    Breakpoint.MD {
+        Modifier
+            .gridArea(GridSectionDefaults.LEFT_AREA)
     }
 }
 
 val HighlightSectionHighlightList = CssStyle {
     base {
         Modifier
+            .gridColumn(start = GridSectionDefaults.LEFT_AREA, end = GridSectionDefaults.RIGHT_AREA)
             .padding(start = 12.dp)
+            .margin(0.dp)
+    }
+    Breakpoint.MD {
+        Modifier
             .gridArea(GridSectionDefaults.RIGHT_AREA)
     }
 
@@ -55,18 +58,17 @@ val HighlightSectionHighlightList = CssStyle {
         Modifier
             .listStyle(ListStyle.of(image = ListStyleImage.of(url("images/icons/ic_circle.svg"))))
             .padding(vertical = 20.dp)
+    }
+
+    cssRule(Breakpoint.MD.toCSSMediaQuery(), "li") {
+        Modifier
+            .padding(vertical = 20.dp)
             .margin(left = 24.dp)
     }
 }
 
 @Composable
 fun HighlightSection(modifier: Modifier = Modifier) {
-//    Section(
-//        attrs = HighlightSectionStyle
-//            .toModifier()
-//            .then(modifier)
-//            .toAttrs(),
-//    ) {
     GridSection(
         modifier = HighlightSectionStyle
             .toModifier()
@@ -77,7 +79,7 @@ fun HighlightSection(modifier: Modifier = Modifier) {
             style = Theme.typography.headlineMedium.copy(
                 color = Theme.colorScheme.primary[50],
             ),
-            modifier = Modifier.gridArea(GridSectionDefaults.LEFT_AREA),
+            modifier = HighlightSectionTitleStyle.toModifier(),
         )
 
         Ul(attrs = HighlightSectionHighlightList.toAttrs()) {

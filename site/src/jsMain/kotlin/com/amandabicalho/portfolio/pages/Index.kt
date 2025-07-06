@@ -28,21 +28,45 @@ import com.varabyte.kobweb.core.init.InitRoute
 import com.varabyte.kobweb.core.init.InitRouteContext
 import com.varabyte.kobweb.core.layout.Layout
 import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.deg
 import org.jetbrains.compose.web.css.percent
 
-private val PaddingHorizontal = 40.dp
+private val PaddingHorizontalDesktop = 40.dp
+private val PaddingHorizontalMobile = 16.dp
 val HomeContainerStyle = CssStyle {
     base {
         Modifier
             .fillMaxSize()
+            .gap(40.dp)
+    }
+    Breakpoint.MD {
+        Modifier
             .gap(80.dp)
     }
 }
 
 val HomeHeaderStyle = CssStyle {
     base {
+        Modifier
+            .background(
+                Background.of(image = BackgroundImage.of(url("images/bg_home_header.svg"))),
+                Background.of(
+                    image = BackgroundImage.of(
+                        gradient = linearGradient(angle = 180.deg) {
+                            add(Color.argb(0xFFFFFCF7), 46.95.percent)
+                            add(Color.rgba(255, 255, 255, 0), 100.percent)
+                        },
+                    ),
+                ),
+            )
+            .backgroundRepeat(BackgroundRepeat.Round)
+            .padding(horizontal = PaddingHorizontalMobile, vertical = 40.dp)
+            .fillMaxWidth()
+            .padding(bottom = 80.dp)
+    }
+    Breakpoint.MD {
         Modifier
             .background(
                 Background.of(image = BackgroundImage.of(url("images/bg_home_header.svg"))),
@@ -56,9 +80,7 @@ val HomeHeaderStyle = CssStyle {
                 ),
             )
             .backgroundRepeat(BackgroundRepeat.Round)
-            .padding(horizontal = PaddingHorizontal, vertical = 80.dp)
-            .fillMaxWidth()
-            .gap(20.dp)
+            .padding(horizontal = PaddingHorizontalDesktop, vertical = 80.dp)
             .padding(bottom = 20.dp)
     }
 }
@@ -66,21 +88,33 @@ val HomeHeaderStyle = CssStyle {
 val HomeFeaturedWorkStyle = CssStyle {
     base {
         Modifier
-            .padding(horizontal = PaddingHorizontal)
+            .padding(horizontal = PaddingHorizontalMobile)
+    }
+    Breakpoint.MD {
+        Modifier
+            .padding(horizontal = PaddingHorizontalDesktop)
     }
 }
 
 val HomeWhatIDoStyle = CssStyle {
     base {
         Modifier
-            .padding(horizontal = PaddingHorizontal)
+            .padding(horizontal = PaddingHorizontalMobile)
+    }
+    Breakpoint.MD {
+        Modifier
+            .padding(horizontal = PaddingHorizontalDesktop)
     }
 }
 
 val HomeHighlightsStyle = CssStyle {
     base {
         Modifier
-            .padding(horizontal = PaddingHorizontal)
+            .padding(horizontal = PaddingHorizontalMobile)
+    }
+    Breakpoint.MD {
+        Modifier
+            .padding(horizontal = PaddingHorizontalDesktop)
     }
 }
 
