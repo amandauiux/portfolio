@@ -1,8 +1,8 @@
 package com.amandabicalho.portfolio.designsystem.components.template
 
 import androidx.compose.runtime.Composable
-import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridSection
-import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridSectionDefaults
+import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridDefaults
+import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridHeader
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.unit.dp
 import com.amandabicalho.portfolio.designsystem.components.atom.Text
@@ -21,12 +21,12 @@ val HeroContainerStyle = CssStyle {
         Modifier
             .fillMaxWidth()
             .gap(12.dp)
-            .gridColumn(start = GridSectionDefaults.LEFT_AREA, end = GridSectionDefaults.RIGHT_AREA)
+            .gridColumn(start = GridDefaults.LEFT_AREA, end = GridDefaults.RIGHT_AREA)
     }
     Breakpoint.MD {
         Modifier
             .gap(20.dp)
-            .gridArea(GridSectionDefaults.LEFT_AREA)
+            .gridArea(GridDefaults.LEFT_AREA)
     }
 }
 
@@ -36,9 +36,8 @@ fun HeroSection(
     modifier: Modifier = Modifier,
     subtitle: String? = null,
 ) {
-    GridSection(
+    GridHeader(
         modifier = modifier,
-        useHeader = true,
     ) {
         Column(HeroContainerStyle.toModifier()) {
             Text(

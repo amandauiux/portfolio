@@ -11,9 +11,9 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.addVariant
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
-import org.jetbrains.compose.web.dom.Section
+import org.jetbrains.compose.web.dom.Header
 
-val GridSectionStyle = GridStyle.addVariant {
+val GridHeaderStyle = GridStyle.addVariant {
     base {
         Modifier
     }
@@ -23,14 +23,23 @@ val GridSectionStyle = GridStyle.addVariant {
 }
 
 @Composable
-fun GridSection(
+fun GridHeader(
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues? = null,
     content: @Composable () -> Unit,
 ) {
-    Section(
+    val modifier = GridStyle
+        .toModifier(GridHeaderStyle)
+        .then(modifier)
+        .thenIf(contentPadding != null) {
+            requireNotNull(contentPadding)
+            Modifier
+                .setVariable(GridVars.RowGap, contentPadding.calculateVerticalPadding())
+                .setVariable(GridVars.ColumnGap, contentPadding.calculateHorizontalPadding())
+        }
+    Header(
         attrs = GridStyle
-            .toModifier(GridSectionStyle)
+            .toModifier(GridHeaderStyle)
             .then(modifier)
             .thenIf(contentPadding != null) {
                 requireNotNull(contentPadding)

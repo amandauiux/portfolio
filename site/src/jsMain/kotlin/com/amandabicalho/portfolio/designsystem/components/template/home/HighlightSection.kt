@@ -2,7 +2,7 @@ package com.amandabicalho.portfolio.designsystem.components.template.home
 
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridSection
-import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridSectionDefaults
+import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridDefaults
 import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.theme.typography.Regular
@@ -34,24 +34,24 @@ val HighlightSectionStyle = CssStyle {
 val HighlightSectionTitleStyle = CssStyle {
     base {
         Modifier
-            .gridColumn(start = GridSectionDefaults.LEFT_AREA, end = GridSectionDefaults.RIGHT_AREA)
+            .gridColumn(start = GridDefaults.LEFT_AREA, end = GridDefaults.RIGHT_AREA)
     }
     Breakpoint.MD {
         Modifier
-            .gridArea(GridSectionDefaults.LEFT_AREA)
+            .gridArea(GridDefaults.LEFT_AREA)
     }
 }
 
 val HighlightSectionHighlightList = CssStyle {
     base {
         Modifier
-            .gridColumn(start = GridSectionDefaults.LEFT_AREA, end = GridSectionDefaults.RIGHT_AREA)
+            .gridColumn(start = GridDefaults.LEFT_AREA, end = GridDefaults.RIGHT_AREA)
             .padding(start = 12.dp)
             .margin(0.dp)
     }
     Breakpoint.MD {
         Modifier
-            .gridArea(GridSectionDefaults.RIGHT_AREA)
+            .gridArea(GridDefaults.RIGHT_AREA)
     }
 
     cssRule("li") {

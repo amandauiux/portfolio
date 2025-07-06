@@ -3,8 +3,8 @@ package com.amandabicalho.portfolio.designsystem.components.template.home
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.core.designsystem.components.atom.button.OutlinedButton
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridSection
-import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridSectionDefaults
-import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridSectionVars
+import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridDefaults
+import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridVars
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.unit.dp
 import com.amandabicalho.portfolio.designsystem.components.atom.Text
@@ -25,33 +25,33 @@ import com.varabyte.kobweb.silk.style.toModifier
 
 val FeaturedWorkStyle = CssStyle {
     base {
-        Modifier.setVariable(GridSectionVars.RowGap, 12.dp)
+        Modifier.setVariable(GridVars.RowGap, 12.dp)
     }
     Breakpoint.MD {
-        Modifier.setVariable(GridSectionVars.RowGap, 80.dp)
+        Modifier.setVariable(GridVars.RowGap, 80.dp)
     }
 }
 
 val FeaturedWorkTitleStyle = CssStyle {
     base {
         Modifier
-            .gridColumn("span ${GridSectionDefaults.MOBILE_AREA_SIZE}")
+            .gridColumn("span ${GridDefaults.MOBILE_AREA_SIZE}")
     }
     Breakpoint.MD {
         Modifier
-            .gridArea(GridSectionDefaults.LEFT_AREA)
+            .gridArea(GridDefaults.LEFT_AREA)
     }
 }
 val FeaturedWorkDescriptionStyle = CssStyle {
     base {
         Modifier
-            .gridColumn("span ${GridSectionDefaults.MOBILE_AREA_SIZE}")
+            .gridColumn("span ${GridDefaults.MOBILE_AREA_SIZE}")
             .margin(bottom = 28.dp)
     }
 
     Breakpoint.MD {
         Modifier
-            .gridArea(GridSectionDefaults.RIGHT_AREA)
+            .gridArea(GridDefaults.RIGHT_AREA)
             .margin(bottom = 0.dp)
     }
 }
@@ -59,8 +59,8 @@ val FeaturedWorkDescriptionStyle = CssStyle {
 val FeatureWorkCardSectionStyle = CssStyle {
     base {
         Modifier
-            .gridColumnStart(GridSectionDefaults.LEFT_AREA)
-            .gridColumnEnd(GridSectionDefaults.RIGHT_AREA)
+            .gridColumnStart(GridDefaults.LEFT_AREA)
+            .gridColumnEnd(GridDefaults.RIGHT_AREA)
     }
 
     Breakpoint.MD {
@@ -71,12 +71,12 @@ val FeatureWorkCardSectionStyle = CssStyle {
 val FeatureWorkCardStyle = CssStyle {
     base {
         Modifier
-            .gridColumn("span ${GridSectionDefaults.MOBILE_AREA_SIZE}")
+            .gridColumn("span ${GridDefaults.MOBILE_AREA_SIZE}")
     }
 
     Breakpoint.MD {
         Modifier
-            .gridColumn("span ${GridSectionDefaults.DESKTOP_AREA_SIZE / 2}")
+            .gridColumn("span ${GridDefaults.DESKTOP_AREA_SIZE / 2}")
     }
 }
 
