@@ -35,7 +35,6 @@ import com.varabyte.kobweb.compose.ui.modifiers.borderTop
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.gridColumn
-import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.placeItems
 import com.varabyte.kobweb.compose.ui.modifiers.setVariable
 import com.varabyte.kobweb.compose.ui.modifiers.size
@@ -146,9 +145,8 @@ val FooterSocialContentStyle = CssStyle {
     Breakpoint.MD {
         Modifier
             .alignSelf(AlignSelf.FlexEnd)
-            .gridColumn(start = 11, end = 13)
+            .gridColumn(start = 10, end = 13)
             .placeItems(alignItems = AlignItems.Start, justifyItems = JustifyItems.End)
-            .padding(left = 0.dp, bottom = 40.dp, right = 40.dp)
     }
 }
 
@@ -206,7 +204,7 @@ fun Footer(modifier: Modifier = Modifier) {
                 )
             }
             Row(
-                horizontalArrangement = Arrangement.spacedBy(20.dp),
+                horizontalArrangement = Arrangement.spacedBy(36.dp),
             ) {
                 FooterNavigationTextButton(
                     text = "Work",

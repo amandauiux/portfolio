@@ -14,6 +14,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.aspectRatio
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.objectFit
 import com.varabyte.kobweb.compose.ui.modifiers.onClick
@@ -48,6 +49,7 @@ val WorkCardImageStyle = CssStyle {
         Modifier
             .fillMaxSize()
             .objectFit(ObjectFit.Cover)
+            .aspectRatio(3, 2)
     }
 }
 

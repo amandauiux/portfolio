@@ -9,6 +9,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.gridTemplateColumns
+import com.varabyte.kobweb.compose.ui.modifiers.rowGap
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
@@ -22,12 +23,13 @@ val WorkSectionGridStyle = CssStyle {
         Modifier
             .display(DisplayStyle.Grid)
             .gridTemplateColumns { repeat(1) { size(1.fr) } }
-            .gap(columnGap = 24.dp, rowGap = 80.dp)
+            .rowGap(40.dp)
             .fillMaxWidth()
     }
     Breakpoint.MD { // 2 columns for medium screens and up
         Modifier
             .gridTemplateColumns { repeat(2) { size(1.fr) } }
+            .gap(columnGap = 24.dp, rowGap = 80.dp)
     }
 }
 
