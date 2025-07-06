@@ -14,10 +14,11 @@ import com.varabyte.kobweb.compose.ui.modifiers.borderRight
 import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxHeight
 import com.varabyte.kobweb.compose.ui.modifiers.justifyContent
+import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.setVariable
 import com.varabyte.kobweb.compose.ui.modifiers.size
 import com.varabyte.kobweb.silk.style.CssStyle
-import com.varabyte.kobweb.silk.style.base
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.AlignItems
 import org.jetbrains.compose.web.css.DisplayStyle
@@ -28,27 +29,38 @@ object SideBarVars {
     val BorderColor by StyleVariable<Color>()
 }
 
-val SideBarStyle = CssStyle.base {
-    Modifier
-        .fillMaxHeight()
-        .borderRight {
-            width(1.dp)
-            color(SideBarVars.BorderColor.value())
-            style(LineStyle.Solid)
-        }
+val SideBarStyle = CssStyle {
+    base {
+        Modifier
+            .borderRight {
+                width(1.dp)
+                color(SideBarVars.BorderColor.value())
+                style(LineStyle.Solid)
+            }
+    }
+    Breakpoint.MD {
+        Modifier.fillMaxHeight()
+    }
 }
 
-val SideBarLogoButtonStyle = CssStyle.base {
-    Modifier
-        .display(DisplayStyle.Flex)
-        .alignItems(AlignItems.Center)
-        .justifyContent(JustifyContent.Center)
-        .size(80.dp)
-        .borderBottom {
-            width(1.dp)
-            color(SideBarVars.BorderColor.value())
-            style(LineStyle.Solid)
-        }
+val SideBarLogoButtonStyle = CssStyle {
+    base {
+        Modifier
+            .display(DisplayStyle.Flex)
+            .alignItems(AlignItems.Center)
+            .justifyContent(JustifyContent.Center)
+            .size(64.dp)
+            .padding(16.dp)
+    }
+    Breakpoint.MD {
+        Modifier
+            .size(80.dp)
+            .borderBottom {
+                width(1.dp)
+                color(SideBarVars.BorderColor.value())
+                style(LineStyle.Solid)
+            }
+    }
 }
 
 @Composable

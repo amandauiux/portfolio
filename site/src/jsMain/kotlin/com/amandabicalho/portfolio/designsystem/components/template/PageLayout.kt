@@ -4,9 +4,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
-import com.amandabicalho.portfolio.designsystem.components.organism.Footer
 import com.amandabicalho.portfolio.core.designsystem.components.organism.SideBar
 import com.amandabicalho.portfolio.core.ui.unit.dp
+import com.amandabicalho.portfolio.designsystem.components.organism.Footer
 import com.amandabicalho.portfolio.designsystem.components.organism.NavHeader
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -25,6 +25,7 @@ import com.varabyte.kobweb.core.PageContext
 import com.varabyte.kobweb.core.data.getValue
 import com.varabyte.kobweb.core.layout.Layout
 import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import kotlinx.browser.document
@@ -33,6 +34,15 @@ import org.jetbrains.compose.web.css.vh
 
 val PageContainerStyle = CssStyle {
     base {
+        Modifier
+            .fillMaxHeight()
+            .minHeight(100.vh)
+            .gridTemplateRows {
+                size(1.fr) // Main content area takes up all available space
+                size(minContent) // Footer takes up only as much space as it needs
+            }
+    }
+    Breakpoint.MD {
         Modifier
             .fillMaxHeight()
             .minHeight(100.vh)
@@ -49,6 +59,12 @@ val PageContainerStyle = CssStyle {
 
 val PageSideBarStyle = CssStyle {
     base {
+        Modifier
+            .gridRow(start = 1, end = 1)
+            .gridColumn(1)
+            .zIndex(1)
+    }
+    Breakpoint.MD {
         Modifier
             .gridRow(start = 1, end = "last-line")
             .gridColumn(1)

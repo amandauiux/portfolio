@@ -121,6 +121,8 @@ object ButtonDefaults {
         horizontal = 24.dp,
     )
 
+    val IconButtonContentPadding = PaddingValues(all = 4.dp)
+
     val BorderRadius = 100.dp
 
     @Composable
@@ -138,6 +140,18 @@ object ButtonDefaults {
 
     @Composable
     fun textButtonColors(
+        contentColor: Color = Theme.colorScheme.text,
+        disabledContentColor: Color = Theme.colorScheme.text.copy(alpha = 0.5f),
+        hoveredContainerColor: Color = Theme.colorScheme.text.copy(alpha = 0.1f),
+    ): ButtonColors = ButtonColors(
+        containerColor = hoveredContainerColor,
+        contentColor = contentColor,
+        disabledContainerColor = Colors.Transparent,
+        disabledContentColor = disabledContentColor,
+    )
+
+    @Composable
+    fun iconButtonColors(
         contentColor: Color = Theme.colorScheme.text,
         disabledContentColor: Color = Theme.colorScheme.text.copy(alpha = 0.5f),
         hoveredContainerColor: Color = Theme.colorScheme.text.copy(alpha = 0.1f),
