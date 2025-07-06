@@ -3,13 +3,14 @@ package com.amandabicalho.portfolio.pages
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.ui.unit.dp
+import com.amandabicalho.portfolio.designsystem.components.template.HeroSection
 import com.amandabicalho.portfolio.designsystem.components.template.PageLayoutData
 import com.amandabicalho.portfolio.designsystem.components.template.home.FeaturedWork
-import com.amandabicalho.portfolio.designsystem.components.template.home.HeroSection
 import com.amandabicalho.portfolio.designsystem.components.template.home.HighlightSection
 import com.amandabicalho.portfolio.designsystem.components.template.home.WhatIDo
 import com.varabyte.kobweb.compose.css.Background
 import com.varabyte.kobweb.compose.css.BackgroundImage
+import com.varabyte.kobweb.compose.css.BackgroundRepeat
 import com.varabyte.kobweb.compose.css.functions.linearGradient
 import com.varabyte.kobweb.compose.css.functions.url
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -17,10 +18,10 @@ import com.varabyte.kobweb.compose.foundation.layout.Spacer
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Color
 import com.varabyte.kobweb.compose.ui.modifiers.background
+import com.varabyte.kobweb.compose.ui.modifiers.backgroundRepeat
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.gap
-import com.varabyte.kobweb.compose.ui.modifiers.heightIn
 import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.core.data.add
 import com.varabyte.kobweb.core.init.InitRoute
@@ -31,6 +32,7 @@ import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.deg
 import org.jetbrains.compose.web.css.percent
 
+private val PaddingHorizontal = 40.dp
 val HomeContainerStyle = CssStyle {
     base {
         Modifier
@@ -53,9 +55,9 @@ val HomeHeaderStyle = CssStyle {
                     ),
                 ),
             )
-            .padding(horizontal = 36.dp, vertical = 80.dp)
+            .backgroundRepeat(BackgroundRepeat.Round)
+            .padding(horizontal = PaddingHorizontal, vertical = 80.dp)
             .fillMaxWidth()
-            .heightIn(max = 553.dp)
             .gap(20.dp)
             .padding(bottom = 20.dp)
     }
@@ -64,21 +66,21 @@ val HomeHeaderStyle = CssStyle {
 val HomeFeaturedWorkStyle = CssStyle {
     base {
         Modifier
-            .padding(horizontal = 36.dp)
+            .padding(horizontal = PaddingHorizontal)
     }
 }
 
 val HomeWhatIDoStyle = CssStyle {
     base {
         Modifier
-            .padding(horizontal = 36.dp)
+            .padding(horizontal = PaddingHorizontal)
     }
 }
 
 val HomeHighlightsStyle = CssStyle {
     base {
         Modifier
-            .padding(horizontal = 36.dp)
+            .padding(horizontal = PaddingHorizontal)
     }
 }
 

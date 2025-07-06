@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
-import com.amandabicalho.portfolio.components.sections.Footer
+import com.amandabicalho.portfolio.designsystem.components.organism.Footer
 import com.amandabicalho.portfolio.core.designsystem.components.organism.SideBar
 import com.amandabicalho.portfolio.core.ui.unit.dp
 import com.amandabicalho.portfolio.designsystem.components.organism.NavHeader

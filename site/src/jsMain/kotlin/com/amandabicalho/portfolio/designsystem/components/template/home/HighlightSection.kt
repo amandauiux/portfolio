@@ -1,6 +1,8 @@
 package com.amandabicalho.portfolio.designsystem.components.template.home
 
 import androidx.compose.runtime.Composable
+import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridSection
+import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridSectionDefaults
 import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.theme.typography.Regular
@@ -13,11 +15,11 @@ import com.varabyte.kobweb.compose.css.functions.url
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
+import com.varabyte.kobweb.compose.ui.modifiers.gridArea
 import com.varabyte.kobweb.compose.ui.modifiers.gridTemplateColumns
 import com.varabyte.kobweb.compose.ui.modifiers.justifyContent
 import com.varabyte.kobweb.compose.ui.modifiers.listStyle
 import com.varabyte.kobweb.compose.ui.modifiers.margin
-import com.varabyte.kobweb.compose.ui.modifiers.widthIn
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.toAttrs
@@ -26,7 +28,6 @@ import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.JustifyContent
 import org.jetbrains.compose.web.css.fr
 import org.jetbrains.compose.web.dom.Li
-import org.jetbrains.compose.web.dom.Section
 import org.jetbrains.compose.web.dom.Ul
 
 val HighlightSectionStyle = CssStyle {
@@ -45,7 +46,9 @@ val HighlightSectionStyle = CssStyle {
 
 val HighlightSectionHighlightList = CssStyle {
     base {
-        Modifier.padding(start = 12.dp)
+        Modifier
+            .padding(start = 12.dp)
+            .gridArea(GridSectionDefaults.RIGHT_AREA)
     }
 
     cssRule("li") {
@@ -58,18 +61,23 @@ val HighlightSectionHighlightList = CssStyle {
 
 @Composable
 fun HighlightSection(modifier: Modifier = Modifier) {
-    Section(
-        attrs = HighlightSectionStyle
+//    Section(
+//        attrs = HighlightSectionStyle
+//            .toModifier()
+//            .then(modifier)
+//            .toAttrs(),
+//    ) {
+    GridSection(
+        modifier = HighlightSectionStyle
             .toModifier()
-            .then(modifier)
-            .toAttrs(),
+            .then(modifier),
     ) {
         Text(
             text = "Big statement Lorem ipsum",
             style = Theme.typography.headlineMedium.copy(
                 color = Theme.colorScheme.primary[50],
             ),
-            modifier = Modifier.widthIn(max = 549.dp),
+            modifier = Modifier.gridArea(GridSectionDefaults.LEFT_AREA),
         )
 
         Ul(attrs = HighlightSectionHighlightList.toAttrs()) {

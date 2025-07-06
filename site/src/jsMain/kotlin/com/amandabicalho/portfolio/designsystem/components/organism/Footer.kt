@@ -1,4 +1,4 @@
-package com.amandabicalho.portfolio.components.sections
+package com.amandabicalho.portfolio.designsystem.components.organism
 
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.core.designsystem.components.atom.button.TextButton

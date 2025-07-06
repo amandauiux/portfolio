@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.ui.unit.dp
 import com.amandabicalho.portfolio.designsystem.components.template.PageLayoutData
-import com.amandabicalho.portfolio.designsystem.components.template.home.HeroSection
+import com.amandabicalho.portfolio.designsystem.components.template.HeroSection
 import com.amandabicalho.portfolio.designsystem.components.template.work.OtherWorksSection
 import com.amandabicalho.portfolio.designsystem.components.template.work.WorkSection
 import com.varabyte.kobweb.compose.css.Background

@@ -5,6 +5,7 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
 import com.amandabicalho.portfolio.core.ui.unit.Dp
 import com.amandabicalho.portfolio.core.ui.unit.dp
+import org.jetbrains.compose.web.css.plus
 
 @Stable
 interface PaddingValues
@@ -68,6 +69,18 @@ fun PaddingValues.calculateRightPadding(): Dp =
  */
 fun PaddingValues.calculateBottomPadding(): Dp =
     calculateBottomPadding<Dp>()
+
+/**
+ * The padding to be applied along the vertical edge inside a box.
+ */
+fun PaddingValues.calculateVerticalPadding(): Dp =
+    Dp(calculateTopPadding<Dp>() + calculateBottomPadding<Dp>())
+
+/**
+ * The padding to be applied along the horizontal edge inside a box.
+ */
+fun PaddingValues.calculateHorizontalPadding(layoutDirection: LayoutDirection = LayoutDirection.Default): Dp =
+    Dp(calculateLeftPadding<Dp>(layoutDirection) + calculateRightPadding<Dp>(layoutDirection))
 
 @Immutable
 @VisibleForTesting
