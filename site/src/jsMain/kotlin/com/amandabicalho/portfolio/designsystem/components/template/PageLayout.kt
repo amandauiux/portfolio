@@ -116,6 +116,11 @@ fun PageLayout(context: PageContext, content: @Composable ColumnScope.() -> Unit
             )
             content()
         }
-        Footer(modifier = PageFooterStyle.toModifier())
+        Footer(
+            onWorkClick = { context.router.navigateTo("/work") },
+            onAboutClick = { context.router.navigateTo("/about") },
+            onContactClick = { context.router.navigateTo("/contact") },
+            modifier = PageFooterStyle.toModifier(),
+        )
     }
 }

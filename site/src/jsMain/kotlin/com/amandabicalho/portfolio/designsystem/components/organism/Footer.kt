@@ -170,7 +170,12 @@ val FooterCreditsStyle = CssStyle {
 }
 
 @Composable
-fun Footer(modifier: Modifier = Modifier) {
+fun Footer(
+    onWorkClick: () -> Unit,
+    onAboutClick: () -> Unit,
+    onContactClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
     Footer(
         attrs = GridStyle
             .toModifier(FooterVariant)
@@ -208,15 +213,15 @@ fun Footer(modifier: Modifier = Modifier) {
             ) {
                 FooterNavigationTextButton(
                     text = "Work",
-                    onClick = { /* TODO: Add navigation */ },
+                    onClick = { onWorkClick() },
                 )
                 FooterNavigationTextButton(
                     text = "About",
-                    onClick = { /* TODO: Add navigation */ },
+                    onClick = { onAboutClick() },
                 )
                 FooterNavigationTextButton(
                     text = "Contact",
-                    onClick = { /* TODO: Add navigation */ },
+                    onClick = { onContactClick() },
                 )
             }
         }
