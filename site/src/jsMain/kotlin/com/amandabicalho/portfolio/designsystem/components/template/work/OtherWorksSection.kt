@@ -19,6 +19,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.gridAutoFlow
 import com.varabyte.kobweb.compose.ui.modifiers.gridTemplateRows
 import com.varabyte.kobweb.compose.ui.modifiers.overflow
 import com.varabyte.kobweb.compose.ui.modifiers.padding
+import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
@@ -51,6 +52,9 @@ val OtherWorksSectionGridStyle = CssStyle {
                 y(Overflow.Hidden)
             }
             .gap(ColumnGap)
+            .styleModifier {
+                property("-webkit-overflow-scrolling", "touch") // Enable smooth scrolling on iOS
+            }
     }
     Breakpoint.MD {
         Modifier
