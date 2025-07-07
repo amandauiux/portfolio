@@ -45,6 +45,13 @@ jobs:
         id: browser-cache-id
         run: echo "value=$(./gradlew -q :site:kobwebBrowserCacheId)" >> $GITHUB_OUTPUT
 
+      - name: Cache Browser Dependencies
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ steps.browser-cache-id.outputs.value }}
+
       - name: Fetch kobweb
         uses: robinraju/release-downloader@v1.10
         with:
