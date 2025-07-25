@@ -133,7 +133,15 @@ val FooterContactContentStyle = CssStyle {
     }
     Breakpoint.MD {
         Modifier
-            .gridColumn(start = 1, end = 4)
+            .gridColumn(GridDefaults.LEFT_AREA)
+    }
+    Breakpoint.LG {
+        Modifier
+            .gridColumn(start = 1, end = 6)
+    }
+    Breakpoint.XL {
+        Modifier
+            .gridColumn(start = 1, end = 5)
     }
 }
 
@@ -145,8 +153,17 @@ val FooterSocialContentStyle = CssStyle {
     Breakpoint.MD {
         Modifier
             .alignSelf(AlignSelf.FlexEnd)
-            .gridColumn(start = 10, end = 13)
-            .placeItems(alignItems = AlignItems.Start, justifyItems = JustifyItems.End)
+            .gridColumn(GridDefaults.RIGHT_AREA)
+            .placeItems(alignItems = AlignItems.End, justifyItems = JustifyItems.End)
+    }
+}
+
+val FooterLinkedInStyle = CssStyle {
+    base {
+        Modifier.padding(0.dp)
+    }
+    Breakpoint.MD {
+        Modifier.padding(end = 150.dp)
     }
 }
 
@@ -200,6 +217,7 @@ fun Footer(
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
+                modifier = FooterLinkedInStyle.toModifier(),
             ) {
                 LinkedIn()
                 Text(
