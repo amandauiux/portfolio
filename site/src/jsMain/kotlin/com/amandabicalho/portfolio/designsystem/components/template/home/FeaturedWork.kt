@@ -2,8 +2,8 @@ package com.amandabicalho.portfolio.designsystem.components.template.home
 
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.core.designsystem.components.atom.button.OutlinedButton
-import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridSection
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridDefaults
+import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridSection
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridVars
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.unit.dp
@@ -105,7 +105,10 @@ fun FeaturedWork(
             OutlinedButton(
                 onClick = onViewAllProjectClick,
             ) {
-                Text(text = "View all projects")
+                Text(
+                    text = "View all projects",
+                    style = Theme.typography.bodySmall,
+                )
             }
         }
 
