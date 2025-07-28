@@ -1,5 +1,6 @@
 package com.amandabicalho.portfolio.pages
 
+import Res
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.ui.unit.dp
@@ -129,8 +130,8 @@ fun initHomePage(ctx: InitRouteContext) {
 fun HomePage() {
     Column(modifier = HomeContainerStyle.toModifier()) {
         HeroSection(
-            title = "Lorem ipsum UX UI Designer",
-            subtitle = "Hey, I’m Amanda, a strategic UX UI Designer delivering top-tier Websites, Mobile experiences, and good vibes, who loves learning about visual design and user behaviour.",
+            title = Res.string.home_title,
+            subtitle = Res.string.home_subtitle,
             modifier = HomeHeaderStyle.toModifier(),
         )
         FeaturedWork(

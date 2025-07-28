@@ -1,5 +1,6 @@
 package com.amandabicalho.portfolio.designsystem.components.organism
 
+import Res
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.core.designsystem.components.atom.button.TextButton
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridDefaults
@@ -206,7 +207,7 @@ fun Footer(
         ) {
             Logo(modifier = Modifier.size(50.dp))
             Text(
-                text = "Have a project idea? Drop me a message at email@email.com",
+                text = Res.string.footer_contact_call_out.format(email = "email@email.com"),
                 style = Theme.typography.titleLarge,
                 modifier = Modifier.fillMaxSize(),
             )
@@ -230,15 +231,15 @@ fun Footer(
                 horizontalArrangement = Arrangement.spacedBy(36.dp),
             ) {
                 FooterNavigationTextButton(
-                    text = "Work",
+                    text = Res.string.work,
                     onClick = { onWorkClick() },
                 )
                 FooterNavigationTextButton(
-                    text = "About",
+                    text = Res.string.about,
                     onClick = { onAboutClick() },
                 )
                 FooterNavigationTextButton(
-                    text = "Contact",
+                    text = Res.string.contact,
                     onClick = { onContactClick() },
                 )
             }
@@ -247,7 +248,7 @@ fun Footer(
             modifier = FooterCreditsStyle.toModifier(),
         ) {
             Text(
-                text = "Designed by Amanda, coded by Rafael with love",
+                text = Res.string.footer_credits,
                 style = Theme.typography.bodySmall.copy(
                     fontWeight = FontWeight.Medium,
                 ),

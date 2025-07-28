@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.kobweb.application)
     alias(libs.plugins.kobwebx.markdown)
     id("com.amandabicalho.portfolio.detekt")
+    alias(libs.plugins.libres)
 }
 
 group = "com.amandabicalho.portfolio"
@@ -34,12 +35,13 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            implementation(libs.compose.runtime)
+            implementation(libs.libres)
             implementation(libs.kotlinx.datetime)
         }
 
         jsMain.dependencies {
             implementation(projects.core)
-            implementation(libs.compose.runtime)
             implementation(libs.compose.html.core)
             implementation(libs.kobweb.core)
             implementation(libs.kobweb.silk)
@@ -54,4 +56,11 @@ kotlin {
 //            compileOnly(libs.kobweb.api) // Provided by Kobweb backend at runtime
 //        }
     }
+}
+
+libres {
+    // https://github.com/Skeptick/libres#setup
+    generatedClassName = "Res"
+    generateNamedArguments = true
+    baseLocaleLanguageCode = "en"
 }
