@@ -1,10 +1,10 @@
-package com.amandabicalho.portfolio.designsystem.components.molecule
+package com.amandabicalho.portfolio.components.molecule
 
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.colorScheme
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.unit.dp
-import com.amandabicalho.portfolio.designsystem.components.atom.Text
+import com.amandabicalho.portfolio.components.atom.Text
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Modifier

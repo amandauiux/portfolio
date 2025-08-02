@@ -1,12 +1,12 @@
 package com.amandabicalho.portfolio.pages
 
 import androidx.compose.runtime.Composable
+import com.amandabicalho.portfolio.components.template.PageLayoutData
+import com.amandabicalho.portfolio.components.template.about.AboutHero
+import com.amandabicalho.portfolio.components.template.about.AboutMeSection
+import com.amandabicalho.portfolio.components.template.about.AboutWorkExperience
 import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.ui.unit.dp
-import com.amandabicalho.portfolio.designsystem.components.template.PageLayoutData
-import com.amandabicalho.portfolio.designsystem.components.template.about.AboutHero
-import com.amandabicalho.portfolio.designsystem.components.template.about.AboutMeSection
-import com.amandabicalho.portfolio.designsystem.components.template.about.AboutWorkExperience
 import com.amandabicalho.portfolio.domain.WorkExperience
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
@@ -37,7 +37,7 @@ fun initAboutPage(ctx: InitRouteContext) {
 }
 
 @Page("/about")
-@Layout(".designsystem.components.template.PageLayout")
+@Layout(".components.template.PageLayout")
 @Composable
 fun AboutPage() {
     Column(

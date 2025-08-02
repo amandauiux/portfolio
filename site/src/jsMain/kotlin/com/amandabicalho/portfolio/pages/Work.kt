@@ -3,10 +3,10 @@ package com.amandabicalho.portfolio.pages
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.ui.unit.dp
-import com.amandabicalho.portfolio.designsystem.components.template.HeroSection
-import com.amandabicalho.portfolio.designsystem.components.template.PageLayoutData
-import com.amandabicalho.portfolio.designsystem.components.template.work.OtherWorksSection
-import com.amandabicalho.portfolio.designsystem.components.template.work.WorkSection
+import com.amandabicalho.portfolio.components.template.HeroSection
+import com.amandabicalho.portfolio.components.template.PageLayoutData
+import com.amandabicalho.portfolio.components.template.work.OtherWorksSection
+import com.amandabicalho.portfolio.components.template.work.WorkSection
 import com.varabyte.kobweb.compose.css.Background
 import com.varabyte.kobweb.compose.css.BackgroundImage
 import com.varabyte.kobweb.compose.css.BackgroundRepeat
@@ -119,7 +119,7 @@ fun initWorkPage(ctx: InitRouteContext) {
 }
 
 @Page("/work")
-@Layout(".designsystem.components.template.PageLayout")
+@Layout(".components.template.PageLayout")
 @Composable
 fun WorkPage() {
     Column(

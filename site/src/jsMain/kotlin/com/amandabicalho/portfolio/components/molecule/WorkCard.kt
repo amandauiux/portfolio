@@ -1,11 +1,11 @@
-package com.amandabicalho.portfolio.designsystem.components.molecule
+package com.amandabicalho.portfolio.components.molecule
 
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.core.designsystem.components.atom.icon.Circle
 import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.ui.theme.typography.toModifier
 import com.amandabicalho.portfolio.core.ui.unit.dp
-import com.amandabicalho.portfolio.designsystem.components.atom.Text
+import com.amandabicalho.portfolio.components.atom.Text
 import com.amandabicalho.portfolio.typography
 import com.varabyte.kobweb.compose.css.Height
 import com.varabyte.kobweb.compose.css.ObjectFit

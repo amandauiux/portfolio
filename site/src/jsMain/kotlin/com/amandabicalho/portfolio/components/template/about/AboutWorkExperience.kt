@@ -1,11 +1,11 @@
-package com.amandabicalho.portfolio.designsystem.components.template.about
+package com.amandabicalho.portfolio.components.template.about
 
 import androidx.compose.runtime.Composable
+import com.amandabicalho.portfolio.components.atom.Text
+import com.amandabicalho.portfolio.components.molecule.WorkExperienceCard
 import com.amandabicalho.portfolio.core.designsystem.components.atom.button.OutlinedButton
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.unit.dp
-import com.amandabicalho.portfolio.designsystem.components.atom.Text
-import com.amandabicalho.portfolio.designsystem.components.molecule.WorkExperienceCard
 import com.amandabicalho.portfolio.domain.WorkExperience
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column

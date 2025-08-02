@@ -2,13 +2,13 @@ package com.amandabicalho.portfolio.pages
 
 import Res
 import androidx.compose.runtime.Composable
+import com.amandabicalho.portfolio.components.template.HeroSection
+import com.amandabicalho.portfolio.components.template.PageLayoutData
+import com.amandabicalho.portfolio.components.template.home.FeaturedWork
+import com.amandabicalho.portfolio.components.template.home.HighlightSection
+import com.amandabicalho.portfolio.components.template.home.WhatIDo
 import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.ui.unit.dp
-import com.amandabicalho.portfolio.designsystem.components.template.HeroSection
-import com.amandabicalho.portfolio.designsystem.components.template.PageLayoutData
-import com.amandabicalho.portfolio.designsystem.components.template.home.FeaturedWork
-import com.amandabicalho.portfolio.designsystem.components.template.home.HighlightSection
-import com.amandabicalho.portfolio.designsystem.components.template.home.WhatIDo
 import com.varabyte.kobweb.compose.css.Background
 import com.varabyte.kobweb.compose.css.BackgroundImage
 import com.varabyte.kobweb.compose.css.BackgroundRepeat
@@ -125,7 +125,7 @@ fun initHomePage(ctx: InitRouteContext) {
 }
 
 @Page
-@Layout(".designsystem.components.template.PageLayout")
+@Layout(".components.template.PageLayout")
 @Composable
 fun HomePage() {
     Column(modifier = HomeContainerStyle.toModifier()) {

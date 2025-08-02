@@ -1,13 +1,13 @@
-package com.amandabicalho.portfolio.designsystem.components.template.home
+package com.amandabicalho.portfolio.components.template.home
 
 import androidx.compose.runtime.Composable
-import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridSection
+import com.amandabicalho.portfolio.components.atom.Text
+import com.amandabicalho.portfolio.components.molecule.ServiceCard
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridDefaults
+import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridSection
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridVars
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.unit.dp
-import com.amandabicalho.portfolio.designsystem.components.atom.Text
-import com.amandabicalho.portfolio.designsystem.components.molecule.ServiceCard
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.gridArea
 import com.varabyte.kobweb.compose.ui.modifiers.gridColumn

@@ -1,11 +1,11 @@
-package com.amandabicalho.portfolio.designsystem.components.template.about
+package com.amandabicalho.portfolio.components.template.about
 
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.colorScheme
 import com.amandabicalho.portfolio.core.extensions.margin
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.unit.dp
-import com.amandabicalho.portfolio.designsystem.components.atom.Text
+import com.amandabicalho.portfolio.components.atom.Text
 import com.varabyte.kobweb.compose.css.AlignItems
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box

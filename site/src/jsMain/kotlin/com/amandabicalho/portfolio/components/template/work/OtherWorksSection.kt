@@ -1,10 +1,10 @@
-package com.amandabicalho.portfolio.designsystem.components.template.work
+package com.amandabicalho.portfolio.components.template.work
 
 import androidx.compose.runtime.Composable
+import com.amandabicalho.portfolio.components.atom.Text
+import com.amandabicalho.portfolio.components.molecule.WorkCard
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.unit.dp
-import com.amandabicalho.portfolio.designsystem.components.atom.Text
-import com.amandabicalho.portfolio.designsystem.components.molecule.WorkCard
 import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column

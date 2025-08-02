@@ -1,4 +1,4 @@
-package com.amandabicalho.portfolio.designsystem.components.atom
+package com.amandabicalho.portfolio.components.atom
 
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.core.ui.theme.Theme

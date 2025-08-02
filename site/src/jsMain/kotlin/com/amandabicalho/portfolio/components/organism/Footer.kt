@@ -1,4 +1,4 @@
-package com.amandabicalho.portfolio.designsystem.components.organism
+package com.amandabicalho.portfolio.components.organism
 
 import Res
 import androidx.compose.runtime.Composable
@@ -12,7 +12,7 @@ import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.foundation.layout.PaddingValues
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.unit.dp
-import com.amandabicalho.portfolio.designsystem.components.atom.Text
+import com.amandabicalho.portfolio.components.atom.Text
 import com.varabyte.kobweb.compose.css.AlignItems
 import com.varabyte.kobweb.compose.css.Background
 import com.varabyte.kobweb.compose.css.BackgroundImage

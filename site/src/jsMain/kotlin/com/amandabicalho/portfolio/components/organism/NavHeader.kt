@@ -1,7 +1,8 @@
-package com.amandabicalho.portfolio.designsystem.components.organism
+package com.amandabicalho.portfolio.components.organism
 
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.colorScheme
+import com.amandabicalho.portfolio.components.atom.Text
 import com.amandabicalho.portfolio.core.designsystem.components.atom.button.IconButton
 import com.amandabicalho.portfolio.core.designsystem.components.atom.button.SwitchButton
 import com.amandabicalho.portfolio.core.designsystem.components.atom.button.TextButton
@@ -12,7 +13,6 @@ import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.theme.typography.toModifier
 import com.amandabicalho.portfolio.core.ui.unit.dp
-import com.amandabicalho.portfolio.designsystem.components.atom.Text
 import com.amandabicalho.portfolio.typography
 import com.amandabicalho.portfolio.ui.theme.ArchivoNarrow
 import com.varabyte.kobweb.compose.css.FontWeight
