@@ -1,6 +1,8 @@
 package com.amandabicalho.portfolio.components.template.about
 
+import Res
 import androidx.compose.runtime.Composable
+import com.amandabicalho.portfolio.components.atom.Paragraph
 import com.amandabicalho.portfolio.components.atom.Text
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.unit.dp
@@ -73,19 +75,25 @@ fun AboutHero(modifier: Modifier = Modifier) {
     ) {
         Column(modifier = AboutHeroTextStyle.toModifier()) {
             Text(
-                text = "Hi, I'm Amanda",
+                text = Res.string.about_welcome,
                 style = Theme.typography.headlineLarge.copy(
                     color = Theme.colorScheme.primary[30]
                 ),
             )
-            Text(
-                text = "Lorem ipsum dolor sit amet consectetur. Natoque blandit ut ultrices ac. Nam metus cras neque sed. Cursus orci adipiscing id condimentum vitae massa. Vitae sagittis sed ut sit id lobortis sed. Integer ac fringilla nunc egestas. Quis metus adipiscing blandit faucibus.",
-                style = Theme.typography.bodyLarge,
-            )
+            Column {
+                Paragraph(
+                    text = Res.string.about_me_paragraph_1,
+                    style = Theme.typography.bodyLarge,
+                )
+                Paragraph(
+                    text = Res.string.about_me_paragraph_2,
+                    style = Theme.typography.bodyLarge,
+                )
+            }
         }
         Image(
             src = "images/profile_drawing.png",
-            description = "Amanda Bicalho profile drawing",
+            description = Res.string.about_image_description,
             modifier = AboutHeroImageStyle.toModifier()
         )
     }

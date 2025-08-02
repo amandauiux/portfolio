@@ -1,11 +1,13 @@
 package com.amandabicalho.portfolio.components.template.about
 
+import Res
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.colorScheme
+import com.amandabicalho.portfolio.components.atom.Paragraph
+import com.amandabicalho.portfolio.components.atom.Text
 import com.amandabicalho.portfolio.core.extensions.margin
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.unit.dp
-import com.amandabicalho.portfolio.components.atom.Text
 import com.varabyte.kobweb.compose.css.AlignItems
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
@@ -93,16 +95,23 @@ fun AboutMeSection(modifier: Modifier = Modifier) {
         // Header section (Title and Description)
         Column(modifier = AboutMeHeaderStyle.toModifier()) {
             Text(
-                text = "A bit about myself",
+                text = Res.string.about_my_journey,
                 style = Theme.typography.headlineSmall,
                 modifier = Modifier
                     .gridColumn(start = 1, end = 6)
             )
-            Text(
-                text = "Lorem ipsum dolor sit amet consectetur. Natoque blandit ut ultrices ac. Nam metus cras neque sed. Cursus orci adipiscing id condimentum vitae massa. Vitae sagittis sed ut sit id lobortis sed.",
-                style = Theme.typography.bodyLarge,
+            Column(
                 modifier = Modifier.gridColumn(start = 7, end = 13),
-            )
+            ) {
+                Paragraph(
+                    text = Res.string.about_my_journey_paragraph_1,
+                    style = Theme.typography.bodyLarge,
+                )
+                Paragraph(
+                    text = Res.string.about_my_journey_paragraph_2,
+                    style = Theme.typography.bodyLarge,
+                )
+            }
         }
 
         // Image Grid Section
