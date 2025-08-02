@@ -1,5 +1,6 @@
 package com.amandabicalho.portfolio.components.template.home
 
+import Res
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.components.atom.Text
 import com.amandabicalho.portfolio.components.molecule.ServiceCard
@@ -83,12 +84,12 @@ fun WhatIDo(modifier: Modifier) {
             .then(modifier),
     ) {
         Text(
-            text = "What I do",
+            text = Res.string.what_i_do_title,
             style = Theme.typography.headlineMedium,
             modifier = WhatIDoTitleStyle.toModifier(),
         )
         Text(
-            text = "[services] Lorem ipsum dolor sit amet consectetur. Natoque diam at ultrices ac. Nam metus cras neque sed. Cursus orci adipiscing id scelerisque ipsum. Nunc viverra feugiat nunc volutpat lobortis sed. Integer ac fringilla nunc egestas.",
+            text = Res.string.what_i_do_description,
             style = Theme.typography.bodyLarge,
             modifier = WhatIDoDescriptionStyle.toModifier(),
         )
@@ -97,24 +98,24 @@ fun WhatIDo(modifier: Modifier) {
             modifier = WhatIDoCardSectionStyle.toModifier(),
         ) {
             ServiceCard(
-                title = "User interface",
-                description = "Lorem ipsum dolor sit amet consectetur. Natoque diam at ultrices ac. Nam metus cras neque sed.",
+                title = Res.string.services_website_title,
+                description = Res.string.services_website_description,
                 imageUrl = "images/ic_ui.svg",
-                imageDescription = "User interface icon",
+                imageDescription = Res.string.services_website_img_description,
                 modifier = WhatIDoServiceCardStyle.toModifier(),
             )
             ServiceCard(
-                title = "User experience",
-                description = "Lorem ipsum dolor sit amet consectetur. Natoque diam at ultrices ac. Nam metus cras neque sed.",
+                title = Res.string.services_product_title,
+                description = Res.string.services_product_description,
                 imageUrl = "images/ic_user_experience.svg",
-                imageDescription = "User experience icon",
+                imageDescription = Res.string.services_product_img_description,
                 modifier = WhatIDoServiceCardStyle.toModifier(),
             )
             ServiceCard(
-                title = "Product",
-                description = "Lorem ipsum dolor sit amet consectetur. Natoque diam at ultrices ac. Nam metus cras neque sed.",
+                title = Res.string.services_mobile_title,
+                description = Res.string.services_mobile_description,
                 imageUrl = "images/ic_product.svg",
-                imageDescription = "Product icon",
+                imageDescription = Res.string.services_mobile_img_description,
                 modifier = WhatIDoServiceCardStyle.toModifier(),
             )
         }

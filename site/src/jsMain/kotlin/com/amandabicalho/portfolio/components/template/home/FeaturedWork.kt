@@ -1,5 +1,6 @@
 package com.amandabicalho.portfolio.components.template.home
 
+import Res
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.components.atom.Text
 import com.amandabicalho.portfolio.components.molecule.WorkCard
@@ -89,7 +90,7 @@ fun FeaturedWork(
         modifier = FeaturedWorkStyle.toModifier().then(modifier),
     ) {
         Text(
-            text = "Featured Work",
+            text = Res.string.featured_work_title,
             style = Theme.typography.headlineMedium,
             modifier = FeaturedWorkTitleStyle.toModifier(),
         )
@@ -98,7 +99,7 @@ fun FeaturedWork(
             modifier = FeaturedWorkDescriptionStyle.toModifier(),
         ) {
             Text(
-                text = "Lorem ipsum dolor sit amet consectetur. Natoque diam at ultrices ac. Nam metus cras neque sed. Cursus orci adipiscing id scelerisque ipsum. Nunc viverra feugiat nunc volutpat lobortis sed. Integer ac fringilla nunc egestas.",
+                text = Res.string.featured_work_description,
                 style = Theme.typography.bodyLarge,
             )
 
@@ -106,7 +107,7 @@ fun FeaturedWork(
                 onClick = onViewAllProjectClick,
             ) {
                 Text(
-                    text = "View all projects",
+                    text = Res.string.view_all_projects,
                     style = Theme.typography.bodySmall,
                 )
             }

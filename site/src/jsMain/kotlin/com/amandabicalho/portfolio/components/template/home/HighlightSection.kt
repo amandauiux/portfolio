@@ -1,13 +1,14 @@
 package com.amandabicalho.portfolio.components.template.home
 
+import Res
 import androidx.compose.runtime.Composable
+import com.amandabicalho.portfolio.components.atom.Text
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridDefaults
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridSection
 import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.theme.typography.Regular
 import com.amandabicalho.portfolio.core.ui.unit.dp
-import com.amandabicalho.portfolio.components.atom.Text
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.ListStyle
 import com.varabyte.kobweb.compose.css.ListStyleImage
@@ -75,7 +76,7 @@ fun HighlightSection(modifier: Modifier = Modifier) {
             .then(modifier),
     ) {
         Text(
-            text = "Big statement Lorem ipsum",
+            text = Res.string.home_big_statement,
             style = Theme.typography.headlineMedium.copy(
                 color = Theme.colorScheme.primary[50],
             ),
