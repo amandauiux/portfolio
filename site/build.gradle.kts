@@ -1,5 +1,9 @@
 
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
+import io.github.skeptick.libres.plugin.LibresImagesGenerationTask
+import io.github.skeptick.libres.plugin.LibresStringGenerationTask
+import io.gitlab.arturbosch.detekt.Detekt
+import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
 import kotlinx.html.link
 
 plugins {
@@ -7,7 +11,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kobweb.application)
     alias(libs.plugins.kobwebx.markdown)
-    id("com.amandabicalho.portfolio.detekt")
+    alias(libs.plugins.detekt)
     alias(libs.plugins.libres)
 }
 
@@ -29,9 +33,7 @@ kobweb {
 }
 
 kotlin {
-    // This example is frontend only. However, for a fullstack app, you can uncomment the includeServer parameter
-    // and the `jvmMain` source set below.
-    configAsKobwebApplication("portfolio" /*, includeServer = true*/)
+    configAsKobwebApplication("portfolio")
 
     sourceSets {
         commonMain.dependencies {
@@ -41,20 +43,12 @@ kotlin {
         }
 
         jsMain.dependencies {
-            implementation(projects.core)
             implementation(libs.compose.html.core)
             implementation(libs.kobweb.core)
             implementation(libs.kobweb.silk)
-            // This default template uses built-in SVG icons, but what's available is limited.
-            // Uncomment the following if you want access to a large set of font-awesome icons:
-            // implementation(libs.silk.icons.fa)
             implementation(libs.kobwebx.markdown)
+            implementation(libs.androidx.annotation)
         }
-
-        // Uncomment the following if you pass `includeServer = true` into the `configAsKobwebApplication` call.
-//        jvmMain.dependencies {
-//            compileOnly(libs.kobweb.api) // Provided by Kobweb backend at runtime
-//        }
     }
 }
 
@@ -63,4 +57,44 @@ libres {
     generatedClassName = "Res"
     generateNamedArguments = true
     baseLocaleLanguageCode = "en"
+}
+
+detekt {
+    autoCorrect = true
+    buildUponDefaultConfig = true // preconfigure defaults
+    allRules = false // activate all available (even unstable) rules.
+    // point to your custom config defining rules to run, overwriting default behavior
+    config.setFrom("${rootProject.rootDir}/config/detekt.yml")
+}
+
+dependencies {
+    detektPlugins(libs.detekt.formatting)
+}
+
+tasks.withType<Detekt>().configureEach {
+    jvmTarget = JavaVersion.VERSION_17.toString()
+    exclude {
+        setOf("build").any { dir ->
+            dir in it.file.absolutePath
+        }
+    }
+
+    reports {
+        html.required.set(true) // observe findings in your browser with structure and code snippets
+        xml.required.set(true) // checkstyle like format mainly for integrations like Jenkins
+        txt.required.set(true) // similar to the console output, contains issue signature to manually edit baseline files
+    }
+}
+
+tasks.withType<DetektCreateBaselineTask>().configureEach {
+    jvmTarget = JavaVersion.VERSION_17.toString()
+}
+
+// Fix libres not explicitly depending on kspKotlinJs
+tasks.withType<LibresImagesGenerationTask>().configureEach {
+    dependsOn("kspKotlinJs")
+}
+
+tasks.withType<LibresStringGenerationTask>().configureEach {
+    dependsOn("kspKotlinJs")
 }

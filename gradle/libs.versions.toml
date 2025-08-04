@@ -2,8 +2,8 @@
 androidx-annotation = "1.9.1"
 detekt = "1.23.8"
 jetbrains-compose = "1.8.0"
-kobweb = "0.22.0"
-kotlin = "2.1.21"
+kobweb = "0.23.0"
+kotlin = "2.2.0"
 kotlinx-datetime = "0.7.0"
 libres = "1.2.2"
 
