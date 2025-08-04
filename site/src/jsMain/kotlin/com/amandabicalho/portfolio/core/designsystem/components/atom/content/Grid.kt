@@ -31,7 +31,7 @@ object GridDefaults {
     val MobileGridAreaTemplate
         get() = calculateGridTemplateAreas(areaSize = MOBILE_AREA_SIZE)
 
-    private fun calculateGridTemplateAreas(areaSize: Int): String {
+    fun calculateGridTemplateAreas(areaSize: Int): String {
         return "$LEFT_AREA ".repeat(areaSize / 2) +
             "$RIGHT_AREA ".repeat(areaSize / 2).trim()
     }
@@ -61,19 +61,22 @@ val GridStyle = CssStyle<GridKind> {
             )
     }
     Breakpoint.MD {
-        Modifier
-            .gridTemplateColumns {
-                repeat(GridDefaults.DESKTOP_AREA_SIZE) {
-                    size(1.fr)
-                }
-            }
-            .gridTemplateAreas(GridDefaults.DesktopGridAreaTemplate)
-            .gap(
-                rowGap = GridVars.RowGap.value(80.dp),
-                columnGap = GridVars.ColumnGap.value(24.dp)
-            )
+        Modifier.desktopGrid()
     }
 }
+
+fun Modifier.desktopGrid(): Modifier = this then Modifier
+    .display(DisplayStyle.Grid)
+    .gridTemplateColumns {
+        repeat(GridDefaults.DESKTOP_AREA_SIZE) {
+            size(1.fr)
+        }
+    }
+    .gridTemplateAreas(GridDefaults.DesktopGridAreaTemplate)
+    .gap(
+        rowGap = GridVars.RowGap.value(80.dp),
+        columnGap = GridVars.ColumnGap.value(24.dp)
+    )
 
 @Composable
 fun Grid(

@@ -269,9 +269,6 @@ private fun SpanText(
 ) {
     val finalModifier = SpanTextStyle
         .toModifier(variant)
-        .thenIf(text.startsWith(' ') || text.endsWith(' ')) {
-            Modifier.whiteSpace(WhiteSpace.PreWrap)
-        }
         .then(modifier)
 
     Span(attrs = finalModifier.toAttrs()) {

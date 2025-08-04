@@ -64,8 +64,8 @@ fun initSiteStyles(ctx: InitSilkContext) {
         layer("reset") {
             registerStyleBase("*") {
                 Modifier
-                    .margin(0.dp)
-                    .padding(0.dp)
+                    .margin(all = 0.dp)
+                    .padding(all = 0.dp)
                     .outline(0.dp)
                     .boxSizing(BoxSizing.BorderBox)
             }
