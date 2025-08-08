@@ -6,6 +6,7 @@ import com.amandabicalho.portfolio.colorScheme
 import com.amandabicalho.portfolio.components.atom.Paragraph
 import com.amandabicalho.portfolio.components.atom.Text
 import com.amandabicalho.portfolio.core.extensions.margin
+import com.amandabicalho.portfolio.core.featureflag.FeatureFlag
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.unit.dp
 import com.varabyte.kobweb.compose.css.AlignItems
@@ -114,17 +115,19 @@ fun AboutMeSection(modifier: Modifier = Modifier) {
             }
         }
 
-        // Image Grid Section
-        Row(
-            modifier = AboutMeImageGridStyle.toModifier(),
-            horizontalArrangement = Arrangement.spacedBy(20.dp),
-        ) {
-            repeat(4) { index ->
-                Box(
-                    modifier = AboutMeImageBaseStyle
-                        .toModifier()
-                        .weight(1f),
-                )
+        if (FeatureFlag.ShowAboutMyselfSection.enabled) {
+            // Image Grid Section
+            Row(
+                modifier = AboutMeImageGridStyle.toModifier(),
+                horizontalArrangement = Arrangement.spacedBy(20.dp),
+            ) {
+                repeat(4) { index ->
+                    Box(
+                        modifier = AboutMeImageBaseStyle
+                            .toModifier()
+                            .weight(1f),
+                    )
+                }
             }
         }
     }

@@ -10,6 +10,7 @@ import com.amandabicalho.portfolio.core.designsystem.components.atom.icon.Menu
 import com.amandabicalho.portfolio.core.designsystem.components.atom.icon.Moon
 import com.amandabicalho.portfolio.core.designsystem.components.atom.icon.Sun
 import com.amandabicalho.portfolio.core.extensions.padding
+import com.amandabicalho.portfolio.core.featureflag.FeatureFlag
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.theme.typography.toModifier
 import com.amandabicalho.portfolio.core.ui.unit.dp
@@ -140,16 +141,18 @@ fun NavHeader(
                         )
                     }
                 }
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Sun()
-                    SwitchButton(
-                        checked = isDark,
-                        onCheckChange = { onThemeToggleClick() },
-                    )
-                    Moon()
+                if (FeatureFlag.EnableLightDarkMode.enabled) {
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Sun()
+                        SwitchButton(
+                            checked = isDark,
+                            onCheckChange = { onThemeToggleClick() },
+                        )
+                        Moon()
+                    }
                 }
             }
         }
