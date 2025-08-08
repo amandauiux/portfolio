@@ -5,62 +5,58 @@ import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.colorScheme
 import com.amandabicalho.portfolio.components.atom.Paragraph
 import com.amandabicalho.portfolio.components.atom.Text
+import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridDefaults
+import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridSection
 import com.amandabicalho.portfolio.core.extensions.margin
 import com.amandabicalho.portfolio.core.featureflag.FeatureFlag
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.unit.dp
-import com.varabyte.kobweb.compose.css.AlignItems
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.alignItems
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
-import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
-import com.varabyte.kobweb.compose.ui.modifiers.flexDirection
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.gridColumn
-import com.varabyte.kobweb.compose.ui.modifiers.gridTemplateColumns
 import com.varabyte.kobweb.compose.ui.modifiers.height
 import com.varabyte.kobweb.compose.ui.modifiers.margin
-import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
-import org.jetbrains.compose.web.css.DisplayStyle
-import org.jetbrains.compose.web.css.FlexDirection
-import org.jetbrains.compose.web.css.fr
-import org.jetbrains.compose.web.dom.Section
 
 val AboutMeSectionStyle = CssStyle {
     base {
         Modifier
             .fillMaxWidth()
-            .gap(80.dp) // Increased gap for better separation between sections
+            .gap(40.dp)
+    }
+    Breakpoint.MD {
+        Modifier.gap(80.dp)
     }
 }
 
-// Style for the header section (title and description)
-val AboutMeHeaderStyle = CssStyle {
-    base { // Mobile: Stack title and description
+val AboutMeMyJourneyTitle = CssStyle {
+    base {
         Modifier
-            .fillMaxWidth()
-            .display(DisplayStyle.Flex)
-            .flexDirection(FlexDirection.Column)
-            .gap(16.dp)
+            .gridColumn(start = GridDefaults.LEFT_AREA, end = GridDefaults.RIGHT_AREA)
     }
-    Breakpoint.MD { // Desktop: Two columns grid
+    Breakpoint.MD {
         Modifier
-            .display(DisplayStyle.Grid)
-            .gridTemplateColumns {
-                repeat(12) {
-                    size(1.fr)
-                }
-            }
-            .gap(24.dp)
-            .alignItems(AlignItems.Start) // Align items to the start vertically
+            .gridColumn(GridDefaults.LEFT_AREA)
+    }
+}
+val AboutMeMyJourneyContent = CssStyle {
+    base {
+        Modifier
+            .gridColumn(start = GridDefaults.LEFT_AREA, end = GridDefaults.RIGHT_AREA)
+            .gap(12.dp)
+    }
+    Breakpoint.MD {
+        Modifier
+            .gridColumn(GridDefaults.RIGHT_AREA)
+            .gap(20.dp)
     }
 }
 
@@ -87,22 +83,19 @@ val AboutMeImageBaseStyle = CssStyle {
 
 @Composable
 fun AboutMeSection(modifier: Modifier = Modifier) {
-    Section(
-        attrs = AboutMeSectionStyle
+    Column(
+        modifier = AboutMeSectionStyle
             .toModifier()
-            .then(modifier)
-            .toAttrs(),
+            .then(modifier),
     ) {
-        // Header section (Title and Description)
-        Column(modifier = AboutMeHeaderStyle.toModifier()) {
+        GridSection {
             Text(
                 text = Res.string.about_my_journey,
                 style = Theme.typography.headlineSmall,
-                modifier = Modifier
-                    .gridColumn(start = 1, end = 6)
+                modifier = AboutMeMyJourneyTitle.toModifier(),
             )
             Column(
-                modifier = Modifier.gridColumn(start = 7, end = 13),
+                modifier = AboutMeMyJourneyContent.toModifier(),
             ) {
                 Paragraph(
                     text = Res.string.about_my_journey_paragraph_1,

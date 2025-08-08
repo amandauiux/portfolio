@@ -63,6 +63,8 @@
         design, where I found my true calling. Today, as a UX/UI designer, I take pride in the non-linear path that
         brought me here and the experiences that have shaped my approach to design
     </string>
+    <string name="about_work_experience">Work Experience</string>
+    <string name="about_view_resume">View resume</string>
 
     <!--  Showcase page  -->
     <string name="showcase_project_info_team">Team</string>

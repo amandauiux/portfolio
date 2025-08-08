@@ -19,6 +19,7 @@ import com.varabyte.kobweb.core.init.InitRoute
 import com.varabyte.kobweb.core.init.InitRouteContext
 import com.varabyte.kobweb.core.layout.Layout
 import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import kotlinx.datetime.LocalDate
 
@@ -26,8 +27,14 @@ val AboutPageStyle = CssStyle {
     base {
         Modifier
             .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 40.dp)
+            .gap(40.dp)
+    }
+
+    Breakpoint.MD {
+        Modifier
             .padding(horizontal = 36.dp, vertical = 80.dp)
-            .gap(80.dp) // Gap between major sections
+            .gap(80.dp)
     }
 }
 

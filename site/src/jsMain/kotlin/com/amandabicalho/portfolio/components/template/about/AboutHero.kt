@@ -4,83 +4,100 @@ import Res
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.components.atom.Paragraph
 import com.amandabicalho.portfolio.components.atom.Text
+import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridDefaults
+import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridSection
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.unit.dp
-import com.varabyte.kobweb.compose.css.AlignSelf
+import com.varabyte.kobweb.compose.css.ObjectFit
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.alignSelf
 import com.varabyte.kobweb.compose.ui.modifiers.display
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.gridColumn
-import com.varabyte.kobweb.compose.ui.modifiers.gridTemplateColumns
-import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.compose.ui.modifiers.justifyContent
+import com.varabyte.kobweb.compose.ui.modifiers.objectFit
+import com.varabyte.kobweb.compose.ui.modifiers.widthIn
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.cssRule
+import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
+import com.varabyte.kobweb.silk.theme.breakpoint.toWidth
 import org.jetbrains.compose.web.css.DisplayStyle
-import org.jetbrains.compose.web.css.fr
-import org.jetbrains.compose.web.dom.Section
+import org.jetbrains.compose.web.css.JustifyContent
+import org.jetbrains.compose.web.dom.Picture
+import org.jetbrains.compose.web.dom.Source
 
 val AboutHeroSectionStyle = CssStyle {
-    base { // Mobile first: Column layout
-        Modifier
-            .fillMaxWidth()
-            .gap(40.dp)
+    base {
+        Modifier.gap(40.dp)
     }
-    Breakpoint.MD { // Tablet and up: Row layout
-        Modifier
-            .display(DisplayStyle.Grid)
-            .gridTemplateColumns {
-                repeat(12) {
-                    size(1.fr)
-                }
-            }
-            .gap(24.dp)
+    Breakpoint.MD {
+        Modifier.gap(80.dp)
     }
 }
 
-val AboutHeroTextStyle = CssStyle {
+val AboutHeroContentContainerStyle = CssStyle {
     base {
         Modifier
             .gap(20.dp)
+            .gridColumn(start = GridDefaults.LEFT_AREA, end = GridDefaults.RIGHT_AREA)
     }
     Breakpoint.MD {
-        Modifier
-            .gridColumn(start = 1, end = 6)
+        Modifier.gridColumn(GridDefaults.LEFT_AREA)
     }
 }
 
-val AboutHeroImageStyle = CssStyle {
+val AboutHeroParagraphStyle = CssStyle {
     base {
-        Modifier
-            .fillMaxWidth()
-            .alignSelf(AlignSelf.Center)
+        Modifier.gap(12.dp)
     }
     Breakpoint.MD {
+        Modifier.gap(20.dp)
+    }
+}
+
+val AboutHeroPictureStyle = CssStyle {
+    base {
         Modifier
-            .gridColumn(start = 7, end = 13)
+            .display(DisplayStyle.Flex)
+            .justifyContent(JustifyContent.Center)
+            .fillMaxWidth()
+            .gridColumn(start = GridDefaults.LEFT_AREA, end = GridDefaults.RIGHT_AREA)
+    }
+    Breakpoint.MD {
+        Modifier.gridColumn(GridDefaults.RIGHT_AREA)
+    }
+
+    cssRule("> img") {
+        Modifier
+            .fillMaxSize()
+            .objectFit(ObjectFit.Cover)
+    }
+
+    cssRule(Breakpoint.MD, "> img") {
+        Modifier.widthIn(max = 644.dp)
     }
 }
 
 @Composable
 fun AboutHero(modifier: Modifier = Modifier) {
-    Section(
-        attrs = AboutHeroSectionStyle
+    GridSection(
+        modifier = AboutHeroSectionStyle
             .toModifier()
-            .then(modifier)
-            .toAttrs(),
+            .then(modifier),
     ) {
-        Column(modifier = AboutHeroTextStyle.toModifier()) {
+        Column(modifier = AboutHeroContentContainerStyle.toModifier()) {
             Text(
                 text = Res.string.about_welcome,
                 style = Theme.typography.headlineLarge.copy(
                     color = Theme.colorScheme.primary[30]
                 ),
             )
-            Column {
+            Column(modifier = AboutHeroParagraphStyle.toModifier()) {
                 Paragraph(
                     text = Res.string.about_me_paragraph_1,
                     style = Theme.typography.bodyLarge,
@@ -91,10 +108,19 @@ fun AboutHero(modifier: Modifier = Modifier) {
                 )
             }
         }
-        Image(
-            src = "images/profile_drawing.png",
-            description = Res.string.about_image_description,
-            modifier = AboutHeroImageStyle.toModifier()
-        )
+        Picture(
+            attrs = AboutHeroPictureStyle.toAttrs(),
+        ) {
+            Source(
+                attrs = {
+                    attr("media", "(max-width: ${Breakpoint.SM.toWidth()})")
+                    attr("srcset", "images/profile_drawing_small.png")
+                }
+            )
+            Image(
+                src = "images/profile_drawing.png",
+                description = Res.string.about_image_description,
+            )
+        }
     }
 }

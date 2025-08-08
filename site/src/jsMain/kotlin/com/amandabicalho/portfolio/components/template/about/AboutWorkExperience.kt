@@ -1,12 +1,16 @@
 package com.amandabicalho.portfolio.components.template.about
 
+import Res
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.components.atom.Text
 import com.amandabicalho.portfolio.components.molecule.WorkExperienceCard
 import com.amandabicalho.portfolio.core.designsystem.components.atom.button.OutlinedButton
+import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridDefaults
+import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridSection
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.unit.dp
 import com.amandabicalho.portfolio.domain.WorkExperience
+import com.varabyte.kobweb.compose.css.Width
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -15,38 +19,63 @@ import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.flexDirection
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.gridColumn
-import com.varabyte.kobweb.compose.ui.modifiers.gridTemplateColumns
-import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.cssRule
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.FlexDirection
-import org.jetbrains.compose.web.css.fr
 import org.jetbrains.compose.web.dom.Section
 
 val AboutWorkExperienceStyle = CssStyle {
     base {
         Modifier
             .fillMaxWidth()
-            .display(DisplayStyle.Grid)
-            .gridTemplateColumns {
-                repeat(12) {
-                    size(1.fr)
-                }
-            }
-            .gap(24.dp)
+            .gap(20.dp)
+    }
+}
+
+val AboutWorkExperienceTitleStyle = CssStyle {
+    base {
+        Modifier.gridColumn(start = GridDefaults.LEFT_AREA, end = GridDefaults.RIGHT_AREA)
+    }
+    Breakpoint.MD {
+        Modifier.gridColumn(GridDefaults.LEFT_AREA)
+    }
+
+    cssRule("> button") {
+        Modifier.display(DisplayStyle.None)
+    }
+
+    cssRule(Breakpoint.MD, "> button") {
+        Modifier.display(DisplayStyle.Block)
     }
 }
 
 val AboutWorkExperienceListStyle = CssStyle {
     base {
         Modifier
+            .gridColumn(start = GridDefaults.LEFT_AREA, end = GridDefaults.RIGHT_AREA)
             .display(DisplayStyle.Flex)
             .flexDirection(FlexDirection.Column)
             .fillMaxWidth()
-            .gridColumn(start = 7, end = 13)
+            .gap(20.dp)
+    }
+    Breakpoint.MD {
+        Modifier
+            .gridColumn(GridDefaults.RIGHT_AREA)
             .gap(40.dp)
+    }
+
+    cssRule("> button") {
+        Modifier.display(DisplayStyle.Block)
+    }
+
+    cssRule(Breakpoint.MD, "> button") {
+        Modifier
+            .display(DisplayStyle.None)
     }
 }
 
@@ -56,28 +85,21 @@ fun AboutWorkExperience(
     onViewResumeClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Section(
-        attrs = AboutWorkExperienceStyle
+    GridSection(
+        modifier = AboutWorkExperienceStyle
             .toModifier()
-            .then(modifier)
-            .toAttrs(),
+            .then(modifier),
     ) {
         Column(
-            modifier = Modifier.gridColumn(start = 1, end = 6),
+            modifier = AboutWorkExperienceTitleStyle.toModifier(),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             Text(
-                text = "Work Experience",
+                text = Res.string.about_work_experience,
                 style = Theme.typography.headlineSmall,
             )
-            OutlinedButton(
-                onClick = onViewResumeClick,
-            ) {
-                Text(
-                    text = "View Resume",
-                    style = Theme.typography.bodySmall,
-                )
-            }
+            // only show the button on desktop
+            ViewResumeButton(onViewResumeClick)
         }
         Section(
             attrs = AboutWorkExperienceListStyle.toAttrs(),
@@ -85,6 +107,28 @@ fun AboutWorkExperience(
             experiences.forEach { experience ->
                 WorkExperienceCard(experience)
             }
+
+            // Only show the button on mobile
+            ViewResumeButton(
+                onViewResumeClick = onViewResumeClick,
+                modifier = Modifier.width(Width.FitContent),
+            )
         }
+    }
+}
+
+@Composable
+private fun ViewResumeButton(
+    onViewResumeClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    OutlinedButton(
+        onClick = onViewResumeClick,
+        modifier = modifier,
+    ) {
+        Text(
+            text = Res.string.about_view_resume,
+            style = Theme.typography.bodySmall,
+        )
     }
 }
