@@ -2,6 +2,8 @@ package com.amandabicalho.portfolio.components.organism
 
 import Res
 import androidx.compose.runtime.Composable
+import com.amandabicalho.portfolio.colorScheme
+import com.amandabicalho.portfolio.components.atom.Text
 import com.amandabicalho.portfolio.core.designsystem.components.atom.button.TextButton
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridDefaults
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridStyle
@@ -12,7 +14,6 @@ import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.foundation.layout.PaddingValues
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.unit.dp
-import com.amandabicalho.portfolio.components.atom.Text
 import com.varabyte.kobweb.compose.css.AlignItems
 import com.varabyte.kobweb.compose.css.Background
 import com.varabyte.kobweb.compose.css.BackgroundImage
@@ -41,6 +42,8 @@ import com.varabyte.kobweb.compose.ui.modifiers.setVariable
 import com.varabyte.kobweb.compose.ui.modifiers.size
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.silk.components.navigation.Link
+import com.varabyte.kobweb.silk.components.navigation.LinkVars
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.addVariant
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
@@ -49,35 +52,13 @@ import org.jetbrains.compose.web.css.AlignSelf
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.deg
 import org.jetbrains.compose.web.css.percent
+import org.jetbrains.compose.web.dom.Br
 import org.jetbrains.compose.web.dom.Footer
+import org.jetbrains.compose.web.dom.H4
 
 object FooterVars {
     val BorderColor by StyleVariable<Color>()
 }
-
-//val FooterStyle = CssStyle {
-//    base {
-//        Modifier
-//            .background(
-//                Background.of(image = BackgroundImage.of(url("images/bg_footer.svg"))),
-//                Background.of(
-//                    image = BackgroundImage.of(
-//                        gradient = linearGradient(angle = 270.deg) {
-//                            add(Color.argb(0xFFFFFCF7), 24.37.percent)
-//                            add(Color.rgba(255, 255, 255, 0), 45.88.percent)
-//                            add(Color.rgba(255, 255, 255, 0), 56.25.percent)
-//                            add(Color.argb(0xFFFFFFFF), 78.28.percent)
-//                        },
-//                    ),
-//                ),
-//            )
-//            .borderTop {
-//                width(1.dp)
-//                color(FooterVars.BorderColor.value())
-//                style(LineStyle.Solid)
-//            }
-//    }
-//}
 
 val FooterVariant = GridStyle.addVariant {
     base {
@@ -136,13 +117,10 @@ val FooterContactContentStyle = CssStyle {
         Modifier
             .gridColumn(GridDefaults.LEFT_AREA)
     }
-    Breakpoint.LG {
+    cssRule("> h4 > a") {
         Modifier
-            .gridColumn(start = 1, end = 6)
-    }
-    Breakpoint.XL {
-        Modifier
-            .gridColumn(start = 1, end = 5)
+            .setVariable(LinkVars.DefaultColor, colorScheme.text)
+            .setVariable(LinkVars.VisitedColor, colorScheme.text)
     }
 }
 
@@ -206,11 +184,18 @@ fun Footer(
             modifier = FooterContactContentStyle.toModifier(),
         ) {
             Logo(modifier = Modifier.size(50.dp))
-            Text(
-                text = Res.string.footer_contact_call_out.format(email = "email@email.com"),
-                style = Theme.typography.titleLarge,
-                modifier = Modifier.fillMaxSize(),
-            )
+            H4(
+                attrs = Modifier.fillMaxSize().toAttrs(),
+            ) {
+                org.jetbrains.compose.web.dom.Text(value = Res.string.footer_contact_call_out_line_1)
+                Br()
+                org.jetbrains.compose.web.dom.Text(value = Res.string.footer_contact_call_out_line_2)
+                Br()
+                Link(
+                    path = "mailto:abicalho.design@gmail.com",
+                    text = "abicalho.design@gmail.com",
+                )
+            }
         }
         Column(
             verticalArrangement = Arrangement.spacedBy(20.dp),

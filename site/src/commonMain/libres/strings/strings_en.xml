@@ -30,7 +30,8 @@
     </string>
     <string name="services_mobile_img_description">An android icon representing the mobile service.</string>
     <string name="home_big_statement">A truly creative thinking comes with a limitless mindset</string>
-    <string name="footer_contact_call_out">Have a project idea? Drop me a message at ${email}</string>
+    <string name="footer_contact_call_out_line_1">Have a project idea?</string>
+    <string name="footer_contact_call_out_line_2">Drop me a message at</string>
     <string name="footer_credits">Designed by Amanda, coded by Rafael with love</string>
     <string name="work">Work</string>
     <string name="about">About</string>
