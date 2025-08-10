@@ -39,7 +39,7 @@
     <string name="about">About</string>
 
     <!--  About page  -->
-    <string name="about_welcome">Hi, I’m Amanda</string>
+    <string name="about_welcome">Hi,\nI’m Amanda</string>
     <string name="about_me_paragraph_1">
         I’m a UX/UI designer who creates meaningful digital experiences by blending analytical thinking with visual
         storytelling. My expertise spans the entire product lifecycle, from strategic design and user interface
@@ -66,6 +66,8 @@
     </string>
     <string name="about_work_experience">Work Experience</string>
     <string name="about_view_resume">View resume</string>
+    <string name="about_work_current">current</string>
+    <string name="about_work_experience_position">${position} at </string>
 
     <!--  Showcase page  -->
     <string name="showcase_project_info_team">Team</string>

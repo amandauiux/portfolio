@@ -9,6 +9,7 @@ import com.amandabicalho.portfolio.core.designsystem.components.atom.content.Gri
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.unit.dp
 import com.varabyte.kobweb.compose.css.ObjectFit
+import com.varabyte.kobweb.compose.css.WhiteSpace
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.display
@@ -18,6 +19,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.gridColumn
 import com.varabyte.kobweb.compose.ui.modifiers.justifyContent
 import com.varabyte.kobweb.compose.ui.modifiers.objectFit
+import com.varabyte.kobweb.compose.ui.modifiers.whiteSpace
 import com.varabyte.kobweb.compose.ui.modifiers.widthIn
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.style.CssStyle
@@ -96,6 +98,7 @@ fun AboutHero(modifier: Modifier = Modifier) {
                 style = Theme.typography.headlineLarge.copy(
                     color = Theme.colorScheme.primary[30]
                 ),
+                modifier = Modifier.whiteSpace(WhiteSpace.PreWrap),
             )
             Column(modifier = AboutHeroParagraphStyle.toModifier()) {
                 Paragraph(

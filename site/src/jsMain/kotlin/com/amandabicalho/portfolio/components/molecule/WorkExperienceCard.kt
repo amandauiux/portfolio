@@ -1,11 +1,13 @@
 package com.amandabicalho.portfolio.components.molecule
 
+import Res
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import com.amandabicalho.portfolio.colorScheme
-import com.amandabicalho.portfolio.core.ui.theme.Theme
-import com.amandabicalho.portfolio.core.ui.unit.dp
 import com.amandabicalho.portfolio.components.atom.Text
+import com.amandabicalho.portfolio.core.ui.theme.Theme
+import com.amandabicalho.portfolio.core.ui.theme.typography.toModifier
+import com.amandabicalho.portfolio.core.ui.unit.dp
 import com.amandabicalho.portfolio.domain.WorkExperience
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -16,10 +18,14 @@ import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.padding
+import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.toModifier
 import kotlinx.datetime.LocalDate
 import org.jetbrains.compose.web.css.LineStyle
+import org.jetbrains.compose.web.dom.Span
+import org.jetbrains.compose.web.dom.Text
 
 val WorkExperienceCardStyle = CssStyle {
     base {
@@ -50,21 +56,22 @@ fun WorkExperienceCard(
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         Column {
-            Text(
-                text = experience.title,
-                style = Theme.typography.titleSmall,
-            )
-            Text(
-                text = experience.description,
-                style = Theme.typography.bodyMedium,
-            )
+            Span(
+                attrs = Theme.typography.titleSmall.toModifier().toAttrs(),
+            ) {
+                Text(value = Res.string.about_work_experience_position.format(experience.title))
+                Link(
+                    path = experience.url,
+                    text = experience.company,
+                )
+            }
         }
 
         val period = remember(experience) {
             buildString {
                 append(formatter.format(experience.startDate))
                 append(" - ")
-                append(experience.endDate?.let(formatter::format) ?: "Present")
+                append(experience.endDate?.let(formatter::format) ?: Res.string.about_work_current)
             }
         }
 

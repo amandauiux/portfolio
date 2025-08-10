@@ -35,6 +35,8 @@ import com.varabyte.kobweb.silk.components.forms.SwitchThumbStyle
 import com.varabyte.kobweb.silk.components.forms.SwitchTrackStyle
 import com.varabyte.kobweb.silk.components.forms.SwitchVars
 import com.varabyte.kobweb.silk.components.layout.HorizontalDividerStyle
+import com.varabyte.kobweb.silk.components.navigation.LinkStyle
+import com.varabyte.kobweb.silk.components.navigation.LinkVars
 import com.varabyte.kobweb.silk.init.InitSilk
 import com.varabyte.kobweb.silk.init.InitSilkContext
 import com.varabyte.kobweb.silk.init.registerStyleBase
@@ -53,8 +55,8 @@ import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 
 @InitSilk
-fun initSiteStyles(ctx: InitSilkContext) {
-    ctx.stylesheet.apply {
+fun initSiteStyles(context: InitSilkContext) {
+    context.stylesheet.apply {
         registerStyle("html") {
             cssRule(CSSMediaQuery.MediaFeature("prefers-reduced-motion", StylePropertyValue("no-preference"))) {
                 Modifier.scrollBehavior(ScrollBehavior.Smooth)
@@ -83,7 +85,7 @@ fun initSiteStyles(ctx: InitSilkContext) {
                         .backgroundColor(BackgroundColorVar.value())
                 }
                 Breakpoint.MD {
-                    Typography.bodyLarge.copy( // Desktop
+                    Typography.bodyLarge.copy(
                         fontSize = 18.sp,
                         lineHeight = 27.sp,
                     ).toModifier()
@@ -94,7 +96,7 @@ fun initSiteStyles(ctx: InitSilkContext) {
                     Typography.headlineLarge.toModifier().margin(all = 0.dp) // Mobile-first
                 }
                 Breakpoint.MD {
-                    Typography.headlineLarge.copy( // Desktop
+                    Typography.headlineLarge.copy(
                         fontSize = 96.sp,
                         lineHeight = 115.2.sp,
                     ).toModifier()
@@ -105,7 +107,7 @@ fun initSiteStyles(ctx: InitSilkContext) {
                     Typography.headlineMedium.toModifier().margin(all = 0.dp) // Mobile-first
                 }
                 Breakpoint.MD {
-                    Typography.headlineMedium.copy( // Desktop
+                    Typography.headlineMedium.copy(
                         fontSize = 80.sp,
                         lineHeight = 96.sp,
                     ).toModifier()
@@ -116,7 +118,7 @@ fun initSiteStyles(ctx: InitSilkContext) {
                     Typography.headlineSmall.toModifier().margin(all = 0.dp) // Mobile-first
                 }
                 Breakpoint.MD {
-                    Typography.headlineSmall.copy( // Desktop
+                    Typography.headlineSmall.copy(
                         fontSize = 60.sp,
                         lineHeight = 72.sp,
                     ).toModifier()
@@ -127,7 +129,7 @@ fun initSiteStyles(ctx: InitSilkContext) {
                     Typography.titleLarge.toModifier().margin(all = 0.dp) // Mobile-first
                 }
                 Breakpoint.MD {
-                    Typography.titleLarge.copy( // Desktop
+                    Typography.titleLarge.copy(
                         fontSize = 36.sp,
                         lineHeight = 46.8.sp,
                     ).toModifier()
@@ -138,7 +140,7 @@ fun initSiteStyles(ctx: InitSilkContext) {
                     Typography.titleMedium.toModifier().margin(all = 0.dp) // Mobile-first
                 }
                 Breakpoint.MD {
-                    Typography.titleMedium.copy( // Desktop
+                    Typography.titleMedium.copy(
                         fontSize = 32.sp,
                         lineHeight = 41.6.sp,
                     ).toModifier()
@@ -149,7 +151,7 @@ fun initSiteStyles(ctx: InitSilkContext) {
                     Typography.titleSmall.toModifier().margin(all = 0.dp) // Mobile-first
                 }
                 Breakpoint.MD {
-                    Typography.titleSmall.copy( // Desktop
+                    Typography.titleSmall.copy(
                         fontSize = 24.sp,
                         lineHeight = 31.2.sp,
                     ).toModifier()
@@ -159,11 +161,11 @@ fun initSiteStyles(ctx: InitSilkContext) {
     }
 
     // Silk dividers only extend 90% by default; we want full width dividers in our site
-    ctx.theme.modifyStyleBase(HorizontalDividerStyle) {
+    context.theme.modifyStyleBase(HorizontalDividerStyle) {
         Modifier.fillMaxWidth()
     }
 
-    ctx.theme.modifyStyleBase(SwitchTrackStyle) {
+    context.theme.modifyStyleBase(SwitchTrackStyle) {
         Modifier
             .setVariable(SwitchVars.TrackBackgroundColor, Color.Transparent)
             .backgroundColor(Color.Transparent)
@@ -175,7 +177,7 @@ fun initSiteStyles(ctx: InitSilkContext) {
             .padding(0.dp)
     }
 
-    ctx.theme.modifyStyle(SwitchThumbStyle) {
+    context.theme.modifyStyle(SwitchThumbStyle) {
         base {
             Modifier
                 .margin(horizontal = 2.5.dp, vertical = 1.89.dp)
@@ -202,6 +204,12 @@ fun initSiteStyles(ctx: InitSilkContext) {
                     )
                 }
         }
+    }
+
+    context.theme.modifyStyleBase(LinkStyle) {
+        Modifier
+            .setVariable(LinkVars.DefaultColor, colorScheme.primary[30])
+            .setVariable(LinkVars.VisitedColor, colorScheme.primary[30])
     }
 }
 
