@@ -117,6 +117,7 @@ fun PageLayout(context: PageContext, content: @Composable ColumnScope.() -> Unit
         Column(modifier = PageContentStyle.toModifier()) {
             NavHeader(
                 isDark = colorMode.isDark,
+                onLogoClick = { context.router.navigateTo("/") },
                 onProjectsClick = { context.router.navigateTo("/projects") },
                 onAboutClick = { context.router.navigateTo("/about") },
                 onThemeToggleClick = { colorMode = colorMode.opposite },

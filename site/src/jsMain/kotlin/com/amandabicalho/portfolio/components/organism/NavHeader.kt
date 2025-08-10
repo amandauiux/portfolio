@@ -32,6 +32,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.height
 import com.varabyte.kobweb.compose.ui.modifiers.justifySelf
+import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.size
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.base
@@ -95,12 +96,14 @@ val NavHeaderBrandingStyle = CssStyle.base {
         )
         .toModifier()
         .alignSelf(AlignSelf.Center)
+
 }
 
 
 @Composable
 fun NavHeader(
     isDark: Boolean,
+    onLogoClick: () -> Unit,
     onProjectsClick: () -> Unit,
     onAboutClick: () -> Unit,
     onThemeToggleClick: () -> Unit,
@@ -114,10 +117,15 @@ fun NavHeader(
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = NavHeaderDesktopStyle.toModifier(),
         ) {
-            Text(
-                text = "Amanda Bicalho",
-                modifier = NavHeaderBrandingStyle.toModifier(),
-            )
+            TextButton(
+                onClick = onLogoClick,
+                modifier = Modifier.margin(left = (-16).dp),
+            ) {
+                Text(
+                    text = "Amanda Bicalho",
+                    modifier = NavHeaderBrandingStyle.toModifier(),
+                )
+            }
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(80.dp),
