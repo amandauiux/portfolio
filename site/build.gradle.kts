@@ -1,4 +1,3 @@
-
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
 import io.github.skeptick.libres.plugin.LibresImagesGenerationTask
 import io.github.skeptick.libres.plugin.LibresStringGenerationTask
@@ -27,7 +26,10 @@ kobweb {
                     href = "/fonts/faces.css"
                 }
             }
-            description.set("Powered by Kobweb")
+            description.set(
+                "Explore my UX UI design portfolio featuring a curated collection of design projects and " +
+                    "insightful case studies. Discover my approach and expertise as a designer.",
+            )
         }
     }
 

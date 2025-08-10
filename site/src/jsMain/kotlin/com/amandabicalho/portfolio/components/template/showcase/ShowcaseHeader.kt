@@ -23,7 +23,6 @@ import com.varabyte.kobweb.compose.ui.modifiers.gridColumn
 import com.varabyte.kobweb.compose.ui.modifiers.gridRow
 import com.varabyte.kobweb.compose.ui.modifiers.gridTemplateAreas
 import com.varabyte.kobweb.compose.ui.modifiers.gridTemplateColumns
-import com.varabyte.kobweb.compose.ui.modifiers.height
 import com.varabyte.kobweb.compose.ui.modifiers.rowGap
 import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.graphics.Image
@@ -80,12 +79,7 @@ val ShowcaseHeaderHeroImageStyle = CssStyle {
     base {
         Modifier
             .fillMaxWidth()
-            .height(193.dp)
             .gridColumn(start = GridDefaults.LEFT_AREA, end = GridDefaults.RIGHT_AREA)
-    }
-    Breakpoint.MD {
-        Modifier
-            .height(500.dp)
     }
 }
 
@@ -154,6 +148,7 @@ val ShowcaseHeaderProjectBackgroundStyle = CssStyle {
         Modifier
             .fillMaxWidth()
             .gridColumn(start = GridDefaults.LEFT_AREA, end = GridDefaults.RIGHT_AREA)
+            .gap(12.dp)
     }
 
     Breakpoint.MD {
@@ -280,7 +275,7 @@ fun ShowcaseHeader(
             ) {
                 Text(
                     text = Res.string.showcase_project_background,
-                    style = Theme.typography.titleSmall,
+                    style = Theme.typography.titleLarge,
                 )
 
                 Column(

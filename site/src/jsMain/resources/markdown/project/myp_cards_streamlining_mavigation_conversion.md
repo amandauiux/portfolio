@@ -48,7 +48,7 @@ In a summary, the main issues we’re trying to solve are listed below:
 
 }}}
 
-Note: Add images for each one of the listed issues
+![image](https://placehold.co/1355x500)
 
 {{{ .components.template.showcase.ShowcaseSection("Solution")
 

@@ -10,8 +10,6 @@ import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.flexDirection
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.gridColumn
-import com.varabyte.kobweb.compose.ui.modifiers.margin
-import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
@@ -30,7 +28,6 @@ val ShowcaseSectionStyle = CssStyle {
             .display(DisplayStyle.Flex)
             .flexDirection(FlexDirection.Column)
             .gap(12.dp)
-            .padding(top = 40.dp)
     }
 
     Breakpoint.LG {
@@ -39,10 +36,6 @@ val ShowcaseSectionStyle = CssStyle {
 
     cssRule(Breakpoint.LG, "h3") {
         Modifier.gridColumn(GridDefaults.LEFT_AREA)
-    }
-
-    cssRule("ul > li") {
-        Modifier.margin(left = 16.dp)
     }
 }
 

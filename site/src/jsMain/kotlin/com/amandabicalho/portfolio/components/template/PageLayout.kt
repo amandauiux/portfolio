@@ -91,7 +91,10 @@ val PageFooterStyle = CssStyle {
     }
 }
 
-class PageLayoutData(val title: String)
+class PageLayoutData(
+    val title: String,
+    val description: String? = null,
+)
 
 @Composable
 @Layout
@@ -100,6 +103,11 @@ fun PageLayout(context: PageContext, content: @Composable ColumnScope.() -> Unit
     var colorMode by ColorMode.currentState
     LaunchedEffect(data.title) {
         document.title = "${data.title} | Amanda Bicalho Portfolio"
+        data.description?.let { description ->
+            document
+                .querySelector(selectors = "meta[name='description']")
+                ?.setAttribute(qualifiedName = "content", value = description)
+        }
     }
 
     Box(
