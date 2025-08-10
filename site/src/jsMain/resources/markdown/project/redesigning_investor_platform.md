@@ -8,6 +8,7 @@ industry: [Finance Services, Investment]
 tags: [UI/UX Design, Wireframe, Digital Design]
 team: StayShure
 hero_image: https://placehold.co/1355x500
+published_at: 2025-08-10T13:36:00
 ---
 
 {{{ .components.template.showcase.ShowcaseHeader

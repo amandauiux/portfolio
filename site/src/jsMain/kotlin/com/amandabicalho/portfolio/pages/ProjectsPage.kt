@@ -8,6 +8,7 @@ import com.amandabicalho.portfolio.components.template.project.OtherProjectsSect
 import com.amandabicalho.portfolio.components.template.project.ProjectsSection
 import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.ui.unit.dp
+import com.amandabicalho.portfolio.domain.Projects
 import com.varabyte.kobweb.compose.css.Background
 import com.varabyte.kobweb.compose.css.BackgroundImage
 import com.varabyte.kobweb.compose.css.BackgroundRepeat
@@ -25,6 +26,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.heightIn
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.core.Page
+import com.varabyte.kobweb.core.PageContext
 import com.varabyte.kobweb.core.data.add
 import com.varabyte.kobweb.core.init.InitRoute
 import com.varabyte.kobweb.core.init.InitRouteContext
@@ -122,7 +124,7 @@ fun initProjectsPage(ctx: InitRouteContext) {
 @Page("/projects")
 @Layout(".components.template.PageLayout")
 @Composable
-fun ProjectsPage() {
+fun ProjectsPage(context: PageContext) {
     Column(
         modifier = ProjectsPageStyle.toModifier(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -131,12 +133,24 @@ fun ProjectsPage() {
             title = Res.string.projects,
             modifier = ProjectHeaderStyle.toModifier(),
         )
-
         Column(
             modifier = ProjectContentStyle.toModifier(),
         ) {
-            ProjectsSection(modifier = ProjectSectionStyle.toModifier())
-            OtherProjectsSection(modifier = OtherProjectsSectionStyle.toModifier())
+            val projects = Projects
+                .entries
+                .sortedByDescending { it.publishedAt }
+
+            ProjectsSection(
+                projects = projects.take(n = 4),
+                onProjectClick = { project ->
+                    context.router.navigateTo(project.route)
+                },
+                modifier = ProjectSectionStyle.toModifier(),
+            )
+
+            if (projects.size > 4) {
+                OtherProjectsSection(modifier = OtherProjectsSectionStyle.toModifier())
+            }
         }
     }
 }

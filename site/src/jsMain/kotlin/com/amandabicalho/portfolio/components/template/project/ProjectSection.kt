@@ -2,7 +2,9 @@ package com.amandabicalho.portfolio.components.template.project
 
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.components.molecule.WorkCard
+import com.amandabicalho.portfolio.components.template.home.FeatureWorkCardStyle
 import com.amandabicalho.portfolio.core.ui.unit.dp
+import com.amandabicalho.portfolio.domain.Project
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.display
@@ -35,6 +37,8 @@ val ProjectsSectionGridStyle = CssStyle {
 
 @Composable
 fun ProjectsSection(
+    projects: List<Project>,
+    onProjectClick: (Project) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Section(
@@ -43,13 +47,13 @@ fun ProjectsSection(
         Column(
             modifier = ProjectsSectionGridStyle.toModifier()
         ) {
-            // 4 WorkCards for the "Work" section
-            repeat(4) {
+            projects.forEach { project ->
                 WorkCard(
-                    image = "https://picsum.photos/858/416?random=$it", // Placeholder
-                    title = "Case study title lorem ipsum dolor with maximum two lines of text",
-                    onClick = {},
-                    tags = listOf("Web Design", "UI/UX")
+                    image = project.image,
+                    title = project.title,
+                    onClick = { onProjectClick(project) },
+                    tags = project.tags,
+                    modifier = FeatureWorkCardStyle.toModifier(),
                 )
             }
         }

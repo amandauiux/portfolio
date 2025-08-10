@@ -4,11 +4,12 @@ import Res
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.components.template.HeroSection
 import com.amandabicalho.portfolio.components.template.PageLayoutData
-import com.amandabicalho.portfolio.components.template.home.FeaturedWork
-import com.amandabicalho.portfolio.components.template.home.HighlightSection
 import com.amandabicalho.portfolio.components.template.home.Expertise
+import com.amandabicalho.portfolio.components.template.home.FeaturedProjects
+import com.amandabicalho.portfolio.components.template.home.HighlightSection
 import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.ui.unit.dp
+import com.amandabicalho.portfolio.domain.Projects
 import com.varabyte.kobweb.compose.css.Background
 import com.varabyte.kobweb.compose.css.BackgroundImage
 import com.varabyte.kobweb.compose.css.BackgroundRepeat
@@ -24,6 +25,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.core.Page
+import com.varabyte.kobweb.core.PageContext
 import com.varabyte.kobweb.core.data.add
 import com.varabyte.kobweb.core.init.InitRoute
 import com.varabyte.kobweb.core.init.InitRouteContext
@@ -86,7 +88,7 @@ val HomeHeaderStyle = CssStyle {
     }
 }
 
-val HomeFeaturedWorkStyle = CssStyle {
+val HomeFeaturedProjectsStyle = CssStyle {
     base {
         Modifier
             .padding(horizontal = PaddingHorizontalMobile)
@@ -127,16 +129,25 @@ fun initHomePage(ctx: InitRouteContext) {
 @Page
 @Layout(".components.template.PageLayout")
 @Composable
-fun HomePage() {
+fun HomePage(context: PageContext) {
     Column(modifier = HomeContainerStyle.toModifier()) {
         HeroSection(
             title = Res.string.home_title,
             subtitle = Res.string.home_subtitle,
             modifier = HomeHeaderStyle.toModifier(),
         )
-        FeaturedWork(
-            modifier = HomeFeaturedWorkStyle.toModifier(),
-            onViewAllProjectClick = {},
+        FeaturedProjects(
+            projects = Projects
+                .entries
+                .sortedByDescending { it.publishedAt }
+                .take(n = 4),
+            onViewAllProjectClick = {
+                context.router.navigateTo("/projects")
+            },
+            onProjectClick = { project ->
+                context.router.navigateTo(project.route)
+            },
+            modifier = HomeFeaturedProjectsStyle.toModifier(),
         )
         Expertise(
             modifier = HomeWhatIDoStyle.toModifier(),

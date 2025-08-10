@@ -10,9 +10,13 @@ import com.amandabicalho.portfolio.core.designsystem.components.atom.content.Gri
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridVars
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.unit.dp
+import com.amandabicalho.portfolio.domain.Project
+import com.varabyte.kobweb.compose.css.Cursor
+import com.varabyte.kobweb.compose.css.WhiteSpace
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.cursor
 import com.varabyte.kobweb.compose.ui.modifiers.gridArea
 import com.varabyte.kobweb.compose.ui.modifiers.gridColumn
 import com.varabyte.kobweb.compose.ui.modifiers.gridColumnEnd
@@ -20,11 +24,12 @@ import com.varabyte.kobweb.compose.ui.modifiers.gridColumnStart
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.rowGap
 import com.varabyte.kobweb.compose.ui.modifiers.setVariable
+import com.varabyte.kobweb.compose.ui.modifiers.whiteSpace
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 
-val FeaturedWorkStyle = CssStyle {
+val FeaturedProjectsStyle = CssStyle {
     base {
         Modifier.setVariable(GridVars.RowGap, 12.dp)
     }
@@ -33,17 +38,18 @@ val FeaturedWorkStyle = CssStyle {
     }
 }
 
-val FeaturedWorkTitleStyle = CssStyle {
+val FeaturedProjectsTitleStyle = CssStyle {
     base {
         Modifier
             .gridColumn("span ${GridDefaults.MOBILE_AREA_SIZE}")
     }
     Breakpoint.MD {
         Modifier
+            .whiteSpace(WhiteSpace.PreWrap)
             .gridArea(GridDefaults.LEFT_AREA)
     }
 }
-val FeaturedWorkDescriptionStyle = CssStyle {
+val FeaturedProjectsDescriptionStyle = CssStyle {
     base {
         Modifier
             .gridColumn("span ${GridDefaults.MOBILE_AREA_SIZE}")
@@ -73,8 +79,8 @@ val FeatureWorkCardStyle = CssStyle {
     base {
         Modifier
             .gridColumn("span ${GridDefaults.MOBILE_AREA_SIZE}")
+            .cursor(Cursor.Pointer)
     }
-
     Breakpoint.MD {
         Modifier
             .gridColumn("span ${GridDefaults.DESKTOP_AREA_SIZE / 2}")
@@ -82,21 +88,23 @@ val FeatureWorkCardStyle = CssStyle {
 }
 
 @Composable
-fun FeaturedWork(
+fun FeaturedProjects(
+    projects: List<Project>,
+    onProjectClick: (Project) -> Unit,
     onViewAllProjectClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     GridSection(
-        modifier = FeaturedWorkStyle.toModifier().then(modifier),
+        modifier = FeaturedProjectsStyle.toModifier().then(modifier),
     ) {
         Text(
             text = Res.string.featured_projects_title,
             style = Theme.typography.headlineMedium,
-            modifier = FeaturedWorkTitleStyle.toModifier(),
+            modifier = FeaturedProjectsTitleStyle.toModifier(),
         )
         Column(
             verticalArrangement = Arrangement.spacedBy(20.dp),
-            modifier = FeaturedWorkDescriptionStyle.toModifier(),
+            modifier = FeaturedProjectsDescriptionStyle.toModifier(),
         ) {
             Text(
                 text = Res.string.featured_projects_description,
@@ -114,16 +122,12 @@ fun FeaturedWork(
         }
 
         GridSection(modifier = FeatureWorkCardSectionStyle.toModifier()) {
-            repeat(4) { index ->
+            projects.forEach { project ->
                 WorkCard(
-                    image = "https://picsum.photos/858/416?random=${index + 4}",
-                    title = "Case study title lorem ipsum dolor with maximum two lines of text",
-                    onClick = {},
-                    tags = listOf(
-                        "Web Design",
-                        "UI/UX",
-                        "Branding",
-                    ),
+                    image = project.image,
+                    title = project.title,
+                    onClick = { onProjectClick(project) },
+                    tags = project.tags,
                     modifier = FeatureWorkCardStyle.toModifier(),
                 )
             }

@@ -30,6 +30,57 @@ kobweb {
             description.set("Powered by Kobweb")
         }
     }
+
+    markdown {
+        process.set { entries ->
+            val projects = entries.map { entry ->
+                val frontMatter = entry.frontMatter
+                val title = frontMatter["title"]
+                    ?.singleOrNull()
+                    ?: error("Markdown file must set \"title\" in frontmatter")
+                val tags = frontMatter["tags"]
+                    ?.takeIf { it.isNotEmpty() }
+                    ?: error("Markdown file must set \"tags\" in frontmatter")
+                val image = frontMatter["hero_image"]
+                    ?.singleOrNull()
+                    ?: error("Markdown file must set \"hero_image\" in frontmatter")
+                val publishedAt = frontMatter["published_at"]
+                    ?.singleOrNull()
+                    ?: error("Markdown file must set \"published_at\" in frontmatter")
+                """
+                    |Project(
+                    |    title = "$title",
+                    |    image = "$image",
+                    |    route = "${entry.route}",
+                    |    tags = listOf(${tags.joinToString { "\"$it\"" }}),
+                    |    publishedAt = LocalDateTime.parse("$publishedAt"),
+                    |),
+                """.trimMargin()
+            }
+
+            val content = """
+                |package com.amandabicalho.portfolio.domain
+                |
+                |import kotlinx.datetime.LocalDateTime
+                |
+                |data class Project(
+                |    val title: String,
+                |    val image: String,
+                |    val route: String,
+                |    val tags: List<String>,
+                |    val publishedAt: LocalDateTime,
+                |)
+                |data object Projects {
+                |   val entries = listOf(
+                |${projects.joinToString("\n").prependIndent("        ")}
+                |   )
+                |}
+            """.trimMargin()
+
+
+            generateKotlin(filePath = "com/amandabicalho/portfolio/domain/Projects.kt", content)
+        }
+    }
 }
 
 kotlin {
