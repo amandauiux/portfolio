@@ -90,7 +90,7 @@ fun FeaturedWork(
         modifier = FeaturedWorkStyle.toModifier().then(modifier),
     ) {
         Text(
-            text = Res.string.featured_work_title,
+            text = Res.string.featured_projects_title,
             style = Theme.typography.headlineMedium,
             modifier = FeaturedWorkTitleStyle.toModifier(),
         )
@@ -99,7 +99,7 @@ fun FeaturedWork(
             modifier = FeaturedWorkDescriptionStyle.toModifier(),
         ) {
             Text(
-                text = Res.string.featured_work_description,
+                text = Res.string.featured_projects_description,
                 style = Theme.typography.bodyLarge,
             )
 

@@ -1,4 +1,4 @@
-package com.amandabicalho.portfolio.components.template.work
+package com.amandabicalho.portfolio.components.template.project
 
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.components.atom.Text
@@ -36,7 +36,7 @@ import org.jetbrains.compose.web.dom.Section
 private const val VisibleColumns = 3
 private val ColumnGap = 24.dp
 
-val OtherWorksSectionGridStyle = CssStyle {
+val OtherProjectsSectionGridStyle = CssStyle {
     base {
         Modifier
             .display(DisplayStyle.Grid)
@@ -75,7 +75,7 @@ val OtherWorksSectionGridStyle = CssStyle {
     }
 }
 
-val OtherWorksCardStyle = CssStyle {
+val OtherProjectsCardStyle = CssStyle {
     base {
         Modifier
             .flexWrap(FlexWrap.Nowrap)
@@ -92,7 +92,7 @@ val OtherWorksCardStyle = CssStyle {
 }
 
 @Composable
-fun OtherWorksSection(
+fun OtherProjectsSection(
     modifier: Modifier = Modifier,
 ) {
     Section(
@@ -107,7 +107,7 @@ fun OtherWorksSection(
                 style = Theme.typography.headlineMedium,
             )
             Section(
-                attrs = OtherWorksSectionGridStyle.toAttrs(),
+                attrs = OtherProjectsSectionGridStyle.toAttrs(),
             ) {
                 repeat(10) {
                     WorkCard(
@@ -115,7 +115,7 @@ fun OtherWorksSection(
                         title = "Case study title lorem ipsum dolor with maximum two lines of text",
                         onClick = {},
                         tags = listOf("Branding", "Product Design"),
-                        modifier = OtherWorksCardStyle.toModifier(),
+                        modifier = OtherProjectsCardStyle.toModifier(),
                     )
                 }
             }

@@ -182,7 +182,7 @@ val FooterCreditsStyle = CssStyle {
 
 @Composable
 fun Footer(
-    onWorkClick: () -> Unit,
+    onProjectsClick: () -> Unit,
     onAboutClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -238,8 +238,8 @@ fun Footer(
                 horizontalArrangement = Arrangement.spacedBy(36.dp),
             ) {
                 FooterNavigationTextButton(
-                    text = Res.string.work,
-                    onClick = { onWorkClick() },
+                    text = Res.string.projects,
+                    onClick = { onProjectsClick() },
                 )
                 FooterNavigationTextButton(
                     text = Res.string.about,

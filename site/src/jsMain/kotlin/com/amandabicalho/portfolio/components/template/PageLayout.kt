@@ -109,14 +109,14 @@ fun PageLayout(context: PageContext, content: @Composable ColumnScope.() -> Unit
         Column(modifier = PageContentStyle.toModifier()) {
             NavHeader(
                 isDark = colorMode.isDark,
-                onWorkClick = { context.router.navigateTo("/work") },
+                onProjectsClick = { context.router.navigateTo("/projects") },
                 onAboutClick = { context.router.navigateTo("/about") },
                 onThemeToggleClick = { colorMode = colorMode.opposite },
             )
             content()
         }
         Footer(
-            onWorkClick = { context.router.navigateTo("/work") },
+            onProjectsClick = { context.router.navigateTo("/projects") },
             onAboutClick = { context.router.navigateTo("/about") },
             modifier = PageFooterStyle.toModifier(),
         )

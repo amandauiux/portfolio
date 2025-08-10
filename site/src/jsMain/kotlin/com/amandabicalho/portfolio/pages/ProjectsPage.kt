@@ -1,12 +1,13 @@
 package com.amandabicalho.portfolio.pages
 
+import Res
 import androidx.compose.runtime.Composable
-import com.amandabicalho.portfolio.core.extensions.padding
-import com.amandabicalho.portfolio.core.ui.unit.dp
 import com.amandabicalho.portfolio.components.template.HeroSection
 import com.amandabicalho.portfolio.components.template.PageLayoutData
-import com.amandabicalho.portfolio.components.template.work.OtherWorksSection
-import com.amandabicalho.portfolio.components.template.work.WorkSection
+import com.amandabicalho.portfolio.components.template.project.OtherProjectsSection
+import com.amandabicalho.portfolio.components.template.project.ProjectsSection
+import com.amandabicalho.portfolio.core.extensions.padding
+import com.amandabicalho.portfolio.core.ui.unit.dp
 import com.varabyte.kobweb.compose.css.Background
 import com.varabyte.kobweb.compose.css.BackgroundImage
 import com.varabyte.kobweb.compose.css.BackgroundRepeat
@@ -36,14 +37,14 @@ import org.jetbrains.compose.web.css.percent
 
 private val PaddingHorizontalDesktop = 40.dp
 private val PaddingHorizontalMobile = 20.dp
-val WorkPageStyle = CssStyle {
+val ProjectsPageStyle = CssStyle {
     base {
         Modifier
             .fillMaxSize()
     }
 }
 
-val WorkHeaderStyle = CssStyle {
+val ProjectHeaderStyle = CssStyle {
     base {
         Modifier
             .fillMaxWidth()
@@ -71,7 +72,7 @@ val WorkHeaderStyle = CssStyle {
     }
 }
 
-val WorkContentStyle = CssStyle {
+val ProjectContentStyle = CssStyle {
     base {
         Modifier
             .fillMaxWidth()
@@ -88,7 +89,7 @@ val WorkContentStyle = CssStyle {
     }
 }
 
-val WorkSectionStyle = CssStyle {
+val ProjectSectionStyle = CssStyle {
     base {
         Modifier
             .fillMaxWidth()
@@ -100,7 +101,7 @@ val WorkSectionStyle = CssStyle {
     }
 }
 
-val OtherWorksSectionStyle = CssStyle {
+val OtherProjectsSectionStyle = CssStyle {
     base {
         Modifier
             .fillMaxWidth()
@@ -114,28 +115,28 @@ val OtherWorksSectionStyle = CssStyle {
 }
 
 @InitRoute
-fun initWorkPage(ctx: InitRouteContext) {
-    ctx.data.add(PageLayoutData("Work"))
+fun initProjectsPage(ctx: InitRouteContext) {
+    ctx.data.add(PageLayoutData(title = Res.string.projects))
 }
 
-@Page("/work")
+@Page("/projects")
 @Layout(".components.template.PageLayout")
 @Composable
-fun WorkPage() {
+fun ProjectsPage() {
     Column(
-        modifier = WorkPageStyle.toModifier(),
+        modifier = ProjectsPageStyle.toModifier(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         HeroSection(
-            title = "Work",
-            modifier = WorkHeaderStyle.toModifier(),
+            title = Res.string.projects,
+            modifier = ProjectHeaderStyle.toModifier(),
         )
 
         Column(
-            modifier = WorkContentStyle.toModifier(),
+            modifier = ProjectContentStyle.toModifier(),
         ) {
-            WorkSection(modifier = WorkSectionStyle.toModifier())
-            OtherWorksSection(modifier = OtherWorksSectionStyle.toModifier())
+            ProjectsSection(modifier = ProjectSectionStyle.toModifier())
+            OtherProjectsSection(modifier = OtherProjectsSectionStyle.toModifier())
         }
     }
 }

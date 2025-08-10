@@ -5,8 +5,8 @@
     <string name="home_subtitle">I'm a UX/UI Designer with over three years of experience building accessible and
         high-performance digital products. My goal is to create intuitive experiences that truly resonate with people.
     </string>
-    <string name="featured_work_title">Featured Work</string>
-    <string name="featured_work_description">From beautiful websites and intuitive mobile apps to impactful user-driven
+    <string name="featured_projects_title">Featured Projects</string>
+    <string name="featured_projects_description">From beautiful websites and intuitive mobile apps to impactful user-driven
         projects.
     </string>
     <string name="view_all_projects">View all projects</string>
@@ -33,7 +33,7 @@
     <string name="footer_contact_call_out_line_1">Have a project idea?</string>
     <string name="footer_contact_call_out_line_2">Drop me a message at</string>
     <string name="footer_credits">Designed by Amanda, coded by Rafael with love</string>
-    <string name="work">Work</string>
+    <string name="projects">Projects</string>
     <string name="about">About</string>
 
     <!--  About page  -->

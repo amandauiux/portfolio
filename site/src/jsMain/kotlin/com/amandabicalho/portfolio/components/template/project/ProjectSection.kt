@@ -1,4 +1,4 @@
-package com.amandabicalho.portfolio.components.template.work
+package com.amandabicalho.portfolio.components.template.project
 
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.components.molecule.WorkCard
@@ -18,7 +18,7 @@ import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.fr
 import org.jetbrains.compose.web.dom.Section
 
-val WorkSectionGridStyle = CssStyle {
+val ProjectsSectionGridStyle = CssStyle {
     base { // Mobile first: 1 column
         Modifier
             .display(DisplayStyle.Grid)
@@ -34,14 +34,14 @@ val WorkSectionGridStyle = CssStyle {
 }
 
 @Composable
-fun WorkSection(
+fun ProjectsSection(
     modifier: Modifier = Modifier,
 ) {
     Section(
         attrs = modifier.toAttrs()
     ) {
         Column(
-            modifier = WorkSectionGridStyle.toModifier()
+            modifier = ProjectsSectionGridStyle.toModifier()
         ) {
             // 4 WorkCards for the "Work" section
             repeat(4) {

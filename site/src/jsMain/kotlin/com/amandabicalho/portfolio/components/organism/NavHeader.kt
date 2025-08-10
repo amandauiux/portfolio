@@ -101,7 +101,7 @@ val NavHeaderBrandingStyle = CssStyle.base {
 @Composable
 fun NavHeader(
     isDark: Boolean,
-    onWorkClick: () -> Unit,
+    onProjectsClick: () -> Unit,
     onAboutClick: () -> Unit,
     onThemeToggleClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -125,9 +125,9 @@ fun NavHeader(
                 Nav {
                     Row {
                         NavTextButton(
-                            text = Res.string.work,
+                            text = Res.string.projects,
                             modifier = Modifier.alignSelf(AlignSelf.Center),
-                            onClick = onWorkClick,
+                            onClick = onProjectsClick,
                         )
                         NavTextButton(
                             text = Res.string.about,
