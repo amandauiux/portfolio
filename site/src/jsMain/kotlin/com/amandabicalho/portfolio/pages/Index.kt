@@ -6,7 +6,7 @@ import com.amandabicalho.portfolio.components.template.HeroSection
 import com.amandabicalho.portfolio.components.template.PageLayoutData
 import com.amandabicalho.portfolio.components.template.home.FeaturedWork
 import com.amandabicalho.portfolio.components.template.home.HighlightSection
-import com.amandabicalho.portfolio.components.template.home.WhatIDo
+import com.amandabicalho.portfolio.components.template.home.Expertise
 import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.ui.unit.dp
 import com.varabyte.kobweb.compose.css.Background
@@ -138,7 +138,7 @@ fun HomePage() {
             modifier = HomeFeaturedWorkStyle.toModifier(),
             onViewAllProjectClick = {},
         )
-        WhatIDo(
+        Expertise(
             modifier = HomeWhatIDoStyle.toModifier(),
         )
         HighlightSection(

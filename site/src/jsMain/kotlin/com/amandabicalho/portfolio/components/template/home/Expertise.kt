@@ -20,7 +20,7 @@ import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 
-val WhatIDoStyle = CssStyle {
+val ExpertiseStyle = CssStyle {
     base {
         Modifier.setVariable(GridVars.RowGap, 12.dp)
     }
@@ -28,7 +28,7 @@ val WhatIDoStyle = CssStyle {
         Modifier.setVariable(GridVars.RowGap, 80.dp)
     }
 }
-val WhatIDoTitleStyle = CssStyle {
+val ExpertiseTitleStyle = CssStyle {
     base {
         Modifier
             .gridColumn("span ${GridDefaults.MOBILE_AREA_SIZE}")
@@ -39,7 +39,7 @@ val WhatIDoTitleStyle = CssStyle {
     }
 }
 
-val WhatIDoDescriptionStyle = CssStyle {
+val ExpertiseDescriptionStyle = CssStyle {
     base {
         Modifier
             .gridColumn("span ${GridDefaults.MOBILE_AREA_SIZE}")
@@ -53,7 +53,7 @@ val WhatIDoDescriptionStyle = CssStyle {
     }
 }
 
-val WhatIDoCardSectionStyle = CssStyle {
+val ExpertiseCardSectionStyle = CssStyle {
     base {
         Modifier
             .gridColumnStart(GridDefaults.LEFT_AREA)
@@ -65,7 +65,7 @@ val WhatIDoCardSectionStyle = CssStyle {
     }
 }
 
-val WhatIDoServiceCardStyle = CssStyle {
+val ExpertiseServiceCardStyle = CssStyle {
     base {
         Modifier
             .gridColumn("span ${GridDefaults.MOBILE_AREA_SIZE}")
@@ -77,46 +77,46 @@ val WhatIDoServiceCardStyle = CssStyle {
 }
 
 @Composable
-fun WhatIDo(modifier: Modifier) {
+fun Expertise(modifier: Modifier) {
     GridSection(
-        modifier = WhatIDoStyle
+        modifier = ExpertiseStyle
             .toModifier()
             .then(modifier),
     ) {
         Text(
-            text = Res.string.what_i_do_title,
+            text = Res.string.expertise_title,
             style = Theme.typography.headlineMedium,
-            modifier = WhatIDoTitleStyle.toModifier(),
+            modifier = ExpertiseTitleStyle.toModifier(),
         )
         Text(
-            text = Res.string.what_i_do_description,
+            text = Res.string.expertise_description,
             style = Theme.typography.bodyLarge,
-            modifier = WhatIDoDescriptionStyle.toModifier(),
+            modifier = ExpertiseDescriptionStyle.toModifier(),
         )
 
         GridSection(
-            modifier = WhatIDoCardSectionStyle.toModifier(),
+            modifier = ExpertiseCardSectionStyle.toModifier(),
         ) {
             ServiceCard(
                 title = Res.string.services_website_title,
                 description = Res.string.services_website_description,
                 imageUrl = "images/ic_ui.svg",
                 imageDescription = Res.string.services_website_img_description,
-                modifier = WhatIDoServiceCardStyle.toModifier(),
+                modifier = ExpertiseServiceCardStyle.toModifier(),
             )
             ServiceCard(
                 title = Res.string.services_product_title,
                 description = Res.string.services_product_description,
                 imageUrl = "images/ic_user_experience.svg",
                 imageDescription = Res.string.services_product_img_description,
-                modifier = WhatIDoServiceCardStyle.toModifier(),
+                modifier = ExpertiseServiceCardStyle.toModifier(),
             )
             ServiceCard(
                 title = Res.string.services_mobile_title,
                 description = Res.string.services_mobile_description,
                 imageUrl = "images/ic_product.svg",
                 imageDescription = Res.string.services_mobile_img_description,
-                modifier = WhatIDoServiceCardStyle.toModifier(),
+                modifier = ExpertiseServiceCardStyle.toModifier(),
             )
         }
     }
