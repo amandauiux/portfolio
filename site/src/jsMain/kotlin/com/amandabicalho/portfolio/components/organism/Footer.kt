@@ -170,12 +170,11 @@ val FooterLinkedInStyle = CssStyle {
     }
 
     Breakpoint.MD {
-        Modifier.padding(end = 55.dp)
+        Modifier.padding(end = 64.dp)
     }
 
     visited {
-        Modifier
-            .color(colorScheme.text)
+        Modifier.color(colorScheme.text)
     }
 }
 
