@@ -1,5 +1,6 @@
 package com.amandabicalho.portfolio.components.organism
 
+import Res
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.colorScheme
 import com.amandabicalho.portfolio.components.atom.Text
@@ -102,7 +103,6 @@ fun NavHeader(
     isDark: Boolean,
     onWorkClick: () -> Unit,
     onAboutClick: () -> Unit,
-    onContactClick: () -> Unit,
     onThemeToggleClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -125,19 +125,14 @@ fun NavHeader(
                 Nav {
                     Row {
                         NavTextButton(
-                            text = "Work",
+                            text = Res.string.work,
                             modifier = Modifier.alignSelf(AlignSelf.Center),
                             onClick = onWorkClick,
                         )
                         NavTextButton(
-                            text = "About",
+                            text = Res.string.about,
                             modifier = Modifier.alignSelf(AlignSelf.Center),
                             onClick = onAboutClick,
-                        )
-                        NavTextButton(
-                            text = "Contact",
-                            modifier = Modifier.alignSelf(AlignSelf.Center),
-                            onClick = onContactClick,
                         )
                     }
                 }

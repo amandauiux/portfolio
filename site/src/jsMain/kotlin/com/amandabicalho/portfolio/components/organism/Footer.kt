@@ -22,6 +22,7 @@ import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.JustifyItems
 import com.varabyte.kobweb.compose.css.StyleVariable
 import com.varabyte.kobweb.compose.css.TextAlign
+import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.css.functions.linearGradient
 import com.varabyte.kobweb.compose.css.functions.url
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
@@ -34,6 +35,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.alignSelf
 import com.varabyte.kobweb.compose.ui.modifiers.background
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundRepeat
 import com.varabyte.kobweb.compose.ui.modifiers.borderTop
+import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.gridColumn
@@ -41,17 +43,23 @@ import com.varabyte.kobweb.compose.ui.modifiers.placeItems
 import com.varabyte.kobweb.compose.ui.modifiers.setVariable
 import com.varabyte.kobweb.compose.ui.modifiers.size
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
+import com.varabyte.kobweb.compose.ui.modifiers.textDecorationLine
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.navigation.LinkVars
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.addVariant
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.selectors.visited
+import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
+import org.jetbrains.compose.web.attributes.ATarget
+import org.jetbrains.compose.web.attributes.target
 import org.jetbrains.compose.web.css.AlignSelf
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.deg
 import org.jetbrains.compose.web.css.percent
+import org.jetbrains.compose.web.dom.A
 import org.jetbrains.compose.web.dom.Br
 import org.jetbrains.compose.web.dom.Footer
 import org.jetbrains.compose.web.dom.H4
@@ -139,10 +147,17 @@ val FooterSocialContentStyle = CssStyle {
 
 val FooterLinkedInStyle = CssStyle {
     base {
-        Modifier.padding(0.dp)
+        Modifier
+            .padding(0.dp)
+            .textDecorationLine(TextDecorationLine.None)
+            .color(colorScheme.text)
     }
     Breakpoint.MD {
-        Modifier.padding(end = 150.dp)
+        Modifier.padding(end = 40.dp)
+    }
+    visited {
+        Modifier
+            .color(colorScheme.text)
     }
 }
 
@@ -169,7 +184,6 @@ val FooterCreditsStyle = CssStyle {
 fun Footer(
     onWorkClick: () -> Unit,
     onAboutClick: () -> Unit,
-    onContactClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Footer(
@@ -201,16 +215,24 @@ fun Footer(
             verticalArrangement = Arrangement.spacedBy(20.dp),
             modifier = FooterSocialContentStyle.toModifier(),
         ) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = FooterLinkedInStyle.toModifier(),
+            A(
+                href = "https://www.linkedin.com/in/abicalho/",
+                attrs = FooterLinkedInStyle
+                    .toAttrs {
+                        target(ATarget.Blank)
+                    }
             ) {
-                LinkedIn()
-                Text(
-                    text = "LinkedIn",
-                    style = Theme.typography.bodySmall,
-                    modifier = Modifier.padding(start = 8.dp),
-                )
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    LinkedIn()
+
+                    Text(
+                        text = "LinkedIn",
+                        style = Theme.typography.bodySmall,
+                        modifier = Modifier.padding(start = 8.dp),
+                    )
+                }
             }
             Row(
                 horizontalArrangement = Arrangement.spacedBy(36.dp),
@@ -222,10 +244,6 @@ fun Footer(
                 FooterNavigationTextButton(
                     text = Res.string.about,
                     onClick = { onAboutClick() },
-                )
-                FooterNavigationTextButton(
-                    text = Res.string.contact,
-                    onClick = { onContactClick() },
                 )
             }
         }

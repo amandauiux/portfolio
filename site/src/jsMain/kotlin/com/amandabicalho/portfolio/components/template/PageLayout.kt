@@ -111,7 +111,6 @@ fun PageLayout(context: PageContext, content: @Composable ColumnScope.() -> Unit
                 isDark = colorMode.isDark,
                 onWorkClick = { context.router.navigateTo("/work") },
                 onAboutClick = { context.router.navigateTo("/about") },
-                onContactClick = { context.router.navigateTo("/contact") },
                 onThemeToggleClick = { colorMode = colorMode.opposite },
             )
             content()
@@ -119,7 +118,6 @@ fun PageLayout(context: PageContext, content: @Composable ColumnScope.() -> Unit
         Footer(
             onWorkClick = { context.router.navigateTo("/work") },
             onAboutClick = { context.router.navigateTo("/about") },
-            onContactClick = { context.router.navigateTo("/contact") },
             modifier = PageFooterStyle.toModifier(),
         )
     }
