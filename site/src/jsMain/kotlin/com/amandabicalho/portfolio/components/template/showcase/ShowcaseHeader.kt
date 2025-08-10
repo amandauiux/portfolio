@@ -29,6 +29,7 @@ import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.cssRule
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobwebx.markdown.markdown
@@ -72,12 +73,6 @@ val ShowcaseHeaderTitleStyle = CssStyle {
         Modifier
             .gridColumn(start = GridDefaults.LEFT_AREA, end = GridDefaults.RIGHT_AREA)
             .color(colorScheme.primary[30])
-    }
-
-    Breakpoint.MD {
-
-        Modifier
-            .gridColumn(start = 1, end = 8)
     }
 }
 
@@ -126,16 +121,20 @@ val ShowcaseHeaderProjectInfoGridStyle = CssStyle {
             }
             .gridTemplateAreas(GridDefaults.calculateGridTemplateAreas(areaSize = 6))
     }
+
+    cssRule(Breakpoint.MD, "> div:nth-child(odd)") {
+        Modifier.gridColumn("span 2")
+    }
+
+    cssRule(Breakpoint.MD, "> div:nth-child(even)") {
+        Modifier.gridColumn("span 3")
+    }
 }
 
-val ShowcaseHeaderProjectInfoCol1Style = CssStyle {
+val ShowcaseHeaderProjectInfoStyle = CssStyle {
     base {
         Modifier
             .gridColumn(start = GridDefaults.LEFT_AREA, end = GridDefaults.RIGHT_AREA)
-    }
-
-    Breakpoint.MD {
-        Modifier.gridColumn(start = 1, end = 3)
     }
 }
 
@@ -190,7 +189,11 @@ fun ShowcaseHeader(
         markdown
             .frontMatter["team"]
             ?.singleOrNull()
-            ?: error("Markdown file must set \"team\" in frontmatter")
+    }
+    val client = remember(markdown.frontMatter) {
+        markdown
+            .frontMatter["client"]
+            ?.singleOrNull()
     }
     val year = remember(markdown.frontMatter) {
         markdown
@@ -242,25 +245,34 @@ fun ShowcaseHeader(
 
         Div(attrs = ShowcaseHeaderProjectInfoContainerStyle.toAttrs()) {
             GridSection(modifier = ShowcaseHeaderProjectInfoGridStyle.toModifier()) {
-                ProjectInfo(
-                    title = Res.string.showcase_project_info_team,
-                    value = team,
-                    modifier = ShowcaseHeaderProjectInfoCol1Style.toModifier(),
-                )
+                client?.let { client ->
+                    ProjectInfo(
+                        title = Res.string.showcase_project_info_client,
+                        value = client,
+                        modifier = ShowcaseHeaderProjectInfoStyle.toModifier(),
+                    )
+                }
+                team?.let { team ->
+                    ProjectInfo(
+                        title = Res.string.showcase_project_info_team,
+                        value = team,
+                        modifier = ShowcaseHeaderProjectInfoStyle.toModifier(),
+                    )
+                }
                 ProjectInfo(
                     title = Res.string.showcase_project_info_year_duration,
                     value = year,
-                    modifier = ShowcaseHeaderProjectInfoCol2Style.toModifier(),
+                    modifier = ShowcaseHeaderProjectInfoStyle.toModifier(),
                 )
                 ProjectInfo(
                     title = Res.string.showcase_project_info_project_type,
                     value = projectType,
-                    modifier = ShowcaseHeaderProjectInfoCol1Style.toModifier(),
+                    modifier = ShowcaseHeaderProjectInfoStyle.toModifier(),
                 )
                 ProjectInfo(
                     title = Res.string.showcase_project_info_industry,
                     value = industry,
-                    modifier = ShowcaseHeaderProjectInfoCol2Style.toModifier(),
+                    modifier = ShowcaseHeaderProjectInfoStyle.toModifier(),
                 )
             }
             Column(
