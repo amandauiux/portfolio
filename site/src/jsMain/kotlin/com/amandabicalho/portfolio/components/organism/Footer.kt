@@ -217,7 +217,7 @@ fun Footer(
         ) {
             Logo(modifier = Modifier.size(50.dp))
             H4(
-                attrs = Modifier.fillMaxSize().toAttrs(),
+                attrs = Modifier.fillMaxWidth().toAttrs(),
             ) {
                 org.jetbrains.compose.web.dom.Text(value = Res.string.footer_contact_call_out_line_1)
                 Br()
