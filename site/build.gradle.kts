@@ -23,7 +23,7 @@ kobweb {
             head.add {
                 link {
                     rel = "stylesheet"
-                    href = "/fonts/faces.css"
+                    href = "/portfolio/fonts/faces.css"
                 }
             }
             description.set(
