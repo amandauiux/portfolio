@@ -1,9 +1,12 @@
 package com.amandabicalho.portfolio
 
 import androidx.compose.runtime.Composable
+import com.amandabicalho.portfolio.core.ui.theme.FULL_SCREEN_MENU_CLASSNAME
+import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.css.ScrollBehavior
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxHeight
+import com.varabyte.kobweb.compose.ui.modifiers.overflow
 import com.varabyte.kobweb.compose.ui.modifiers.scrollBehavior
 import com.varabyte.kobweb.core.App
 import com.varabyte.kobweb.silk.init.InitSilk
@@ -23,6 +26,11 @@ fun initColorMode(ctx: InitSilkContext) {
 @InitSilk
 fun initStyles(ctx: InitSilkContext) {
     ctx.stylesheet.apply {
+        registerStyle("body:has(.silk-overlay.$FULL_SCREEN_MENU_CLASSNAME)") {
+            base {
+                Modifier.overflow(Overflow.Hidden)
+            }
+        }
         registerStyleBase("html, body") { Modifier.fillMaxHeight() }
         registerStyleBase("body") { Modifier.scrollBehavior(ScrollBehavior.Smooth) }
     }

@@ -30,6 +30,7 @@ import org.jetbrains.compose.web.css.CSSSizeValue
 import org.jetbrains.compose.web.css.CSSUnit
 
 private const val COLOR_MODE_KEY = "portfolio:colorMode"
+const val FULL_SCREEN_MENU_CLASSNAME = "full-screen-menu"
 
 data class ThemedValue<out T : Palette>(
     override val light: T,
