@@ -3,10 +3,11 @@ layout: .components.template.MarkdownLayout
 title: Revolutionizing Retail - Empowering Sales with Vitrine Infinita
 description: Helping Salespeople and Inspiring Customers at Havaianas Stores
 year: 2022 - 2023
-project_type: [ ecommerce, B2B ]
+project_type: [ e-commerce, B2B ]
 industry: [ Retail, Shopping ]
 tags: [ UI/UX Design, Digital Design ]
 team: ioasys
+client: Havaianas
 hero_image: https://placehold.co/1355x500
 published_at: 2025-08-10T13:48:00
 ---
