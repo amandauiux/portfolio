@@ -6,7 +6,8 @@
         high-performance digital products. My goal is to create intuitive experiences that truly resonate with people.
     </string>
     <string name="featured_projects_title">Featured\nProjects</string>
-    <string name="featured_projects_description">From beautiful websites and intuitive mobile apps to impactful user-driven
+    <string name="featured_projects_description">From beautiful websites and intuitive mobile apps to impactful
+        user-driven
         projects.
     </string>
     <string name="view_all_projects">View all projects</string>
@@ -32,7 +33,7 @@
     <string name="home_big_statement">Creative thinking is the key to solving complex problems.</string>
     <string name="footer_contact_call_out_line_1">Have a project in mind?</string>
     <string name="footer_contact_call_out_line_2">Let's talk!</string>
-    <string name="footer_contact_drop_me_message">Drop me a message at: </string>
+    <string name="footer_contact_drop_me_message">Drop me a message at:</string>
     <string name="footer_credits">Designed by Amanda, coded by Rafael with love</string>
     <string name="projects">Projects</string>
     <string name="about">About</string>
@@ -40,29 +41,28 @@
     <!--  About page  -->
     <string name="about_welcome">Hi, I’m Amanda</string>
     <string name="about_me_paragraph_1">
-        I create meaningful digital experiences that seamlessly blend analytical thinking with visual storytelling. With
-        expertise in strategic design, micro-interactions, and digital accessibility (WCAG), I deliver comprehensive
-        solutions across the entire product development lifecycle. From discovery and user interface design to
-        implementing production-ready products using no-code/low-code platforms, my approach is both versatile and
-        thorough.
+        I’m a UX/UI designer who creates meaningful digital experiences by blending analytical thinking with visual
+        storytelling. My expertise spans the entire product lifecycle, from strategic design and user interface
+        development to implementing production-ready products. I’m also passionate about micro-interactions and digital
+        accessibility (WCAG), ensuring every solution is comprehensive and user-friendly.
     </string>
     <string name="about_me_paragraph_2">
-        Grounded in design best practices, I leverage these principles to drive strategic thinking and make informed
-        decisions that elevate every project. My work focuses on creating intuitive, accessible, and impactful digital
-        experiences that resonate with users while meeting business objectives.
+        I leverage design best practices to drive strategic thinking and make informed decisions that elevate every
+        project. My goal is to create intuitive, accessible, and impactful digital experiences that not only resonate
+        with users but also meet business objectives.
     </string>
     <string name="about_image_description">Amanda Bicalho profile drawing</string>
     <string name="about_my_journey">My design journey</string>
     <string name="about_my_journey_paragraph_1">
-        My design journey has been anything but conventional. From the early days of exploring creativity with crayons
-        to diving into the structured world of engineering, my path has been a unique blend of curiosity and discovery,
-        ultimately leading me to UX/UI design.
+        My journey into design was anything but linear. I’ve always been driven by curiosity, whether it was exploring
+        colors with crayons as a kid or diving into the structured world of engineering. It was this unique blend of
+        creativity and logic that ultimately led me to UX/UI design.
     </string>
     <string name="about_my_journey_paragraph_2">
-        A pivotal moment of self-discovery ignited my passion for design. Starting with graphic design, I built a strong
-        foundation in visual aesthetics and communication. This exploration quickly evolved into a deep love for digital
-        design, where I found my true calling. Today, as a UX/UI designer, I take pride in the non-linear path that
-        brought me here and the experiences that have shaped my approach to design
+        My passion truly ignited during a moment of self-discovery, starting with graphic design and building a strong
+        foundation in visual aesthetics. This soon evolved into a deep love for digital design—my true calling. Today,
+        I'm proud of the unique path that shaped my approach to design and allows me to see challenges from multiple
+        perspectives.
     </string>
     <string name="about_work_experience">Work Experience</string>
     <string name="about_view_resume">View resume</string>
