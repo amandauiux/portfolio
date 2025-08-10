@@ -39,6 +39,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.gridColumn
+import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.placeItems
 import com.varabyte.kobweb.compose.ui.modifiers.setVariable
 import com.varabyte.kobweb.compose.ui.modifiers.size
@@ -50,6 +51,7 @@ import com.varabyte.kobweb.silk.components.navigation.LinkVars
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.addVariant
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.cssRule
 import com.varabyte.kobweb.silk.style.selectors.visited
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
@@ -125,10 +127,24 @@ val FooterContactContentStyle = CssStyle {
         Modifier
             .gridColumn(GridDefaults.LEFT_AREA)
     }
-    cssRule("> h4 > a") {
+}
+
+val FooterContactDropMeTextStyle = CssStyle {
+    base {
         Modifier
-            .setVariable(LinkVars.DefaultColor, colorScheme.text)
-            .setVariable(LinkVars.VisitedColor, colorScheme.text)
+            .color(colorScheme.text)
+    }
+
+    cssRule("> a") {
+        Modifier
+            .setVariable(LinkVars.DefaultColor, colorScheme.primary[30])
+            .setVariable(LinkVars.VisitedColor, colorScheme.primary[30])
+            .margin(left = 6.dp)
+    }
+
+    cssRule(Breakpoint.MD, "> h4 > a") {
+        Modifier
+            .margin(left = 12.dp)
     }
 }
 
@@ -152,9 +168,11 @@ val FooterLinkedInStyle = CssStyle {
             .textDecorationLine(TextDecorationLine.None)
             .color(colorScheme.text)
     }
+
     Breakpoint.MD {
-        Modifier.padding(end = 40.dp)
+        Modifier.padding(end = 55.dp)
     }
+
     visited {
         Modifier
             .color(colorScheme.text)
@@ -204,7 +222,13 @@ fun Footer(
                 org.jetbrains.compose.web.dom.Text(value = Res.string.footer_contact_call_out_line_1)
                 Br()
                 org.jetbrains.compose.web.dom.Text(value = Res.string.footer_contact_call_out_line_2)
-                Br()
+            }
+
+            Row(modifier = FooterContactDropMeTextStyle.toModifier()) {
+                Text(
+                    text = Res.string.footer_contact_drop_me_message,
+                    style = Theme.typography.bodyLarge,
+                )
                 Link(
                     path = "mailto:abicalho.design@gmail.com",
                     text = "abicalho.design@gmail.com",
