@@ -31,6 +31,15 @@
     </string>
     <string name="services_mobile_img_description">An android icon representing the mobile service.</string>
     <string name="home_big_statement">Creative thinking is the key to solving complex problems.</string>
+    <string name="home_highlights_vision">
+        From vision to reality: I turn your ideas into intuitive, real-world products.
+    </string>
+    <string name="home_highlights_modern_effective">
+        Modern and effective: I build fresh, user-friendly interfaces that stand out.
+    </string>
+    <string name="home_highlights_driven_by_empathy">
+        Driven by empathy: My designs are centered around what users truly need.
+    </string>
     <string name="footer_contact_call_out_line_1">Have a project in mind?</string>
     <string name="footer_contact_call_out_line_2">Let's talk!</string>
     <string name="footer_contact_drop_me_message">Drop me a message at:</string>

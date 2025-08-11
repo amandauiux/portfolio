@@ -2,13 +2,17 @@ package com.amandabicalho.portfolio.components.template.home
 
 import Res
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import com.amandabicalho.portfolio.components.atom.Text
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridDefaults
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridSection
 import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.theme.typography.Regular
+import com.amandabicalho.portfolio.core.ui.theme.typography.toModifier
 import com.amandabicalho.portfolio.core.ui.unit.dp
+import com.amandabicalho.portfolio.core.ui.unit.sp
+import com.amandabicalho.portfolio.typography
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.ListStyle
 import com.varabyte.kobweb.compose.css.ListStyleImage
@@ -23,7 +27,9 @@ import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
+import org.jetbrains.compose.web.dom.B
 import org.jetbrains.compose.web.dom.Li
+import org.jetbrains.compose.web.dom.Text
 import org.jetbrains.compose.web.dom.Ul
 
 val HighlightSectionStyle = CssStyle {
@@ -56,13 +62,25 @@ val HighlightSectionHighlightList = CssStyle {
     }
 
     cssRule("li") {
-        Modifier
+        typography
+            .titleSmall
+            .copy(
+                fontWeight = FontWeight.Regular,
+            )
+            .toModifier()
             .listStyle(ListStyle.of(image = ListStyleImage.of(url("images/icons/ic_circle.svg"))))
             .padding(vertical = 20.dp)
     }
 
     cssRule(Breakpoint.MD.toCSSMediaQuery(), "li") {
-        Modifier
+        typography
+            .titleSmall
+            .copy(
+                fontSize = 24.sp,
+                lineHeight = 31.2.sp,
+                fontWeight = FontWeight.Regular,
+            )
+            .toModifier()
             .padding(vertical = 20.dp)
             .margin(left = 24.dp)
     }
@@ -85,16 +103,13 @@ fun HighlightSection(modifier: Modifier = Modifier) {
 
         Ul(attrs = HighlightSectionHighlightList.toAttrs()) {
             HighlightItem(
-                text = "Give your product a fresh and modern UI",
+                text = Res.string.home_highlights_vision,
             )
             HighlightItem(
-                text = "Turn your idea into a tangible, real-world product",
+                text = Res.string.home_highlights_modern_effective,
             )
             HighlightItem(
-                text = "Highlight lorem ipsom dolor siamet",
-            )
-            HighlightItem(
-                text = "Highlight lorem ipsom dolor siamet",
+                text = Res.string.home_highlights_driven_by_empathy,
             )
         }
     }
@@ -106,11 +121,16 @@ private fun HighlightItem(
     modifier: Modifier = Modifier,
 ) {
     Li(attrs = modifier.toAttrs()) {
-        Text(
-            text = text,
-            style = Theme.typography.titleSmall.copy(
-                fontWeight = FontWeight.Regular,
-            ),
-        )
+        val separatorIndex = remember { text.indexOf(":") + 1 }
+        val title = remember(text) {
+            text.substring(startIndex = 0, endIndex = separatorIndex)
+        }
+        val description = remember(text) {
+            text.substring(startIndex = separatorIndex, endIndex = text.length)
+        }
+        B {
+            Text(value = title)
+        }
+        Text(value = description)
     }
 }
