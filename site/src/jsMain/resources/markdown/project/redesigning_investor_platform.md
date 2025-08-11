@@ -7,7 +7,7 @@ project_type: [SaaS, B2C]
 industry: [Finance Services, Investment]
 tags: [UI/UX Design, Wireframe, Digital Design]
 team: StayShure
-hero_image: https://placehold.co/1355x500
+hero_image: /assets/projects/investor_platform_hero.jpg
 published_at: 2025-08-10T13:36:00
 ---
 
