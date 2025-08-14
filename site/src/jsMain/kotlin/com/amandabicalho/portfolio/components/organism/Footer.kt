@@ -36,8 +36,11 @@ import com.varabyte.kobweb.compose.ui.modifiers.background
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundRepeat
 import com.varabyte.kobweb.compose.ui.modifiers.borderTop
 import com.varabyte.kobweb.compose.ui.modifiers.color
+import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
+import com.varabyte.kobweb.compose.ui.modifiers.flexDirection
+import com.varabyte.kobweb.compose.ui.modifiers.flexWrap
 import com.varabyte.kobweb.compose.ui.modifiers.gridColumn
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.placeItems
@@ -58,11 +61,15 @@ import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.attributes.ATarget
 import org.jetbrains.compose.web.attributes.target
 import org.jetbrains.compose.web.css.AlignSelf
+import org.jetbrains.compose.web.css.DisplayStyle
+import org.jetbrains.compose.web.css.FlexDirection
+import org.jetbrains.compose.web.css.FlexWrap
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.deg
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.dom.A
 import org.jetbrains.compose.web.dom.Br
+import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Footer
 import org.jetbrains.compose.web.dom.H4
 
@@ -132,19 +139,25 @@ val FooterContactContentStyle = CssStyle {
 val FooterContactDropMeTextStyle = CssStyle {
     base {
         Modifier
+            .display(DisplayStyle.Flex)
+            .flexDirection(FlexDirection.Column)
             .color(colorScheme.text)
+    }
+
+    Breakpoint.MD {
+        Modifier
+            .flexDirection(FlexDirection.Row)
+            .flexWrap(FlexWrap.Wrap)
     }
 
     cssRule("> a") {
         Modifier
             .setVariable(LinkVars.DefaultColor, colorScheme.primary[30])
             .setVariable(LinkVars.VisitedColor, colorScheme.primary[30])
-            .margin(left = 6.dp)
     }
 
-    cssRule(Breakpoint.MD, "> h4 > a") {
-        Modifier
-            .margin(left = 12.dp)
+    cssRule(Breakpoint.MD, "> span") {
+        Modifier.margin(right = 8.dp)
     }
 }
 
@@ -223,7 +236,7 @@ fun Footer(
                 org.jetbrains.compose.web.dom.Text(value = Res.string.footer_contact_call_out_line_2)
             }
 
-            Row(modifier = FooterContactDropMeTextStyle.toModifier()) {
+            Div(attrs = FooterContactDropMeTextStyle.toAttrs()) {
                 Text(
                     text = Res.string.footer_contact_drop_me_message,
                     style = Theme.typography.bodyLarge,
