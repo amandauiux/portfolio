@@ -12,7 +12,7 @@ thumbnail: /assets/projects/Havaianas/Thumbnail_Hava.jpg
 published_at: 2025-08-10T13:48:00
 ---
 
-{{{ .components.template.showcase.ShowcaseHeader
+{{{ .components.template.showcase.ShowcaseHeader ("/assets/projects/Havaianas/vitrine_infinita_havaianas_hero.jpg")
 
 Havaianas, a leading retail brand, sought to enhance the in-store shopping experience and empower their sales team. A common challenge in retail is "showrooming," where customers try products in-store but purchase them online elsewhere. To combat this, Havaianas envisioned a solution that would allow salespeople to showcase the entire product catalog – even items not physically in stock – directly to customers in a seamless and engaging way.
 

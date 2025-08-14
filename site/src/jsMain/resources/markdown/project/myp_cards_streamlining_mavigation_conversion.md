@@ -11,7 +11,7 @@ thumbnail: /assets/projects/MYP/Thumbnail_MYP.jpg
 published_at: 2025-08-10T13:57:00
 ---
 
-{{{ .components.template.showcase.ShowcaseHeader
+{{{ .components.template.showcase.ShowcaseHeader ("/assets/projects/MYP/myp_cards_hero.jpg")
 
 MYP Cards, an online marketplace for trading card games, was experiencing high user drop-off rates during the buying
 process. The platform, primarily designed by engineers, lacked a user-centric approach, resulting in a confusing
