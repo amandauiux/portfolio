@@ -19,6 +19,10 @@ import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.FlexDirection
 import org.jetbrains.compose.web.dom.H2
+import org.jetbrains.compose.web.dom.H3
+import org.jetbrains.compose.web.dom.H4
+import org.jetbrains.compose.web.dom.H5
+import org.jetbrains.compose.web.dom.H6
 import org.jetbrains.compose.web.dom.Section
 import org.jetbrains.compose.web.dom.Text
 
@@ -65,13 +69,32 @@ val ShowcaseSectionContentStyle = CssStyle {
 fun ShowcaseSection(
     title: String,
     modifier: Modifier = Modifier,
+    level: String = "h2",
     content: @Composable () -> Unit,
 ) {
     Section(
         attrs = ShowcaseSectionStyle.toModifier().then(modifier).toAttrs(),
     ) {
-        H2(attrs = ShowcaseSectionTitleStyle.toAttrs()) {
-            Text(value = title)
+        when (level.lowercase()) {
+            "h3" -> H3(attrs = ShowcaseSectionTitleStyle.toAttrs()) {
+                Text(value = title)
+            }
+
+            "h4" -> H4(attrs = ShowcaseSectionTitleStyle.toAttrs()) {
+                Text(value = title)
+            }
+
+            "h5" -> H5(attrs = ShowcaseSectionTitleStyle.toAttrs()) {
+                Text(value = title)
+            }
+
+            "h6" -> H6(attrs = ShowcaseSectionTitleStyle.toAttrs()) {
+                Text(value = title)
+            }
+
+            else -> H2(attrs = ShowcaseSectionTitleStyle.toAttrs()) {
+                Text(value = title)
+            }
         }
         Column(modifier = ShowcaseSectionContentStyle.toModifier()) {
             content()

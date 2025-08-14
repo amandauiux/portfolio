@@ -23,6 +23,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.gridColumn
 import com.varabyte.kobweb.compose.ui.modifiers.gridRow
 import com.varabyte.kobweb.compose.ui.modifiers.gridTemplateAreas
 import com.varabyte.kobweb.compose.ui.modifiers.gridTemplateColumns
+import com.varabyte.kobweb.compose.ui.modifiers.gridTemplateRows
 import com.varabyte.kobweb.compose.ui.modifiers.rowGap
 import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.graphics.Image
@@ -114,6 +115,9 @@ val ShowcaseHeaderProjectInfoGridStyle = CssStyle {
                 repeat(6) { size(1.fr) }
             }
             .gridTemplateAreas(GridDefaults.calculateGridTemplateAreas(areaSize = 6))
+            .gridTemplateRows {
+                repeat(4) { size(1.fr) }
+            }
     }
 
     cssRule(Breakpoint.MD, "> div:nth-child(odd)") {
@@ -167,7 +171,7 @@ val ShowcaseHeaderProjectBackgroundContentStyle = CssStyle {
 
 @Composable
 fun ShowcaseHeader(
-    modifier: Modifier = Modifier,
+    heroImageUrl: String? = null,
     content: @Composable () -> Unit,
 ) {
     val context = rememberPageContext()
@@ -216,14 +220,14 @@ fun ShowcaseHeader(
             ?.takeIf { it.isNotEmpty() }
             ?: error("Markdown file must set \"tags\" in frontmatter")
     }
-    val heroImage = remember(markdown.frontMatter) {
+    val thumbnailUrl = remember(markdown.frontMatter) {
         markdown
-            .frontMatter["hero_image"]
+            .frontMatter["thumbnail"]
             ?.singleOrNull()
-            ?: error("Markdown file must set \"hero_image\" in frontmatter")
+            ?: error("Markdown file must set \"thumbnail\" in frontmatter")
     }
     Column(
-        modifier = ShowcaseHeaderContainerStyle.toModifier().then(modifier),
+        modifier = ShowcaseHeaderContainerStyle.toModifier(),
     ) {
         GridSection(modifier = ShowcaseHeaderTitleContainerStyle.toModifier()) {
             H1(
@@ -232,7 +236,7 @@ fun ShowcaseHeader(
                 org.jetbrains.compose.web.dom.Text(value = title)
             }
             Image(
-                src = heroImage,
+                src = heroImageUrl ?: thumbnailUrl,
                 alt = "Hero Image",
                 modifier = ShowcaseHeaderHeroImageStyle.toModifier(),
             )

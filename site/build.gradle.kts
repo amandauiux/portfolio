@@ -43,9 +43,9 @@ kobweb {
                 val tags = frontMatter["tags"]
                     ?.takeIf { it.isNotEmpty() }
                     ?: error("Markdown file must set \"tags\" in frontmatter")
-                val image = frontMatter["hero_image"]
+                val image = frontMatter["thumbnail"]
                     ?.singleOrNull()
-                    ?: error("Markdown file must set \"hero_image\" in frontmatter")
+                    ?: error("Markdown file must set \"thumbnail\" in frontmatter")
                 val publishedAt = frontMatter["published_at"]
                     ?.singleOrNull()
                     ?: error("Markdown file must set \"published_at\" in frontmatter")

@@ -7,7 +7,7 @@ project_type: [ Marketplace, B2C ]
 industry: [ Gaming, e-commerce ]
 tags: [ UI/UX Design, Wireframe, Digital Design ]
 client: MYP Cards
-hero_image: /assets/projects/myp_cards_hero.jpg
+thumbnail: /assets/projects/myp_cards_hero.jpg
 published_at: 2025-08-10T13:57:00
 ---
 

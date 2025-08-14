@@ -8,7 +8,7 @@ industry: [ Retail, Shopping ]
 tags: [ UI/UX Design, Digital Design ]
 team: ioasys
 client: Havaianas
-hero_image: /assets/projects/vitrine_infinita_havaianas_hero.jpg
+thumbnail: /assets/projects/vitrine_infinita_havaianas_hero.jpg
 published_at: 2025-08-10T13:48:00
 ---
 
