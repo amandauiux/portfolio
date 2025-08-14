@@ -7,7 +7,7 @@ project_type: [SaaS, B2C]
 industry: [Finance Services, Investment]
 tags: [UI/UX Design, Wireframe, Digital Design]
 team: StayShure
-thumbnail: /assets/projects/Investment/investor_platform_hero.png
+thumbnail: /assets/projects/Investment/Thumbnail_Investment.jpg
 published_at: 2025-08-10T13:36:00
 ---
 
