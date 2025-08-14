@@ -14,27 +14,29 @@ published_at: 2025-08-10T13:48:00
 
 {{{ .components.template.showcase.ShowcaseHeader
 
-Vitrine Infinita is a solution designed to help salespeople at Havaianas stores by presenting all the products available
-in the Havaianas catalog to customers, including those that are not in-store, on a platform similar to an e-commerce
-platform.
+Havaianas, a leading retail brand, sought to enhance the in-store shopping experience and empower their sales team. A common challenge in retail is "showrooming," where customers try products in-store but purchase them online elsewhere. To combat this, Havaianas envisioned a solution that would allow salespeople to showcase the entire product catalog – even items not physically in stock – directly to customers in a seamless and engaging way.
 
-The solution prevents lost sales from showrooming by creating an improved in-store shopping experience that encourages
-customers to buy onsite instead of searching for better deals elsewhere.
-
-Due to confidentiality, details of the project were hidden. In case you’d like to know more about it, please contact me.
+The core challenge was to **improve the checkout process for Havaianas salespeople** by delivering an intuitive and efficient tool. This web-based platform, designed with a **mobile-first approach**, would enable them to easily search the complete catalog and finalize customer purchases directly in-store.
 
 }}}
 
-{{{ .components.template.showcase.ShowcaseSection("Challenge")
+{{{ .components.template.showcase.ShowcaseSection("Solution")
 
-Improve the checkout process for salespeople at Havaianas stores, delivering a tool that is easy and simple to navigate,
-allowing them to search and complete a client’s purchase using a web platform, considering a mobile-first experience.
+Vitrine Infinita is a digital solution designed to bridge the gap between the physical store and the complete online catalog. By providing salespeople with a platform similar to an e-commerce site, customers could explore all available Havaianas products, regardless of in-store inventory. This aimed to prevent lost sales and create a more comprehensive and satisfying in-store experience, encouraging on-site purchases.
+
+*Due to confidentiality, specific details of the project are not included here. For more information, please feel free to contact me.*
+
+![image](https://placehold.co/1355x500)
 
 }}}
 
-{{{ .components.template.showcase.ShowcaseSection("Anticipated Impact")
+{{{ .components.template.showcase.ShowcaseSection("Impact")
 
-- In-store sales increased by 27% after the launch of the application in 100 pilot Havaianas’ stores.
-- The forecast at the time was to expand and implement the application in all Havaianas stores.
+The initial rollout of the Vitrine Infinita application in **100 pilot Havaianas** stores yielded significant results:
+
+- **In-store sales increased by 27%** following the application's launch.
+
+Based on this success, the forecast was to expand and implement the application across all Havaianas stores, demonstrating the significant potential of the solution to transform the retail sales process.
+
 
 }}}

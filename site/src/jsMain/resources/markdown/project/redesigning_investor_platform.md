@@ -44,9 +44,13 @@ Leveraging insights from investor journey mapping, current workflow analysis, an
 
 It was created a simplified dashboard that gives investors a holistic view of their investment performance. At-a-glance metrics and clear visualizations allow them to quickly assess their portfolio's progress and identify new opportunities.
 
+![image](https://placehold.co/1355x500)
+
 ### Streamlined Company Discovery
 
 Implemented powerful search and filtering capabilities to help investors easily find companies matching their investment criteria, whether actively fundraising or planning future rounds.
+
+![image](https://placehold.co/1355x500)
 
 ### Enhanced Company Profiles
 
@@ -58,12 +62,15 @@ The investment workflow was streamlined to be more intuitive and efficient. Inve
 
 }}}
 
+
+![image](https://placehold.co/1355x500)
+
 {{{ .components.template.showcase.ShowcaseSection("The Impact")
 
 The redesign resulted in a new platform that:
 
-- Simplifies the investment portfolio** with a comprehensive, at-a-glance view.
-- Provides quick access** to a wide range of new investment opportunities.
+- **Simplifies the investment portfolio** with a comprehensive, at-a-glance view.
+- **Provides quick access** to a wide range of new investment opportunities.
 
 **Anticipated results show promising user adoption, with over 50 new companies already on the waiting list to join the platform.**
 

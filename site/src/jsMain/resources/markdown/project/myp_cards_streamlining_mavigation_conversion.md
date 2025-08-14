@@ -64,6 +64,9 @@ architecture of MYP Cards was redesigned, where the following aspects were imple
 - Relocated the search bar to a prominent position at the top center of the header
 - Added filtering options enabling users to search across different categories of card types
 
+
+![image](https://placehold.co/1355x500)
+
 ### Streamlined Checkout Flow
 
 During the research phase, another friction point was the lengthy checkout process. While the solution wasn’t fully
@@ -72,7 +75,13 @@ implemented, here are some initiatives taken at the time to streamline the check
 - Mapped a clear user flow, eliminating unnecessary steps to reduce friction and encourage purchase completion
 - Created wireframes based on the proposed flow for future implementation
 
+
+![image](https://placehold.co/1355x500)
+
 }}}
+
+
+![image](https://placehold.co/1355x500)
 
 {{{ .components.template.showcase.ShowcaseSection("Looking ahead")
 
