@@ -15,29 +15,34 @@ published_at: 2025-08-10T13:36:00
 
 *The company name has been anonymized to respect confidentiality, as well as some sensitive information.*
 
-An investment platform that connects early-stage companies with potential investors embarked on a full redesign of their investor platform to enhance usability and visual appeal, ultimately driving user adoption and engagement.
+Finding the right investment opportunity can be difficult, especially when dealing with complex financial data. The company, an investment platform that connects early-stage companies with potential investors, wanted to enhance its user experience and visual appeal to drive user adoption and engagement.
+
+Impact:
+
+- A new and simplified investment portfolio
+- Quick access to comprehensive new investment opportunities
 
 }}}
 
-{{{ .components.template.showcase.ShowcaseSection("Challenge")
+{{{ .components.template.showcase.ShowcaseSection("Uncovering the Pain Points: The Investor's Struggle")
 
-Investors using the investor platform faced significant hurdles when trying to make informed investment decisions:
+**Accredited investors seeking high returns through early-stage company investments often struggle to make informed decisions due to a lack of clear and accessible information about potential investments.** 
+
+Through an in-depth analysis of the existing platform, we uncovered three critical user pain points that needed to be addressed:
 
 - Incomplete information about potential investments
 - Confusingly presented company information and business plans
 - A complex, multi-step investment process
 
-The central problem: accredited investors seeking high returns through early-stage investments struggled to make informed decisions due to unclear and inaccessible information, leading to potential investment regret.
-
 }}}
 
-{{{ .components.template.showcase.ShowcaseSection("Solution")
+{{{ .components.template.showcase.ShowcaseSection("Turning complex financial data into clear, actionable investment insights")
 
-Through collaborative research with the Product Manager and client, including mapping the investor’s journey, and creating a new information architecture, the application was redesigned with these key improvements:
+Leveraging insights from investor journey mapping, current workflow analysis, and client feedback, a new sitemap was designed. The goal was to simplify the complex investment process and provide clear, actionable information.
 
 ### Portfolio Dashboard
 
-Created a holistic view of investment performance with at-a-glance metrics and visualizations, allowing investors to quickly assess portfolio progress and identify opportunities.
+It was created a simplified dashboard that gives investors a holistic view of their investment performance. At-a-glance metrics and clear visualizations allow them to quickly assess their portfolio's progress and identify new opportunities.
 
 ### Streamlined Company Discovery
 
@@ -49,15 +54,17 @@ Transformed company profiles into comprehensive resource centers with clear, eng
 
 ### Simplified Investment Process
 
-Streamlined the investment workflow to make it intuitive and efficient, allowing investors to explore, evaluate, and invest in promising opportunities directly from the platform.
+The investment workflow was streamlined to be more intuitive and efficient. Investors can now explore, evaluate, and invest in promising opportunities directly from the platform.
 
 }}}
 
-{{{ .components.template.showcase.ShowcaseSection("Key Takeaways")
+{{{ .components.template.showcase.ShowcaseSection("The Impact")
 
-- In-depth discovery and research were crucial when tackling technical concepts and understanding user needs
-- Iteration revealed opportunities beyond the initial scope, leading to valuable new features mapped through the process
-- Collaboration with stakeholders helped prioritize critical aspects for launch while building a roadmap for future enhancements
-- Anticipated results show promise with over 50 new companies on the waiting list to join the new  platform
+The redesign resulted in a new platform that:
+
+- Simplifies the investment portfolio** with a comprehensive, at-a-glance view.
+- Provides quick access** to a wide range of new investment opportunities.
+
+**Anticipated results show promising user adoption, with over 50 new companies already on the waiting list to join the platform.**
 
 }}}
