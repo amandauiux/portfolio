@@ -7,11 +7,11 @@ project_type: [SaaS, B2C]
 industry: [Finance Services, Investment]
 tags: [UI/UX Design, Wireframe, Digital Design]
 team: StayShure
-hero_image: /assets/projects/investor_platform_hero.jpg
+thumbnail: /assets/projects/Investment/investor_platform_hero.png
 published_at: 2025-08-10T13:36:00
 ---
 
-{{{ .components.template.showcase.ShowcaseHeader
+{{{ .components.template.showcase.ShowcaseHeader("/assets/projects/Investment/investor_platform_hero.png")
 
 *The company name has been anonymized to respect confidentiality, as well as some sensitive information.*
 
@@ -40,23 +40,29 @@ Through an in-depth analysis of the existing platform, we uncovered three critic
 
 Leveraging insights from investor journey mapping, current workflow analysis, and client feedback, a new sitemap was designed. The goal was to simplify the complex investment process and provide clear, actionable information.
 
-### Portfolio Dashboard
+}}}
+
+{{{ .components.template.showcase.ShowcaseSection("Portfolio Dashboard", level = "h3")
 
 It was created a simplified dashboard that gives investors a holistic view of their investment performance. At-a-glance metrics and clear visualizations allow them to quickly assess their portfolio's progress and identify new opportunities.
 
+}}}
+
 ![dashboard interface](/assets/projects/Investment/Dashboard_Investment.png)
 
-### Streamlined Company Discovery
+{{{ .components.template.showcase.ShowcaseSection("Streamlined Company Discovery", level = "h3")
 
 Implemented powerful search and filtering capabilities to help investors easily find companies matching their investment criteria, whether actively fundraising or planning future rounds.
 
+}}}
+
 ![search investment](/assets/projects/Investment/Search_Investment.png)
 
-### Enhanced Company Profiles
+{{{ .components.template.showcase.ShowcaseSection("Enhanced Company Profiles", level = "h3")
 
 Transformed company profiles into comprehensive resource centers with clear, engaging overviews of mission, team, market position, and other key details. Content is now tailored based on user profiles, providing targeted information for both prospective and existing investors.
 
-### Simplified Investment Process
+#### Simplified Investment Process
 
 The investment workflow was streamlined to be more intuitive and efficient. Investors can now explore, evaluate, and invest in promising opportunities directly from the platform.
 
