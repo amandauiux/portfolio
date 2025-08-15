@@ -3,9 +3,9 @@ layout: .components.template.MarkdownLayout
 title: Revolutionizing Retail - Empowering Sales with Vitrine Infinita
 description: Helping Salespeople and Inspiring Customers at Havaianas Stores
 year: 2022 - 2023
-project_type: [ e-commerce, B2B ]
+project_type: [ e-commerce, B2B2C ]
 industry: [ Retail, Shopping ]
-tags: [ UI/UX Design, Digital Design ]
+tags: [ UI/UX Design, B2B2C ]
 team: ioasys
 client: Havaianas
 thumbnail: /assets/projects/Havaianas/Thumbnail_Hava.jpg
@@ -26,9 +26,9 @@ Vitrine Infinita is a digital solution designed to bridge the gap between the ph
 
 *Due to confidentiality, specific details of the project are not included here. For more information, please feel free to contact me.*
 
-![image](/assets/projects/Havaianas/Hava_checkout.jpg)
-
 }}}
+
+![image](/assets/projects/Havaianas/Hava_checkout.jpg)
 
 {{{ .components.template.showcase.ShowcaseSection("Impact")
 
