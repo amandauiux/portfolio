@@ -34,13 +34,10 @@ Through an in-depth analysis of the existing platform, we uncovered three critic
 - Confusingly presented company information and business plans
 - A complex, multi-step investment process
 
-}}}
-
-{{{ .components.template.showcase.ShowcaseSection("Turning complex financial data into clear, actionable investment insights")
+**Turning complex financial data into clear, actionable investment insights**
 
 Leveraging insights from investor journey mapping, current workflow analysis, and client feedback, a new sitemap was designed. The goal was to simplify the complex investment process and provide clear, actionable information.
 
-}}}
 
 {{{ .components.template.showcase.ShowcaseSection("Portfolio Dashboard", level = "h3")
 
@@ -58,11 +55,9 @@ Implemented powerful search and filtering capabilities to help investors easily 
 
 ![search investment](/assets/projects/Investment/Search_Investment.png)
 
-{{{ .components.template.showcase.ShowcaseSection("Enhanced Company Profiles", level = "h3")
+{{{ .components.template.showcase.ShowcaseSection("Enhanced Company Profiles and Simplified Investment Process", level = "h3")
 
 Transformed company profiles into comprehensive resource centers with clear, engaging overviews of mission, team, market position, and other key details. Content is now tailored based on user profiles, providing targeted information for both prospective and existing investors.
-
-#### Simplified Investment Process
 
 The investment workflow was streamlined to be more intuitive and efficient. Investors can now explore, evaluate, and invest in promising opportunities directly from the platform.
 
@@ -80,6 +75,7 @@ The redesign resulted in a new platform that:
 
 - **Simplifies the investment portfolio** with a comprehensive, at-a-glance view.
 - **Provides quick access** to a wide range of new investment opportunities.
+- **Optimized for desktop and mobile** considering both differences between both devices.
 
 **Anticipated results show promising user adoption, with over 50 new companies already on the waiting list to join the platform.**
 
