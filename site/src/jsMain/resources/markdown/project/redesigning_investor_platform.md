@@ -5,7 +5,7 @@ description: A redesign of an investment platform that enhances the user experie
 year: 2024
 project_type: [SaaS, B2C]
 industry: [Finance Services, Investment]
-tags: [UI/UX Design, Wireframe, Digital Design]
+tags: [UI/UX Design, Redesign, SaaS]
 team: StayShure
 thumbnail: /assets/projects/Investment/Thumbnail_Investment.jpg
 published_at: 2025-08-10T13:36:00
@@ -37,7 +37,7 @@ Through an in-depth analysis of the existing platform, we uncovered three critic
 **Turning complex financial data into clear, actionable investment insights**
 
 Leveraging insights from investor journey mapping, current workflow analysis, and client feedback, a new sitemap was designed. The goal was to simplify the complex investment process and provide clear, actionable information.
-
+}}}
 
 {{{ .components.template.showcase.ShowcaseSection("Portfolio Dashboard", level = "h3")
 
