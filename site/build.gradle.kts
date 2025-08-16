@@ -25,6 +25,30 @@ kobweb {
                     rel = "stylesheet"
                     href = "/portfolio/fonts/faces.css"
                 }
+                link {
+                    rel = "icon"
+                    type = "image/png"
+                    href = "/portfolio/favicon-96x96.png"
+                    sizes = "96x96"
+                }
+                link {
+                    rel = "icon"
+                    type = "image/svg+xml"
+                    href = "/portfolio/favicon.svg"
+                }
+                link {
+                    rel = "shortcut icon"
+                    href = "/portfolio/favicon.ico"
+                }
+                link {
+                    rel = "apple-touch-icon"
+                    sizes = "180x180"
+                    href = "/portfolio/apple-touch-icon.png"
+                }
+                link {
+                    rel = "manifest"
+                    href = "/portfolio/site.webmanifest"
+                }
             }
             description.set(
                 "Explore my UX UI design portfolio featuring a curated collection of design projects and " +
