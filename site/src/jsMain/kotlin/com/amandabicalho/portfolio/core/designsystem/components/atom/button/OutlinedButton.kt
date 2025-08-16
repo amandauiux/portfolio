@@ -31,13 +31,19 @@ val OutlinedButtonVariant = ButtonStyle.addVariant {
     base {
         Modifier
             .position(Position.Relative)
+    }
+    cssRule("> div") {
+        Modifier
+            .position(Position.Relative)
+            .zIndex(2)
             .border {
                 color(ButtonDefaults.Vars.BorderColor.value())
                 width(1.dp)
                 style(LineStyle.Solid)
             }
+            .borderRadius(ButtonDefaults.Vars.BorderRadius.value())
     }
-    hover {
+    cssRule(":hover > div") {
         Modifier
             .color(ButtonDefaults.Vars.HoverContentColor.value())
             .border {
@@ -54,14 +60,14 @@ val OutlinedButtonVariant = ButtonStyle.addVariant {
             .position(Position.Absolute)
             .display(DisplayStyle.InlineBlock)
             .borderRadius(ButtonDefaults.Vars.BorderRadius.value())
-            .zIndex(-1)
+            .zIndex(1)
             .opacity(1f)
             .background(ButtonDefaults.Vars.HoverContainerColor.value())
             .opacity(0f)
             .top(0.dp)
             .left(0.dp)
             .transition {
-                property("opacity", "top", "left", "border")
+                property("opacity", "top", "left", "border", "border-color", "background-color")
                 duration(0.4.s)
                 timingFunction(
                     AnimationTimingFunction.cubicBezier(
