@@ -58,13 +58,13 @@ val HomeHeaderStyle = CssStyle {
                 Background.of(
                     image = BackgroundImage.of(
                         gradient = linearGradient(angle = 180.deg) {
-                            add(Color.argb(0xFFFFFCF7), 46.95.percent)
+                            add(Color.argb(0xFFFFFFFF), 46.95.percent)
                             add(Color.rgba(255, 255, 255, 0), 100.percent)
                         },
                     ),
                 ),
             )
-            .backgroundRepeat(BackgroundRepeat.Round)
+            .background { repeat(BackgroundRepeat.Round) }
             .padding(horizontal = PaddingHorizontalMobile, vertical = 40.dp)
             .fillMaxWidth()
             .padding(bottom = 80.dp)
@@ -76,7 +76,7 @@ val HomeHeaderStyle = CssStyle {
                 Background.of(
                     image = BackgroundImage.of(
                         gradient = linearGradient(angle = 90.deg) {
-                            add(Color.argb(0xFFFFFCF7), 24.71.percent)
+                            add(Color.argb(0xFFFFFFFF), 24.71.percent)
                             add(Color.rgba(255, 255, 255, 0), 100.percent)
                         },
                     ),

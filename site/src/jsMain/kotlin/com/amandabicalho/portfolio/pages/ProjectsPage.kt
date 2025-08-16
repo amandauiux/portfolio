@@ -57,7 +57,7 @@ val ProjectHeaderStyle = CssStyle {
                 Background.of(
                     image = BackgroundImage.of(
                         gradient = linearGradient(angle = 90.deg) {
-                            add(Color.argb(0xFFFFFCF7), 24.71.percent)
+                            add(Color.argb(0xFFFFFFFF), 24.71.percent)
                             add(Color.rgba(255, 255, 255, 0), 100.percent)
                         },
                     ),
