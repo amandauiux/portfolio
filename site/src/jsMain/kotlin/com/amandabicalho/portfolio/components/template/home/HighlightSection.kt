@@ -13,22 +13,33 @@ import com.amandabicalho.portfolio.core.ui.theme.typography.toModifier
 import com.amandabicalho.portfolio.core.ui.unit.dp
 import com.amandabicalho.portfolio.core.ui.unit.sp
 import com.amandabicalho.portfolio.typography
+import com.varabyte.kobweb.compose.css.Background
+import com.varabyte.kobweb.compose.css.BackgroundImage
 import com.varabyte.kobweb.compose.css.FontWeight
-import com.varabyte.kobweb.compose.css.ListStyle
-import com.varabyte.kobweb.compose.css.ListStyleImage
 import com.varabyte.kobweb.compose.css.functions.url
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.alignItems
+import com.varabyte.kobweb.compose.ui.modifiers.background
+import com.varabyte.kobweb.compose.ui.modifiers.content
+import com.varabyte.kobweb.compose.ui.modifiers.display
+import com.varabyte.kobweb.compose.ui.modifiers.flexDirection
+import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.gridArea
 import com.varabyte.kobweb.compose.ui.modifiers.gridColumn
-import com.varabyte.kobweb.compose.ui.modifiers.listStyle
+import com.varabyte.kobweb.compose.ui.modifiers.height
 import com.varabyte.kobweb.compose.ui.modifiers.margin
+import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
+import org.jetbrains.compose.web.css.AlignItems
+import org.jetbrains.compose.web.css.DisplayStyle
+import org.jetbrains.compose.web.css.FlexDirection
 import org.jetbrains.compose.web.dom.B
 import org.jetbrains.compose.web.dom.Li
+import org.jetbrains.compose.web.dom.Span
 import org.jetbrains.compose.web.dom.Text
 import org.jetbrains.compose.web.dom.Ul
 
@@ -68,8 +79,24 @@ val HighlightSectionHighlightList = CssStyle {
                 fontWeight = FontWeight.Regular,
             )
             .toModifier()
-            .listStyle(ListStyle.of(image = ListStyleImage.of(url("images/icons/ic_circle.svg"))))
+            .display(DisplayStyle.Flex)
+            .flexDirection(FlexDirection.Row)
+            .alignItems(AlignItems.Center)
+            .gap(16.dp)
             .padding(vertical = 20.dp)
+    }
+
+    cssRule("li::before") {
+        Modifier
+            .display(DisplayStyle.Block)
+            .content(" ")
+            .background(
+                Background.of(
+                    BackgroundImage.of(url("images/icons/ic_circle.svg")),
+                ),
+            )
+            .width(24.dp)
+            .height(16.dp)
     }
 
     cssRule(Breakpoint.MD.toCSSMediaQuery(), "li") {
@@ -128,9 +155,11 @@ private fun HighlightItem(
         val description = remember(text) {
             text.substring(startIndex = separatorIndex, endIndex = text.length)
         }
-        B {
-            Text(value = title)
+        Span {
+            B {
+                Text(value = title)
+            }
+            Text(value = description)
         }
-        Text(value = description)
     }
 }
