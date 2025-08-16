@@ -9,6 +9,7 @@ import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.theme.typography.toModifier
 import com.amandabicalho.portfolio.core.ui.unit.dp
 import com.amandabicalho.portfolio.domain.WorkExperience
+import com.amandabicalho.portfolio.typography
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -59,6 +60,19 @@ val WorkExperienceCardStyle = CssStyle {
     }
 }
 
+val WorkExperiencePeriodTextStyle = CssStyle {
+    base {
+        typography.bodyMedium.toModifier()
+    }
+
+    Breakpoint.LG {
+        typography.bodyMedium
+            .copy(textAlign = TextAlign.Right)
+            .toModifier()
+    }
+}
+
+
 private val formatter = LocalDate.Format {
     year()
 }
@@ -93,7 +107,8 @@ fun WorkExperienceCard(
 
         Text(
             text = period,
-            style = Theme.typography.bodyMedium.copy(textAlign = TextAlign.Right),
+            style = Theme.typography.bodyMedium,
+            modifier = WorkExperiencePeriodTextStyle.toModifier(),
         )
     }
 }
