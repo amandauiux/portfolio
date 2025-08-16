@@ -31,7 +31,7 @@ val AboutPageStyle = CssStyle {
             .gap(40.dp)
     }
 
-    Breakpoint.MD {
+    Breakpoint.LG {
         Modifier
             .padding(horizontal = 36.dp, vertical = 80.dp)
             .gap(80.dp)

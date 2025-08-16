@@ -41,7 +41,7 @@ val AboutWorkExperienceTitleStyle = CssStyle {
     base {
         Modifier.gridColumn(start = GridDefaults.LEFT_AREA, end = GridDefaults.RIGHT_AREA)
     }
-    Breakpoint.MD {
+    Breakpoint.LG {
         Modifier.gridColumn(GridDefaults.LEFT_AREA)
     }
 
@@ -49,7 +49,7 @@ val AboutWorkExperienceTitleStyle = CssStyle {
         Modifier.display(DisplayStyle.None)
     }
 
-    cssRule(Breakpoint.MD, "> button") {
+    cssRule(Breakpoint.LG, "> button") {
         Modifier.display(DisplayStyle.Block)
     }
 }
@@ -63,7 +63,7 @@ val AboutWorkExperienceListStyle = CssStyle {
             .fillMaxWidth()
             .gap(20.dp)
     }
-    Breakpoint.MD {
+    Breakpoint.LG {
         Modifier
             .gridColumn(GridDefaults.RIGHT_AREA)
             .gap(40.dp)
@@ -73,7 +73,7 @@ val AboutWorkExperienceListStyle = CssStyle {
         Modifier.display(DisplayStyle.Block)
     }
 
-    cssRule(Breakpoint.MD, "> button") {
+    cssRule(Breakpoint.LG, "> button") {
         Modifier
             .display(DisplayStyle.None)
     }

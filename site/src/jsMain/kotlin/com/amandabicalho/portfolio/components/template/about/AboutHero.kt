@@ -37,7 +37,7 @@ val AboutHeroSectionStyle = CssStyle {
     base {
         Modifier.gap(40.dp)
     }
-    Breakpoint.MD {
+    Breakpoint.LG {
         Modifier.gap(80.dp)
     }
 }
@@ -48,7 +48,7 @@ val AboutHeroContentContainerStyle = CssStyle {
             .gap(20.dp)
             .gridColumn(start = GridDefaults.LEFT_AREA, end = GridDefaults.RIGHT_AREA)
     }
-    Breakpoint.MD {
+    Breakpoint.LG {
         Modifier.gridColumn(GridDefaults.LEFT_AREA)
     }
 }
@@ -57,7 +57,7 @@ val AboutHeroParagraphStyle = CssStyle {
     base {
         Modifier.gap(12.dp)
     }
-    Breakpoint.MD {
+    Breakpoint.LG {
         Modifier.gap(20.dp)
     }
 }
@@ -70,7 +70,7 @@ val AboutHeroPictureStyle = CssStyle {
             .fillMaxWidth()
             .gridColumn(start = GridDefaults.LEFT_AREA, end = GridDefaults.RIGHT_AREA)
     }
-    Breakpoint.MD {
+    Breakpoint.LG {
         Modifier.gridColumn(GridDefaults.RIGHT_AREA)
     }
 
@@ -80,7 +80,7 @@ val AboutHeroPictureStyle = CssStyle {
             .objectFit(ObjectFit.Cover)
     }
 
-    cssRule(Breakpoint.MD, "> img") {
+    cssRule(Breakpoint.LG, "> img") {
         Modifier.widthIn(max = 644.dp)
     }
 }

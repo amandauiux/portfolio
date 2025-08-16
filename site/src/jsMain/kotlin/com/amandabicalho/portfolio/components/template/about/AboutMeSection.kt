@@ -7,6 +7,7 @@ import com.amandabicalho.portfolio.components.atom.Paragraph
 import com.amandabicalho.portfolio.components.atom.Text
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridDefaults
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridSection
+import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridVars
 import com.amandabicalho.portfolio.core.extensions.margin
 import com.amandabicalho.portfolio.core.featureflag.FeatureFlag
 import com.amandabicalho.portfolio.core.ui.theme.Theme
@@ -22,6 +23,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.gridColumn
 import com.varabyte.kobweb.compose.ui.modifiers.height
 import com.varabyte.kobweb.compose.ui.modifiers.margin
+import com.varabyte.kobweb.compose.ui.modifiers.setVariable
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
@@ -32,8 +34,19 @@ val AboutMeSectionStyle = CssStyle {
             .fillMaxWidth()
             .gap(40.dp)
     }
-    Breakpoint.MD {
+    Breakpoint.LG {
         Modifier.gap(80.dp)
+    }
+}
+
+val AboutMeGridSectionStyle = CssStyle {
+    base {
+        Modifier
+            .setVariable(GridVars.RowGap, 12.dp)
+    }
+    Breakpoint.LG {
+        Modifier
+            .setVariable(GridVars.RowGap, 20.dp)
     }
 }
 
@@ -42,7 +55,7 @@ val AboutMeMyJourneyTitle = CssStyle {
         Modifier
             .gridColumn(start = GridDefaults.LEFT_AREA, end = GridDefaults.RIGHT_AREA)
     }
-    Breakpoint.MD {
+    Breakpoint.LG {
         Modifier
             .gridColumn(GridDefaults.LEFT_AREA)
     }
@@ -53,7 +66,7 @@ val AboutMeMyJourneyContent = CssStyle {
             .gridColumn(start = GridDefaults.LEFT_AREA, end = GridDefaults.RIGHT_AREA)
             .gap(12.dp)
     }
-    Breakpoint.MD {
+    Breakpoint.LG {
         Modifier
             .gridColumn(GridDefaults.RIGHT_AREA)
             .gap(20.dp)
@@ -88,7 +101,7 @@ fun AboutMeSection(modifier: Modifier = Modifier) {
             .toModifier()
             .then(modifier),
     ) {
-        GridSection {
+        GridSection(modifier = AboutMeGridSectionStyle.toModifier()) {
             Text(
                 text = Res.string.about_my_journey,
                 style = Theme.typography.headlineSmall,
