@@ -31,6 +31,7 @@ import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import kotlinx.browser.document
 import org.jetbrains.compose.web.css.fr
 import org.jetbrains.compose.web.css.vh
+import org.w3c.dom.HTMLMetaElement
 
 val PageContainerStyle = CssStyle {
     base {
@@ -91,9 +92,15 @@ val PageFooterStyle = CssStyle {
     }
 }
 
+private const val DEFAULT_DESCRIPTION =
+    "Explore my UX UI design portfolio featuring a curated collection of design projects and " +
+        "insightful case studies. Discover my approach and expertise as a designer."
+
 class PageLayoutData(
     val title: String,
-    val description: String? = null,
+    val thumbnail: String = "favicon-32x32.png",
+    val description: String = DEFAULT_DESCRIPTION,
+    val keywords: List<String> = emptyList(),
 )
 
 @Composable
@@ -102,11 +109,32 @@ fun PageLayout(context: PageContext, content: @Composable ColumnScope.() -> Unit
     val data = context.data.getValue<PageLayoutData>()
     var colorMode by ColorMode.currentState
     LaunchedEffect(data.title) {
-        document.title = "${data.title} | Amanda Bicalho Portfolio"
-        data.description?.let { description ->
-            document
-                .querySelector(selectors = "meta[name='description']")
-                ?.setAttribute(qualifiedName = "content", value = description)
+        data.title.let { title ->
+            document.title = "$title | Amanda Bicalho Portfolio"
+            createOrUpdateMetaTag(name = "title", content = title)
+            createOrUpdateMetaTag(name = "og:title", content = title)
+            createOrUpdateMetaTag(name = "twitter:title", content = title)
+        }
+        data.thumbnail.let { thumbnail ->
+            val url = if (thumbnail.startsWith("https://") || thumbnail.startsWith("http://")) {
+                thumbnail
+            } else {
+                "https://amandauiux.github.io/portfolio/$thumbnail"
+            }
+            createOrUpdateMetaTag(name = "og:image", content = url)
+            createOrUpdateMetaTag(name = "twitter:image", content = url)
+            createOrUpdateMetaTag(name = "twitter:card", content = "summary_large_image")
+        }
+        data.description.let { description ->
+            createOrUpdateMetaTag(name = "description", content = description)
+            createOrUpdateMetaTag(name = "og:description", content = description)
+            createOrUpdateMetaTag(name = "twitter:description", content = description)
+        }
+        if (data.keywords.isNotEmpty()) {
+            createOrUpdateMetaTag(
+                name = "keywords",
+                content = data.keywords.joinToString(", "),
+            )
         }
     }
 
@@ -129,5 +157,15 @@ fun PageLayout(context: PageContext, content: @Composable ColumnScope.() -> Unit
             onAboutClick = { context.router.navigateTo("/about") },
             modifier = PageFooterStyle.toModifier(),
         )
+    }
+}
+
+private fun createOrUpdateMetaTag(name: String, content: String) {
+    document.head?.let { head ->
+        val metaTag = (head.querySelector("meta[name='$name']")
+            ?: document.createElement("meta")) as HTMLMetaElement
+        metaTag.name = name
+        metaTag.content = content
+        head.appendChild(metaTag)
     }
 }

@@ -93,14 +93,24 @@ val MarkdownStyle = CssStyle {
 
 @InitRoute
 fun initMarkdownLayout(ctx: InitRouteContext) {
-    val title = requireNotNull(ctx.markdown?.frontMatter["title"]?.singleOrNull()) {
+    val frontMatter = ctx.markdown?.frontMatter ?: error("Markdown file must set frontmatter")
+    val title = requireNotNull(frontMatter["title"]?.singleOrNull()) {
         "Markdown file must set \"title\" in frontmatter"
     }
-    val description = requireNotNull(ctx.markdown?.frontMatter["description"]?.singleOrNull()) {
+    val description = requireNotNull(frontMatter["description"]?.singleOrNull()) {
         "Markdown file must set \"description\" in frontmatter"
     }
+    val thumbnail = requireNotNull(frontMatter["thumbnail"]?.singleOrNull()) {
+        "Markdown file must set \"thumbnail\" in frontmatter"
+    }
+    val tags = frontMatter["tags"]?.takeIf { it.isNotEmpty() }.orEmpty()
     ctx.data.add(
-        PageLayoutData(title = title, description = description)
+        PageLayoutData(
+            title = title,
+            description = description,
+            thumbnail = thumbnail,
+            keywords = tags,
+        )
     )
 }
 
