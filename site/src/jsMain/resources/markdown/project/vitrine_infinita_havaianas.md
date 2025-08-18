@@ -34,7 +34,7 @@ Vitrine Infinita is a digital solution designed to bridge the gap between the ph
 
 The initial rollout of the Vitrine Infinita application in **100 pilot Havaianas** stores yielded significant results:
 
-####In-store sales increased by 27% following the application's launch.
+#### In-store sales increased by 27% following the application's launch.
 
 Based on this success, the forecast was to expand and implement the application across all Havaianas stores, demonstrating the significant potential of the solution to transform the retail sales process.
 

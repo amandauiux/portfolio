@@ -65,9 +65,14 @@ architecture of MYP Cards was redesigned, where the following aspects were imple
 - Added filtering options enabling users to search across different categories of card types
 
 
-![image](https://placehold.co/1355x500)
+}}}
 
-### Streamlined Checkout Flow
+![image](/assets/projects/MYP/MYP-solution-1.jpg)
+
+![image](/assets/projects/MYP/MYP-solution-2.jpg)
+
+{{{ .components.template.showcase.ShowcaseSection("Streamlined Checkout Flow", level = "h3")
+
 
 During the research phase, another friction point was the lengthy checkout process. While the solution wasn’t fully
 implemented, here are some initiatives taken at the time to streamline the checkout process.
@@ -76,10 +81,7 @@ implemented, here are some initiatives taken at the time to streamline the check
 - Created wireframes based on the proposed flow for future implementation
 
 
-![image](https://placehold.co/1355x500)
-
 }}}
-
 
 ![image](https://placehold.co/1355x500)
 
