@@ -5,8 +5,7 @@ import com.amandabicalho.portfolio.core.designsystem.components.atom.content.Gri
 import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.ui.theme.typography.toModifier
 import com.amandabicalho.portfolio.core.ui.unit.dp
-import com.amandabicalho.portfolio.core.ui.unit.sp
-import com.amandabicalho.portfolio.ui.theme.Typography
+import com.amandabicalho.portfolio.ui.theme.DesktopTypography
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
@@ -46,40 +45,22 @@ val MarkdownStyle = CssStyle {
             .padding(vertical = 80.dp, horizontal = 36.dp)
     }
     cssRule(Breakpoint.MD, "h1") {
-        Typography.headlineMedium.copy(
-            fontSize = 80.sp,
-            lineHeight = 96.sp,
-        ).toModifier()
+        DesktopTypography.headlineMedium.toModifier()
     }
     cssRule(Breakpoint.MD, "h2") {
-        Typography.headlineSmall.copy(
-            fontSize = 60.sp,
-            lineHeight = 72.sp,
-        ).toModifier()
+        DesktopTypography.headlineSmall.toModifier()
     }
     cssRule(Breakpoint.MD, "h3") {
-        Typography.titleLarge.copy(
-            fontSize = 36.sp,
-            lineHeight = 46.8.sp,
-        ).toModifier()
+        DesktopTypography.titleLarge.toModifier()
     }
     cssRule(Breakpoint.MD, "h4") {
-        Typography.titleMedium.copy(
-            fontSize = 32.sp,
-            lineHeight = 41.6.sp,
-        ).toModifier()
+        DesktopTypography.titleMedium.toModifier()
     }
     cssRule(Breakpoint.MD, "h5") {
-        Typography.titleSmall.copy(
-            fontSize = 24.sp,
-            lineHeight = 31.2.sp,
-        ).toModifier()
+        DesktopTypography.titleSmall.toModifier()
     }
     cssRule(Breakpoint.MD, "h6") {
-        Typography.titleSmall.copy(
-            fontSize = 24.sp,
-            lineHeight = 31.2.sp,
-        ).toModifier()
+        DesktopTypography.titleSmall.toModifier()
     }
 
     cssRule("img") {

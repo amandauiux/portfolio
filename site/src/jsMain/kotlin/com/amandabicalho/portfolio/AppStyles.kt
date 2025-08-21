@@ -6,8 +6,8 @@ import com.amandabicalho.portfolio.core.ui.theme.color.Transparent
 import com.amandabicalho.portfolio.core.ui.theme.typography.toModifier
 import com.amandabicalho.portfolio.core.ui.unit.DefaultFontSize
 import com.amandabicalho.portfolio.core.ui.unit.dp
-import com.amandabicalho.portfolio.core.ui.unit.sp
 import com.amandabicalho.portfolio.ui.theme.DarkColorScheme
+import com.amandabicalho.portfolio.ui.theme.DesktopTypography
 import com.amandabicalho.portfolio.ui.theme.LightColorScheme
 import com.amandabicalho.portfolio.ui.theme.Typography
 import com.varabyte.kobweb.compose.css.BoxSizing
@@ -85,10 +85,7 @@ fun initSiteStyles(context: InitSilkContext) {
                         .backgroundColor(BackgroundColorVar.value())
                 }
                 Breakpoint.MD {
-                    Typography.bodyLarge.copy(
-                        fontSize = 18.sp,
-                        lineHeight = 27.sp,
-                    ).toModifier()
+                    DesktopTypography.bodyLarge.toModifier()
                 }
             }
             registerStyle("h1") {
@@ -96,10 +93,7 @@ fun initSiteStyles(context: InitSilkContext) {
                     Typography.headlineLarge.toModifier().margin(all = 0.dp) // Mobile-first
                 }
                 Breakpoint.MD {
-                    Typography.headlineLarge.copy(
-                        fontSize = 96.sp,
-                        lineHeight = 115.2.sp,
-                    ).toModifier()
+                    DesktopTypography.headlineLarge.toModifier()
                 }
             }
             registerStyle("h2") {
@@ -107,10 +101,7 @@ fun initSiteStyles(context: InitSilkContext) {
                     Typography.headlineMedium.toModifier().margin(all = 0.dp) // Mobile-first
                 }
                 Breakpoint.MD {
-                    Typography.headlineMedium.copy(
-                        fontSize = 80.sp,
-                        lineHeight = 96.sp,
-                    ).toModifier()
+                    DesktopTypography.headlineMedium.toModifier()
                 }
             }
             registerStyle("h3") {
@@ -118,10 +109,7 @@ fun initSiteStyles(context: InitSilkContext) {
                     Typography.headlineSmall.toModifier().margin(all = 0.dp) // Mobile-first
                 }
                 Breakpoint.MD {
-                    Typography.headlineSmall.copy(
-                        fontSize = 60.sp,
-                        lineHeight = 72.sp,
-                    ).toModifier()
+                    DesktopTypography.headlineSmall.toModifier()
                 }
             }
             registerStyle("h4") {
@@ -129,10 +117,7 @@ fun initSiteStyles(context: InitSilkContext) {
                     Typography.titleLarge.toModifier().margin(all = 0.dp) // Mobile-first
                 }
                 Breakpoint.MD {
-                    Typography.titleLarge.copy(
-                        fontSize = 36.sp,
-                        lineHeight = 46.8.sp,
-                    ).toModifier()
+                    DesktopTypography.titleLarge.toModifier()
                 }
             }
             registerStyle("h5") {
@@ -140,10 +125,7 @@ fun initSiteStyles(context: InitSilkContext) {
                     Typography.titleMedium.toModifier().margin(all = 0.dp) // Mobile-first
                 }
                 Breakpoint.MD {
-                    Typography.titleMedium.copy(
-                        fontSize = 32.sp,
-                        lineHeight = 41.6.sp,
-                    ).toModifier()
+                    DesktopTypography.titleMedium.toModifier()
                 }
             }
             registerStyle("h6") {
@@ -151,10 +133,7 @@ fun initSiteStyles(context: InitSilkContext) {
                     Typography.titleSmall.toModifier().margin(all = 0.dp) // Mobile-first
                 }
                 Breakpoint.MD {
-                    Typography.titleSmall.copy(
-                        fontSize = 24.sp,
-                        lineHeight = 31.2.sp,
-                    ).toModifier()
+                    DesktopTypography.titleSmall.toModifier()
                 }
             }
         }

@@ -71,3 +71,34 @@ val Typography = Typography(
         letterSpacing = 0.sp,
     ),
 )
+
+val DesktopTypography = Typography.copy(
+    headlineLarge = Typography.headlineLarge.copy(
+        fontSize = 80.sp,
+        lineHeight = 96.sp,
+    ),
+    headlineMedium = Typography.headlineMedium.copy(
+        fontSize = 72.sp,
+        lineHeight = 86.4.sp,
+    ),
+    headlineSmall = Typography.headlineSmall.copy(
+        fontSize = 60.sp,
+        lineHeight = 72.sp,
+    ),
+    titleLarge = Typography.titleLarge.copy(
+        fontSize = 36.sp,
+        lineHeight = 46.8.sp,
+    ),
+    titleMedium = Typography.titleMedium.copy(
+        fontSize = 32.sp,
+        lineHeight = 41.6.sp,
+    ),
+    titleSmall = Typography.titleSmall.copy(
+        fontSize = 24.sp,
+        lineHeight = 31.2.sp,
+    ),
+    bodyLarge = Typography.bodyLarge.copy(
+        fontSize = 18.sp,
+        lineHeight = 27.sp,
+    )
+)
