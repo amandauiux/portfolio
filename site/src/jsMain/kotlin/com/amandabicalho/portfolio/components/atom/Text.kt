@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.theme.typography.TextStyle
 import com.amandabicalho.portfolio.core.ui.theme.typography.toModifier
-import com.amandabicalho.portfolio.core.ui.unit.sp
 import com.amandabicalho.portfolio.typography
+import com.amandabicalho.portfolio.ui.theme.DesktopTypography
 import com.varabyte.kobweb.compose.css.WhiteSpace
 import com.varabyte.kobweb.compose.dom.ElementRefScope
 import com.varabyte.kobweb.compose.dom.registerRefScope
@@ -38,10 +38,7 @@ val BaseTextStyle = CssStyle<TextKind> {
         typography.bodyLarge.toModifier() // Mobile-first (from updated Type.kt)
     }
     Breakpoint.MD {
-        typography.bodyLarge.copy(
-            fontSize = 18.sp,
-            lineHeight = 27.sp,
-        ).toModifier()
+        DesktopTypography.bodyLarge.toModifier()
     }
 }
 
@@ -50,10 +47,7 @@ val HeadlineLargeVariant = BaseTextStyle.addVariant {
         typography.headlineLarge.toModifier()
     }
     Breakpoint.MD {
-        typography.headlineLarge.copy(
-            fontSize = 96.sp,
-            lineHeight = 115.2.sp,
-        ).toModifier()
+        DesktopTypography.headlineLarge.toModifier()
     }
 }
 val HeadlineMediumVariant = BaseTextStyle.addVariant {
@@ -61,10 +55,7 @@ val HeadlineMediumVariant = BaseTextStyle.addVariant {
         typography.headlineMedium.toModifier()
     }
     Breakpoint.MD {
-        typography.headlineMedium.copy(
-            fontSize = 80.sp,
-            lineHeight = 96.sp,
-        ).toModifier()
+        DesktopTypography.headlineMedium.toModifier()
     }
 }
 val HeadlineSmallVariant = BaseTextStyle.addVariant {
@@ -72,10 +63,7 @@ val HeadlineSmallVariant = BaseTextStyle.addVariant {
         typography.headlineSmall.toModifier()
     }
     Breakpoint.MD {
-        typography.headlineSmall.copy(
-            fontSize = 60.sp,
-            lineHeight = 72.sp,
-        ).toModifier()
+        DesktopTypography.headlineSmall.toModifier()
     }
 }
 val TitleLargeVariant = BaseTextStyle.addVariant {
@@ -83,10 +71,7 @@ val TitleLargeVariant = BaseTextStyle.addVariant {
         typography.titleLarge.toModifier()
     }
     Breakpoint.MD {
-        typography.titleLarge.copy(
-            fontSize = 36.sp,
-            lineHeight = 46.8.sp,
-        ).toModifier()
+        DesktopTypography.titleLarge.toModifier()
     }
 }
 val TitleMediumVariant = BaseTextStyle.addVariant {
@@ -94,10 +79,7 @@ val TitleMediumVariant = BaseTextStyle.addVariant {
         typography.titleMedium.toModifier()
     }
     Breakpoint.MD {
-        typography.titleMedium.copy(
-            fontSize = 32.sp,
-            lineHeight = 41.6.sp,
-        ).toModifier()
+        DesktopTypography.titleMedium.toModifier()
     }
 }
 val TitleSmallVariant = BaseTextStyle.addVariant {
@@ -105,10 +87,7 @@ val TitleSmallVariant = BaseTextStyle.addVariant {
         typography.titleSmall.toModifier()
     }
     Breakpoint.MD {
-        typography.titleSmall.copy(
-            fontSize = 24.sp,
-            lineHeight = 31.2.sp,
-        ).toModifier()
+        DesktopTypography.titleSmall.toModifier()
     }
 }
 val BodyLargeVariant = BaseTextStyle.addVariant { // This is already the BaseTextStyle, but for consistency
@@ -116,10 +95,7 @@ val BodyLargeVariant = BaseTextStyle.addVariant { // This is already the BaseTex
         typography.bodyLarge.toModifier()
     }
     Breakpoint.MD {
-        typography.bodyLarge.copy(
-            fontSize = 18.sp,
-            lineHeight = 27.sp,
-        ).toModifier()
+        DesktopTypography.bodyLarge.toModifier()
     }
 }
 val BodyMediumVariant = BaseTextStyle.addVariant {
@@ -127,10 +103,7 @@ val BodyMediumVariant = BaseTextStyle.addVariant {
         typography.bodyMedium.toModifier()
     }
     Breakpoint.MD {
-        typography.bodyMedium.copy(
-            fontSize = 16.sp,
-            lineHeight = 24.sp,
-        ).toModifier()
+        DesktopTypography.bodyMedium.toModifier()
     }
 }
 val BodySmallVariant = BaseTextStyle.addVariant {
@@ -138,10 +111,7 @@ val BodySmallVariant = BaseTextStyle.addVariant {
         typography.bodySmall.toModifier()
     }
     Breakpoint.MD {
-        typography.bodySmall.copy(
-            fontSize = 14.sp,
-            lineHeight = 21.sp,
-        ).toModifier()
+        DesktopTypography.bodySmall.toModifier()
     }
 }
 
