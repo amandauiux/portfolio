@@ -23,31 +23,31 @@ kobweb {
             head.add {
                 link {
                     rel = "stylesheet"
-                    href = "/portfolio/fonts/faces.css"
+                    href = basePath.prependTo("/fonts/faces.css")
                 }
                 link {
                     rel = "icon"
                     type = "image/png"
-                    href = "/portfolio/favicon-96x96.png"
+                    href = basePath.prependTo("/favicon-96x96.png")
                     sizes = "96x96"
                 }
                 link {
                     rel = "icon"
                     type = "image/svg+xml"
-                    href = "/portfolio/favicon.svg"
+                    href = basePath.prependTo("/favicon.svg")
                 }
                 link {
                     rel = "shortcut icon"
-                    href = "/portfolio/favicon.ico"
+                    href = basePath.prependTo("/favicon.ico")
                 }
                 link {
                     rel = "apple-touch-icon"
                     sizes = "180x180"
-                    href = "/portfolio/apple-touch-icon.png"
+                    href = basePath.prependTo("/apple-touch-icon.png")
                 }
                 link {
                     rel = "manifest"
-                    href = "/portfolio/site.webmanifest"
+                    href = basePath.prependTo("/site.webmanifest")
                 }
             }
             description.set(
