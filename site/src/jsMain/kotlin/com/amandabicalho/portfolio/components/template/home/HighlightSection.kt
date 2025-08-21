@@ -6,6 +6,7 @@ import androidx.compose.runtime.remember
 import com.amandabicalho.portfolio.components.atom.Text
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridDefaults
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridSection
+import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridVars
 import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.theme.typography.Regular
@@ -22,12 +23,14 @@ import com.varabyte.kobweb.compose.ui.modifiers.alignItems
 import com.varabyte.kobweb.compose.ui.modifiers.background
 import com.varabyte.kobweb.compose.ui.modifiers.content
 import com.varabyte.kobweb.compose.ui.modifiers.display
+import com.varabyte.kobweb.compose.ui.modifiers.flex
 import com.varabyte.kobweb.compose.ui.modifiers.flexDirection
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.gridArea
 import com.varabyte.kobweb.compose.ui.modifiers.gridColumn
 import com.varabyte.kobweb.compose.ui.modifiers.height
 import com.varabyte.kobweb.compose.ui.modifiers.margin
+import com.varabyte.kobweb.compose.ui.modifiers.setVariable
 import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.CssStyle
@@ -45,7 +48,10 @@ import org.jetbrains.compose.web.dom.Ul
 
 val HighlightSectionStyle = CssStyle {
     base {
-        Modifier
+        Modifier.setVariable(GridVars.RowGap, 32.dp)
+    }
+    Breakpoint.MD {
+        Modifier.setVariable(GridVars.RowGap, 40.dp)
     }
 }
 
@@ -64,12 +70,12 @@ val HighlightSectionHighlightList = CssStyle {
     base {
         Modifier
             .gridColumn(start = GridDefaults.LEFT_AREA, end = GridDefaults.RIGHT_AREA)
-            .padding(start = 24.dp)
             .margin(0.dp)
     }
     Breakpoint.MD {
         Modifier
             .gridArea(GridDefaults.RIGHT_AREA)
+            .padding(start = 24.dp)
     }
 
     cssRule("li") {
@@ -83,7 +89,7 @@ val HighlightSectionHighlightList = CssStyle {
             .flexDirection(FlexDirection.Row)
             .alignItems(AlignItems.Center)
             .gap(16.dp)
-            .padding(vertical = 20.dp)
+            .padding(vertical = 12.dp)
     }
 
     cssRule("li::before") {
@@ -95,7 +101,7 @@ val HighlightSectionHighlightList = CssStyle {
                     BackgroundImage.of(url("images/icons/ic_circle.svg")),
                 ),
             )
-            .width(24.dp)
+            .width(16.dp)
             .height(16.dp)
     }
 
@@ -110,6 +116,9 @@ val HighlightSectionHighlightList = CssStyle {
             .toModifier()
             .padding(vertical = 20.dp)
             .margin(left = 24.dp)
+    }
+    cssRule("li > span") {
+        Modifier.flex(1)
     }
 }
 
