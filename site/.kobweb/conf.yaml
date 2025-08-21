@@ -1,6 +1,6 @@
 site:
   title: "Amanda Bicalho Portfolio"
-  basePath: "portfolio" # temp until domain is not mapped.
+  basePath: ""
 
 server:
   files:

@@ -119,7 +119,7 @@ fun PageLayout(context: PageContext, content: @Composable ColumnScope.() -> Unit
             val url = if (thumbnail.startsWith("https://") || thumbnail.startsWith("http://")) {
                 thumbnail
             } else {
-                "https://amandauiux.github.io/portfolio/$thumbnail"
+                "https://amandauiux.github.io/$thumbnail"
             }
             createOrUpdateMetaTag(name = "og:image", content = url)
             createOrUpdateMetaTag(name = "twitter:image", content = url)
