@@ -1,10 +1,13 @@
 package com.amandabicalho.portfolio.components.template.project
 
+import Res
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.components.atom.Text
 import com.amandabicalho.portfolio.components.molecule.WorkCard
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.unit.dp
+import com.amandabicalho.portfolio.domain.Project
+import com.varabyte.kobweb.compose.css.ObjectFit
 import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -17,6 +20,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.gridAutoColumns
 import com.varabyte.kobweb.compose.ui.modifiers.gridAutoFlow
 import com.varabyte.kobweb.compose.ui.modifiers.gridTemplateRows
+import com.varabyte.kobweb.compose.ui.modifiers.objectFit
 import com.varabyte.kobweb.compose.ui.modifiers.overflow
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.styleModifier
@@ -56,7 +60,7 @@ val OtherProjectsSectionGridStyle = CssStyle {
                 property("-webkit-overflow-scrolling", "touch") // Enable smooth scrolling on iOS
             }
     }
-    Breakpoint.MD {
+    Breakpoint.LG {
         Modifier
             .display(DisplayStyle.Grid)
             .gridAutoFlow(GridAutoFlow.Column)
@@ -82,17 +86,21 @@ val OtherProjectsCardStyle = CssStyle {
             .overflow(Overflow.Hidden)
     }
 
-//    Breakpoint.MD {
+//    Breakpoint.LG {
 //        Modifier.gridColumn("span ${GridDefaults.DESKTOP_AREA_SIZE / 3}")
 //    }
 
     cssRule("> img") {
-        Modifier.aspectRatio(1)
+        Modifier
+            .aspectRatio(1)
+            .objectFit(ObjectFit.Cover)
     }
 }
 
 @Composable
 fun OtherProjectsSection(
+    projects: List<Project>,
+    onProjectClick: (Project) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Section(
@@ -103,18 +111,18 @@ fun OtherProjectsSection(
             verticalArrangement = Arrangement.spacedBy(40.dp)
         ) {
             Text(
-                text = "Other works",
+                text = Res.string.other_projects,
                 style = Theme.typography.headlineMedium,
             )
             Section(
                 attrs = OtherProjectsSectionGridStyle.toAttrs(),
             ) {
-                repeat(10) {
+                projects.forEach { project ->
                     WorkCard(
-                        image = "https://picsum.photos/400/300?random=${it + 4}", // Different placeholders
-                        title = "Case study title lorem ipsum dolor with maximum two lines of text",
-                        onClick = {},
-                        tags = listOf("Branding", "Product Design"),
+                        image = project.image,
+                        title = project.title,
+                        onClick = { onProjectClick(project) },
+                        tags = project.tags,
                         modifier = OtherProjectsCardStyle.toModifier(),
                     )
                 }

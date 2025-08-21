@@ -1,10 +1,12 @@
 package com.amandabicalho.portfolio.components.template
 
 import androidx.compose.runtime.Composable
+import com.amandabicalho.portfolio.components.template.project.OtherProjectsSection
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridDefaults
 import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.ui.theme.typography.toModifier
 import com.amandabicalho.portfolio.core.ui.unit.dp
+import com.amandabicalho.portfolio.domain.Projects
 import com.amandabicalho.portfolio.ui.theme.DesktopTypography
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.display
@@ -14,6 +16,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.gridColumn
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.width
+import com.varabyte.kobweb.core.PageContext
 import com.varabyte.kobweb.core.data.add
 import com.varabyte.kobweb.core.init.InitRoute
 import com.varabyte.kobweb.core.init.InitRouteContext
@@ -97,8 +100,19 @@ fun initMarkdownLayout(ctx: InitRouteContext) {
 
 @Composable
 @Layout(".components.template.PageLayout")
-fun MarkdownLayout(content: @Composable () -> Unit) {
+fun MarkdownLayout(
+    context: PageContext,
+    content: @Composable () -> Unit,
+) {
     Div(MarkdownStyle.toAttrs()) {
         content()
+
+        OtherProjectsSection(
+            projects = Projects
+                .entries
+                .filterNot { it.route in context.route.path }
+                .sortedByDescending { it.publishedAt },
+            onProjectClick = { context.router.navigateTo(it.route) },
+        )
     }
 }

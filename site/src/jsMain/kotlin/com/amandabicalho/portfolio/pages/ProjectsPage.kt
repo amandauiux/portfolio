@@ -66,7 +66,7 @@ val ProjectHeaderStyle = CssStyle {
             .backgroundRepeat(BackgroundRepeat.Round)
             .gap(40.dp)
     }
-    Breakpoint.MD {
+    Breakpoint.LG {
         Modifier
             .heightIn(min = 533.dp)
             .padding(top = 80.dp, bottom = 20.dp, start = PaddingHorizontalDesktop, end = PaddingHorizontalDesktop)
@@ -82,7 +82,7 @@ val ProjectContentStyle = CssStyle {
             .padding(bottom = 64.dp)
             .margin(top = (-100).dp)
     }
-    Breakpoint.MD {
+    Breakpoint.LG {
         Modifier
             .fillMaxWidth()
             .gap(80.dp)
@@ -97,7 +97,7 @@ val ProjectSectionStyle = CssStyle {
             .fillMaxWidth()
             .padding(horizontal = PaddingHorizontalMobile)
     }
-    Breakpoint.MD {
+    Breakpoint.LG {
         Modifier
             .padding(horizontal = PaddingHorizontalDesktop)
     }
@@ -109,7 +109,7 @@ val OtherProjectsSectionStyle = CssStyle {
             .fillMaxWidth()
             .padding(horizontal = PaddingHorizontalMobile)
     }
-    Breakpoint.MD {
+    Breakpoint.LG {
         Modifier
             .fillMaxWidth()
             .padding(horizontal = PaddingHorizontalDesktop)
@@ -149,7 +149,13 @@ fun ProjectsPage(context: PageContext) {
             )
 
             if (projects.size > 4) {
-                OtherProjectsSection(modifier = OtherProjectsSectionStyle.toModifier())
+                OtherProjectsSection(
+                    projects = projects.drop(n = 4),
+                    onProjectClick = { project ->
+                        context.router.navigateTo(project.route)
+                    },
+                    modifier = OtherProjectsSectionStyle.toModifier()
+                )
             }
         }
     }
