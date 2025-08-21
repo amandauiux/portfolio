@@ -3,7 +3,7 @@ package com.amandabicalho.portfolio.components.template.home
 import Res
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.components.atom.Text
-import com.amandabicalho.portfolio.components.molecule.WorkCard
+import com.amandabicalho.portfolio.components.molecule.ProjectCard
 import com.amandabicalho.portfolio.core.designsystem.components.atom.button.OutlinedButton
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridDefaults
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridSection
@@ -123,7 +123,7 @@ fun FeaturedProjects(
 
         GridSection(modifier = FeatureWorkCardSectionStyle.toModifier()) {
             projects.forEach { project ->
-                WorkCard(
+                ProjectCard(
                     image = project.image,
                     title = project.title,
                     onClick = { onProjectClick(project) },

@@ -1,7 +1,7 @@
 package com.amandabicalho.portfolio.components.template.project
 
 import androidx.compose.runtime.Composable
-import com.amandabicalho.portfolio.components.molecule.WorkCard
+import com.amandabicalho.portfolio.components.molecule.ProjectCard
 import com.amandabicalho.portfolio.core.ui.unit.dp
 import com.amandabicalho.portfolio.domain.Project
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -48,7 +48,7 @@ fun ProjectsSection(
             modifier = ProjectsSectionGridStyle.toModifier()
         ) {
             projects.forEach { project ->
-                WorkCard(
+                ProjectCard(
                     image = project.image,
                     title = project.title,
                     onClick = { onProjectClick(project) },

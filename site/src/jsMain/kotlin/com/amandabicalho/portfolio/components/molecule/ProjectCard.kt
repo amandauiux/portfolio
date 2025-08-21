@@ -26,7 +26,7 @@ import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.toModifier
 
-val WorkCardStyle = CssStyle {
+val ProjectCardStyle = CssStyle {
     base {
         Modifier
             .height(Height.FitContent)
@@ -34,7 +34,7 @@ val WorkCardStyle = CssStyle {
     }
 }
 
-val WorkCardTitleStyle = CssStyle {
+val ProjectCardTitleStyle = CssStyle {
     base {
         typography
             .titleMedium
@@ -42,13 +42,13 @@ val WorkCardTitleStyle = CssStyle {
     }
 }
 
-val WorkCardTagContainerStyle = CssStyle {
+val ProjectCardTagContainerStyle = CssStyle {
     base {
         Modifier.padding(top = 16.dp, bottom = 8.dp)
     }
 }
 
-val WorkCardImageStyle = CssStyle {
+val ProjectCardImageStyle = CssStyle {
     base {
         Modifier
             .fillMaxWidth()
@@ -57,7 +57,7 @@ val WorkCardImageStyle = CssStyle {
     }
 }
 
-val WorkCardTagTextStyle = CssStyle {
+val ProjectCardTagTextStyle = CssStyle {
     base {
         typography
             .bodyMedium
@@ -67,7 +67,7 @@ val WorkCardTagTextStyle = CssStyle {
 }
 
 @Composable
-fun WorkCard(
+fun ProjectCard(
     image: String,
     title: String,
     onClick: () -> Unit,
@@ -75,20 +75,20 @@ fun WorkCard(
     tags: List<String> = emptyList(),
 ) {
     Column(
-        modifier = WorkCardStyle
+        modifier = ProjectCardStyle
             .toModifier()
             .then(modifier)
             .onClick { onClick() },
     ) {
         Image(
             src = image,
-            modifier = WorkCardImageStyle.toModifier(),
+            modifier = ProjectCardImageStyle.toModifier(),
         )
         if (tags.isNotEmpty()) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
-                modifier = WorkCardTagContainerStyle.toModifier(),
+                modifier = ProjectCardTagContainerStyle.toModifier(),
             ) {
                 tags.forEachIndexed { index, tag ->
                     if (index > 0) {
@@ -96,14 +96,14 @@ fun WorkCard(
                     }
                     Text(
                         text = tag,
-                        modifier = WorkCardTagTextStyle.toModifier(),
+                        modifier = ProjectCardTagTextStyle.toModifier(),
                     )
                 }
             }
         }
         Text(
             text = title,
-            modifier = WorkCardTitleStyle.toModifier(),
+            modifier = ProjectCardTitleStyle.toModifier(),
         )
     }
 }

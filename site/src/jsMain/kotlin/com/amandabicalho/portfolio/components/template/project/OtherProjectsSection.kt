@@ -3,7 +3,7 @@ package com.amandabicalho.portfolio.components.template.project
 import Res
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.components.atom.Text
-import com.amandabicalho.portfolio.components.molecule.WorkCard
+import com.amandabicalho.portfolio.components.molecule.ProjectCard
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.unit.dp
 import com.amandabicalho.portfolio.domain.Project
@@ -118,7 +118,7 @@ fun OtherProjectsSection(
                 attrs = OtherProjectsSectionGridStyle.toAttrs(),
             ) {
                 projects.forEach { project ->
-                    WorkCard(
+                    ProjectCard(
                         image = project.image,
                         title = project.title,
                         onClick = { onProjectClick(project) },
