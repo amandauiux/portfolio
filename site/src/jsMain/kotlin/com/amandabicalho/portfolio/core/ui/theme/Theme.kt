@@ -7,6 +7,8 @@ import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.staticCompositionLocalOf
+import com.amandabicalho.portfolio.core.analytics.AnalyticsManager
+import com.amandabicalho.portfolio.core.analytics.LocalAnalyticsManager
 import com.amandabicalho.portfolio.core.ui.theme.color.ColorScheme
 import com.amandabicalho.portfolio.core.ui.theme.color.LocalColorScheme
 import com.amandabicalho.portfolio.core.ui.theme.typography.LocalTypography
@@ -98,6 +100,7 @@ fun Theme(
             LocalTypography provides typography,
             LocalElevations provides elevations,
             LocalBreakpointValues provides breakpoints,
+            LocalAnalyticsManager provides AnalyticsManager(),
         ) {
             content(colorMode)
         }

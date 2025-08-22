@@ -3,6 +3,7 @@ import io.github.skeptick.libres.plugin.LibresImagesGenerationTask
 import io.github.skeptick.libres.plugin.LibresStringGenerationTask
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
+import java.util.Properties
 import kotlinx.html.link
 
 plugins {
@@ -12,6 +13,7 @@ plugins {
     alias(libs.plugins.kobwebx.markdown)
     alias(libs.plugins.detekt)
     alias(libs.plugins.libres)
+    alias(libs.plugins.com.github.gmazzo.buildconfig)
 }
 
 group = "com.amandabicalho.portfolio"
@@ -125,6 +127,7 @@ kotlin {
             implementation(libs.kobweb.silk)
             implementation(libs.kobwebx.markdown)
             implementation(libs.androidx.annotation)
+            implementation(npm(name = "firebase", version = "12.1.0"))
         }
     }
 }
@@ -174,4 +177,42 @@ tasks.withType<LibresImagesGenerationTask>().configureEach {
 
 tasks.withType<LibresStringGenerationTask>().configureEach {
     dependsOn("kspKotlinJs")
+}
+
+val localConfig = project.rootProject.file("local.properties")
+val props = Properties().apply {
+    load(localConfig.reader())
+}
+
+buildConfig {
+    packageName(group.toString().plus(".config"))
+    useKotlinOutput()
+    buildConfigField(
+        name = "FIREBASE_API_KEY",
+        value = props.getProperty("firebase.apiKey"),
+    )
+    buildConfigField(
+        name = "FIREBASE_AUTH_DOMAIN",
+        value = props.getProperty("firebase.authDomain"),
+    )
+    buildConfigField(
+        name = "FIREBASE_PROJECT_ID",
+        value = props.getProperty("firebase.projectId"),
+    )
+    buildConfigField(
+        name = "FIREBASE_STORAGE_BUCKET",
+        value = props.getProperty("firebase.storageBucket"),
+    )
+    buildConfigField(
+        name = "FIREBASE_MESSAGING_SENDER_ID",
+        value = props.getProperty("firebase.messagingSenderId"),
+    )
+    buildConfigField(
+        name = "FIREBASE_APP_ID",
+        value = props.getProperty("firebase.appId"),
+    )
+    buildConfigField(
+        name = "FIREBASE_MEASUREMENT_ID",
+        value = props.getProperty("firebase.measurementId"),
+    )
 }

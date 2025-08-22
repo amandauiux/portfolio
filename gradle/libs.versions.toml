@@ -1,5 +1,6 @@
 [versions]
 androidx-annotation = "1.9.1"
+buildconfig = "5.6.7"
 detekt = "1.23.8"
 jetbrains-compose = "1.8.0"
 kobweb = "0.23.1-SNAPSHOT"
@@ -33,3 +34,4 @@ kobweb-worker = { id = "com.varabyte.kobweb.worker", version.ref = "kobweb" }
 kobwebx-markdown = { id = "com.varabyte.kobwebx.markdown", version.ref = "kobweb" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 libres = { id = "io.github.skeptick.libres", version.ref = "libres" }
+com-github-gmazzo-buildconfig = { id = "com.github.gmazzo.buildconfig", version.ref = "buildconfig" }
