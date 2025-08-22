@@ -21,7 +21,6 @@ import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Color
 import com.varabyte.kobweb.compose.ui.modifiers.background
-import com.varabyte.kobweb.compose.ui.modifiers.backgroundRepeat
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.gap
@@ -33,6 +32,7 @@ import com.varabyte.kobweb.core.data.add
 import com.varabyte.kobweb.core.init.InitRoute
 import com.varabyte.kobweb.core.init.InitRouteContext
 import com.varabyte.kobweb.core.layout.Layout
+import com.varabyte.kobweb.navigation.BasePath
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
@@ -55,7 +55,11 @@ val ProjectHeaderStyle = CssStyle {
             .heightIn(min = 232.dp)
             .padding(vertical = 40.dp, horizontal = PaddingHorizontalMobile)
             .background(
-                Background.of(image = BackgroundImage.of(url("images/bg_home_header.svg"))),
+                Background.of(
+                    image = BackgroundImage.of(
+                        url = url(value = BasePath.prependTo(path = "images/bg_home_header.svg")),
+                    ),
+                ),
                 Background.of(
                     image = BackgroundImage.of(
                         gradient = linearGradient(angle = 90.deg) {
@@ -65,7 +69,7 @@ val ProjectHeaderStyle = CssStyle {
                     ),
                 ),
             )
-            .backgroundRepeat(BackgroundRepeat.Round)
+            .background { repeat(BackgroundRepeat.Round) }
             .gap(40.dp)
     }
     Breakpoint.LG {

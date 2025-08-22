@@ -33,6 +33,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.setVariable
 import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.navigation.BasePath
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toAttrs
@@ -98,7 +99,9 @@ val HighlightSectionHighlightList = CssStyle {
             .content(" ")
             .background(
                 Background.of(
-                    BackgroundImage.of(url("images/icons/ic_circle.svg")),
+                    BackgroundImage.of(
+                        url = url(value = BasePath.prependTo(path = "images/icons/ic_circle.svg")),
+                    ),
                 ),
             )
             .width(16.dp)

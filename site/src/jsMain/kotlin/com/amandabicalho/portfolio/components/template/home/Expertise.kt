@@ -16,6 +16,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.gridColumnEnd
 import com.varabyte.kobweb.compose.ui.modifiers.gridColumnStart
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.setVariable
+import com.varabyte.kobweb.navigation.BasePath
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
@@ -100,21 +101,21 @@ fun Expertise(modifier: Modifier) {
             ServiceCard(
                 title = Res.string.services_website_title,
                 description = Res.string.services_website_description,
-                imageUrl = "images/ic_ui.svg",
+                imageUrl = BasePath.prependTo(path = "images/ic_ui.svg"),
                 imageDescription = Res.string.services_website_img_description,
                 modifier = ExpertiseServiceCardStyle.toModifier(),
             )
             ServiceCard(
                 title = Res.string.services_product_title,
                 description = Res.string.services_product_description,
-                imageUrl = "images/ic_user_experience.svg",
+                imageUrl = BasePath.prependTo(path = "images/ic_user_experience.svg"),
                 imageDescription = Res.string.services_product_img_description,
                 modifier = ExpertiseServiceCardStyle.toModifier(),
             )
             ServiceCard(
                 title = Res.string.services_mobile_title,
                 description = Res.string.services_mobile_description,
-                imageUrl = "images/ic_product.svg",
+                imageUrl = BasePath.prependTo(path = "images/ic_product.svg"),
                 imageDescription = Res.string.services_mobile_img_description,
                 modifier = ExpertiseServiceCardStyle.toModifier(),
             )

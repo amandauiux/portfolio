@@ -21,6 +21,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.justifyContent
 import com.varabyte.kobweb.compose.ui.modifiers.objectFit
 import com.varabyte.kobweb.compose.ui.modifiers.whiteSpace
 import com.varabyte.kobweb.compose.ui.modifiers.widthIn
+import com.varabyte.kobweb.navigation.BasePath
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
@@ -117,11 +118,11 @@ fun AboutHero(modifier: Modifier = Modifier) {
             Source(
                 attrs = {
                     attr("media", "(max-width: ${Breakpoint.SM.toWidth()})")
-                    attr("srcset", "images/profile_drawing_small.png")
+                    attr("srcset", BasePath.prependTo(path = "images/profile_drawing_small.png"))
                 }
             )
             Image(
-                src = "images/profile_drawing.png",
+                src = BasePath.prependTo(path = "images/profile_drawing.png"),
                 description = Res.string.about_image_description,
             )
         }

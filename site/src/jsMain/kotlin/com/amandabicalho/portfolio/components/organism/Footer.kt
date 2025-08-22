@@ -33,7 +33,6 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Color
 import com.varabyte.kobweb.compose.ui.modifiers.alignSelf
 import com.varabyte.kobweb.compose.ui.modifiers.background
-import com.varabyte.kobweb.compose.ui.modifiers.backgroundRepeat
 import com.varabyte.kobweb.compose.ui.modifiers.borderTop
 import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.display
@@ -49,6 +48,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.size
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.compose.ui.modifiers.textDecorationLine
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.navigation.BasePath
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.navigation.LinkVars
 import com.varabyte.kobweb.silk.style.CssStyle
@@ -81,7 +81,11 @@ val FooterVariant = GridStyle.addVariant {
     base {
         Modifier
             .background(
-                Background.of(image = BackgroundImage.of(url("images/bg_footer.svg"))),
+                Background.of(
+                    image = BackgroundImage.of(
+                        url = url(value = BasePath.prependTo(path = "images/bg_footer.svg")),
+                    ),
+                ),
                 Background.of(
                     image = BackgroundImage.of(
                         gradient = linearGradient(angle = 270.deg) {
@@ -93,7 +97,7 @@ val FooterVariant = GridStyle.addVariant {
                     ),
                 ),
             )
-            .backgroundRepeat(BackgroundRepeat.Round)
+            .background { repeat(BackgroundRepeat.Round) }
             .borderTop {
                 width(1.dp)
                 color(FooterVars.BorderColor.value())
