@@ -13,11 +13,11 @@
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "maskable"
-        }
+        },
         {
             "src": "/favico.svg",
             "sizes": "any",
-            "type": "image/svg",
+            "type": "image/svg+xml",
             "purpose": "maskable"
         }
     ],
