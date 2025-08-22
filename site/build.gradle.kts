@@ -223,10 +223,8 @@ buildConfig {
         name = "FIREBASE_MEASUREMENT_ID",
         value = props.getProperty("firebase.measurementId"),
     )
-    props.getProperty("firebase.debugMode")?.let { debugMode ->
-        buildConfigField(
-            name = "FIREBASE_DEBUG_MODE",
-            value = debugMode.toBoolean(),
-        )
-    }
+    buildConfigField(
+        name = "FIREBASE_DEBUG_MODE",
+        value = props.getProperty("firebase.debugMode")?.toBoolean() ?: false,
+    )
 }
