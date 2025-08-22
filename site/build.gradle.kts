@@ -5,6 +5,8 @@ import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
 import java.util.Properties
 import kotlinx.html.link
+import org.jetbrains.kotlin.gradle.dsl.JsModuleKind
+import org.jetbrains.kotlin.gradle.dsl.KotlinJsCompile
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -132,6 +134,12 @@ kotlin {
     }
 }
 
+tasks.withType<KotlinJsCompile>().configureEach {
+    compilerOptions {
+        moduleKind = JsModuleKind.MODULE_COMMONJS
+    }
+}
+
 libres {
     // https://github.com/Skeptick/libres#setup
     generatedClassName = "Res"
@@ -215,4 +223,10 @@ buildConfig {
         name = "FIREBASE_MEASUREMENT_ID",
         value = props.getProperty("firebase.measurementId"),
     )
+    props.getProperty("firebase.debugMode")?.let { debugMode ->
+        buildConfigField(
+            name = "FIREBASE_DEBUG_MODE",
+            value = debugMode.toBoolean(),
+        )
+    }
 }

@@ -2,6 +2,8 @@
 
 package com.amandabicalho.portfolio.core.binding.firebase
 
+import com.amandabicalho.portfolio.config.BuildConfig
+
 fun FirebaseOptions(builder: FirebaseOptions.() -> Unit): FirebaseOptions {
     return js("{}").unsafeCast<FirebaseOptions>().apply(builder)
 }
@@ -19,6 +21,10 @@ fun eventsOf(vararg events: Pair<String, Any>): EventParams =
     js("{}").unsafeCast<EventParams>().apply {
         events.forEach { (key, value) ->
             this[key] = value
+        }
+
+        if (BuildConfig.FIREBASE_DEBUG_MODE) {
+            this["debug_mode"] = true
         }
     }
 

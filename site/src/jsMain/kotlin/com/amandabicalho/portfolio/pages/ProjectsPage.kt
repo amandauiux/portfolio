@@ -6,6 +6,8 @@ import com.amandabicalho.portfolio.components.template.HeroSection
 import com.amandabicalho.portfolio.components.template.PageLayoutData
 import com.amandabicalho.portfolio.components.template.project.OtherProjectsSection
 import com.amandabicalho.portfolio.components.template.project.ProjectsSection
+import com.amandabicalho.portfolio.core.analytics.LocalAnalyticsManager
+import com.amandabicalho.portfolio.core.analytics.events.AnalyticEvent
 import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.ui.unit.dp
 import com.amandabicalho.portfolio.domain.Projects
@@ -125,6 +127,7 @@ fun initProjectsPage(ctx: InitRouteContext) {
 @Layout(".components.template.PageLayout")
 @Composable
 fun ProjectsPage(context: PageContext) {
+    val analytics = LocalAnalyticsManager.current
     Column(
         modifier = ProjectsPageStyle.toModifier(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -143,6 +146,12 @@ fun ProjectsPage(context: PageContext) {
             ProjectsSection(
                 projects = projects.take(n = 4),
                 onProjectClick = { project ->
+                    analytics.track(
+                        AnalyticEvent.ViewProject(
+                            projectTitle = project.title,
+                            projectUrl = project.route,
+                        ),
+                    )
                     context.router.navigateTo(project.route)
                 },
                 modifier = ProjectSectionStyle.toModifier(),

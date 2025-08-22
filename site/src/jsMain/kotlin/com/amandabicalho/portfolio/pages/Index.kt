@@ -7,6 +7,8 @@ import com.amandabicalho.portfolio.components.template.PageLayoutData
 import com.amandabicalho.portfolio.components.template.home.Expertise
 import com.amandabicalho.portfolio.components.template.home.FeaturedProjects
 import com.amandabicalho.portfolio.components.template.home.HighlightSection
+import com.amandabicalho.portfolio.core.analytics.LocalAnalyticsManager
+import com.amandabicalho.portfolio.core.analytics.events.AnalyticEvent
 import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.ui.unit.dp
 import com.amandabicalho.portfolio.domain.Projects
@@ -130,6 +132,7 @@ fun initHomePage(ctx: InitRouteContext) {
 @Layout(".components.template.PageLayout")
 @Composable
 fun HomePage(context: PageContext) {
+    val analytics = LocalAnalyticsManager.current
     Column(modifier = HomeContainerStyle.toModifier()) {
         HeroSection(
             title = Res.string.home_title,
@@ -142,9 +145,16 @@ fun HomePage(context: PageContext) {
                 .sortedByDescending { it.publishedAt }
                 .take(n = 4),
             onViewAllProjectClick = {
+                analytics.track(AnalyticEvent.ViewAllProjects)
                 context.router.navigateTo("/projects")
             },
             onProjectClick = { project ->
+                analytics.track(
+                    AnalyticEvent.ViewProject(
+                        projectTitle = project.title,
+                        projectUrl = project.route,
+                    ),
+                )
                 context.router.navigateTo(project.route)
             },
             modifier = HomeFeaturedProjectsStyle.toModifier(),

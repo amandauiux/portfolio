@@ -9,15 +9,13 @@ sealed interface AnalyticEvent {
     val name: String
     fun toParams(): EventParams
 
-    data class PageView(
-        val language: String
-    ) : AnalyticEvent {
+    data object PageView : AnalyticEvent {
         override val name = "page_view"
 
         override fun toParams(): EventParams = eventsOf(
             "page_title" to document.title,
             "page_location" to window.location.href,
-            "lang" to language,
+            "page_referrer" to document.referrer,
         )
     }
 
@@ -53,14 +51,20 @@ sealed interface AnalyticEvent {
         )
     }
 
+    data object ViewAllProjects : AnalyticEvent {
+        override val name = "view_all_projects"
+
+        override fun toParams(): EventParams = eventsOf()
+    }
+
     data class ViewProject(
-        val projectName: String,
+        val projectTitle: String,
         val projectUrl: String,
     ) : AnalyticEvent {
         override val name = "view_project"
 
         override fun toParams(): EventParams = eventsOf(
-            "project_name" to projectName,
+            "project_title" to projectTitle,
             "project_url" to projectUrl,
         )
     }

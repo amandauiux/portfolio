@@ -6,6 +6,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import com.amandabicalho.portfolio.components.organism.Footer
 import com.amandabicalho.portfolio.components.organism.NavHeader
+import com.amandabicalho.portfolio.core.analytics.LocalAnalyticsManager
+import com.amandabicalho.portfolio.core.analytics.events.AnalyticEvent
 import com.amandabicalho.portfolio.core.designsystem.components.organism.SideBar
 import com.amandabicalho.portfolio.core.ui.unit.dp
 import com.varabyte.kobweb.compose.foundation.layout.Box
@@ -108,6 +110,7 @@ class PageLayoutData(
 fun PageLayout(context: PageContext, content: @Composable ColumnScope.() -> Unit) {
     val data = context.data.getValue<PageLayoutData>()
     var colorMode by ColorMode.currentState
+
     LaunchedEffect(data.title) {
         data.title.let { title ->
             document.title = "$title | Amanda Bicalho Portfolio"
@@ -136,6 +139,11 @@ fun PageLayout(context: PageContext, content: @Composable ColumnScope.() -> Unit
                 content = data.keywords.joinToString(", "),
             )
         }
+    }
+
+    val analytics = LocalAnalyticsManager.current
+    LaunchedEffect(context.route) {
+        analytics.track(AnalyticEvent.PageView)
     }
 
     Box(
