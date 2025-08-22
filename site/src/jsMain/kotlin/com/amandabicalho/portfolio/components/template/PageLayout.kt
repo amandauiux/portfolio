@@ -98,7 +98,7 @@ private const val DEFAULT_DESCRIPTION =
 
 class PageLayoutData(
     val title: String,
-    val thumbnail: String = "favicon-32x32.png",
+    val thumbnail: String = "favicon-96x96.png",
     val description: String = DEFAULT_DESCRIPTION,
     val keywords: List<String> = emptyList(),
 )
@@ -119,7 +119,7 @@ fun PageLayout(context: PageContext, content: @Composable ColumnScope.() -> Unit
             val url = if (thumbnail.startsWith("https://") || thumbnail.startsWith("http://")) {
                 thumbnail
             } else {
-                "https://amandauiux.github.io/$thumbnail"
+                "https://www.amandabicalho.com/$thumbnail"
             }
             createOrUpdateMetaTag(name = "og:image", content = url)
             createOrUpdateMetaTag(name = "twitter:image", content = url)
