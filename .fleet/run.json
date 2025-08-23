@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "command",
+            "name": "Start website",
+            "program": "kobweb",
+            "args": ["run", "-p", "site"]
+        }
+    ]
+}
