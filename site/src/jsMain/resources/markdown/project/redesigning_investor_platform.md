@@ -17,7 +17,7 @@ published_at: 2025-08-10T13:36:00
 
 Finding the right investment opportunity can be difficult, especially when dealing with complex financial data. The company, an investment platform that connects early-stage companies with potential investors, wanted to enhance its user experience and visual appeal to drive user adoption and engagement.
 
-Impact:
+**Impact:**
 
 - A new and simplified investment portfolio
 - Quick access to comprehensive new investment opportunities
@@ -30,13 +30,32 @@ Impact:
 
 Through an in-depth analysis of the existing platform, we uncovered three critical user pain points that needed to be addressed:
 
-- Incomplete information about potential investments
-- Confusingly presented company information and business plans
-- A complex, multi-step investment process
+{{{ .components.molecule.ShowcaseSmallCard
 
-**Turning complex financial data into clear, actionable investment insights**
+Incomplete information about potential investments
+
+}}}
+
+{{{ .components.molecule.ShowcaseSmallCard
+
+Confusingly presented company information and business plans
+
+}}}
+
+{{{ .components.molecule.ShowcaseSmallCard
+
+A complex, multi-step investment process
+
+}}}
+
+}}}
+
+{{{ .components.template.showcase.ShowcaseSection("Solution")
+
+#### Turning complex financial data into clear, actionable investment insights
 
 Leveraging insights from investor journey mapping, current workflow analysis, and client feedback, a new sitemap was designed. The goal was to simplify the complex investment process and provide clear, actionable information.
+
 }}}
 
 {{{ .components.template.showcase.ShowcaseSection("Portfolio Dashboard", level = "h3")
@@ -77,6 +96,11 @@ The redesign resulted in a new platform that:
 - **Provides quick access** to a wide range of new investment opportunities.
 - **Optimized for desktop and mobile** considering both differences between both devices.
 
-**Anticipated results show promising user adoption, with over 50 new companies already on the waiting list to join the platform.**
+{{{ .components.molecule.ShowcaseSmallCard
+
+Anticipated results show promising user adoption, with over 50 new companies already on the waiting list to join the platform.
+
+}}}
+
 
 }}}
