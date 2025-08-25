@@ -81,7 +81,7 @@
     <!--  Showcase page  -->
     <string name="showcase_project_info_team">Team</string>
     <string name="showcase_project_info_client">Client</string>
-    <string name="showcase_project_info_year_duration">Year/duration</string>
+    <string name="showcase_project_info_year_duration">Year</string>
     <string name="showcase_project_info_project_type">Project type</string>
     <string name="showcase_project_info_industry">Industry</string>
     <string name="showcase_project_background">Background</string>
