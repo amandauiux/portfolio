@@ -6,12 +6,14 @@ import com.amandabicalho.portfolio.core.designsystem.components.atom.content.Gri
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.unit.dp
 import com.amandabicalho.portfolio.components.atom.Text
+import com.varabyte.kobweb.compose.css.WhiteSpace
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.gridArea
 import com.varabyte.kobweb.compose.ui.modifiers.gridColumn
+import com.varabyte.kobweb.compose.ui.modifiers.whiteSpace
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
@@ -30,6 +32,15 @@ val HeroContainerStyle = CssStyle {
     }
 }
 
+val HeroTitleStyle = CssStyle {
+    base {
+        Modifier
+    }
+    Breakpoint.MD {
+        Modifier.whiteSpace(WhiteSpace.PreWrap)
+    }
+}
+
 @Composable
 fun HeroSection(
     title: String,
@@ -45,6 +56,7 @@ fun HeroSection(
                 style = Theme.typography.headlineLarge.copy(
                     color = Theme.colorScheme.primary[30],
                 ),
+                modifier = HeroTitleStyle.toModifier(),
             )
             subtitle?.let { subtitle ->
                 Text(

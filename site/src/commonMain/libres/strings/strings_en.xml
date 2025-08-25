@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <string name="locale">en</string>
-    <string name="home_title">Strategic UX UI designer</string>
+    <string name="home_title">Strategic\nUX UI designer</string>
     <string name="home_subtitle">I'm a UX/UI Designer with over three years of experience building accessible and
         high-performance digital products. My goal is to create intuitive experiences that truly resonate with people.
     </string>
     <string name="featured_projects_title">Featured\nProjects</string>
-    <string name="featured_projects_description">From beautiful websites and intuitive mobile apps to impactful
-        user-driven
-        projects.
+    <string name="featured_projects_description">
+        From beautiful websites and intuitive mobile apps to impactful user-driven projects.
     </string>
     <string name="view_all_projects">View all projects</string>
     <string name="expertise_title">Expertise</string>
