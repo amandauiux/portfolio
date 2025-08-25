@@ -70,7 +70,7 @@ fun ShowcaseSection(
     title: String,
     modifier: Modifier = Modifier,
     level: String = "h2",
-    content: @Composable () -> Unit,
+    content: @Composable () -> Unit = {},
 ) {
     Section(
         attrs = ShowcaseSectionStyle.toModifier().then(modifier).toAttrs(),
