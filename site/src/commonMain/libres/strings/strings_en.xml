@@ -46,6 +46,7 @@
     <string name="projects">Projects</string>
     <string name="about">About</string>
     <string name="other_projects">Other projects</string>
+    <string name="view_case_study">View case study</string>
 
     <!--  About page  -->
     <string name="about_welcome">Hi,\nI’m Amanda</string>
