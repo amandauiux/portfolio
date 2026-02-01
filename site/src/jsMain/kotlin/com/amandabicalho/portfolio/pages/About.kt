@@ -62,7 +62,7 @@ fun AboutPage() {
                     startDate = LocalDate.parse("2024-01-01"),
                 ),
                 WorkExperience(
-                    title = "UX/UI Designer",
+                    title = "UX Designer",
                     company = "StayShure",
                     url = "https://www.linkedin.com/company/stayshure/posts/?feedView=all",
                     startDate = LocalDate.parse("2023-01-01"),

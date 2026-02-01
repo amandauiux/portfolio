@@ -49,7 +49,7 @@
     <string name="view_case_study">View case study</string>
 
     <!--  About page  -->
-    <string name="about_welcome">Hi,\nI’m Amanda</string>
+    <string name="about_welcome">Hi,\nI'm Amanda</string>
     <string name="about_me_paragraph_1">
         I’m a UX/UI designer who creates meaningful digital experiences by blending analytical thinking with visual
         storytelling. My expertise spans the entire product lifecycle, from strategic design and user interface
@@ -57,9 +57,8 @@
         accessibility (WCAG), ensuring every solution is comprehensive and user-friendly.
     </string>
     <string name="about_me_paragraph_2">
-        I leverage design best practices to drive strategic thinking and make informed decisions that elevate every
-        project. My goal is to create intuitive, accessible, and impactful digital experiences that not only resonate
-        with users but also meet business objectives.
+        My goal is to create intuitive, accessible, and impactful digital experiences that not only resonate with users
+        but also meet business objectives.
     </string>
 
     <string name="about_my_approach_title">My approach</string>
@@ -94,7 +93,7 @@
         I'm proud of the unique path that shaped my approach to design and allows me to see challenges from multiple
         perspectives.
     </string>
-    <string name="about_work_experience">Work Experience</string>
+    <string name="about_work_experience">Work experience</string>
     <string name="about_view_resume">View resume</string>
     <string name="about_work_current">current</string>
     <string name="about_work_experience_position">${position} at </string>
