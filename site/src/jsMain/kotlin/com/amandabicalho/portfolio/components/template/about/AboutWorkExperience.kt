@@ -80,7 +80,6 @@ val AboutWorkExperienceListStyle = CssStyle {
 }
 
 @Composable
-@Composable
 fun AboutWorkExperience(
     experiences: List<WorkExperience>,
     modifier: Modifier = Modifier,
