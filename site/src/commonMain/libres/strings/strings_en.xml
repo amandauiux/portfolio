@@ -61,6 +61,26 @@
         project. My goal is to create intuitive, accessible, and impactful digital experiences that not only resonate
         with users but also meet business objectives.
     </string>
+
+    <string name="about_my_approach_title">My approach</string>
+    <string name="about_my_approach_description">
+        My work is grounded in a deep understanding of how digital products are built and how people interact with them. I leverage design best practices to drive strategic thinking and make informed decisions that elevate every project.
+    </string>
+    <string name="about_approach_card1_title">Process-focused, yet adaptable</string>
+    <string name="about_approach_card1_desc">
+        I follow a structured methodology while remaining flexible, tailoring my workflow to fit each project's unique goals and constraints.
+    </string>
+    <string name="about_approach_card1_img_desc">Icon representing process and adaptability</string>
+    <string name="about_approach_card2_title">Cross-functional Partnership</string>
+    <string name="about_approach_card2_desc">
+        I believe in working closely with stakeholders and developers to ensure that every solution is technically feasible and aligned with business objectives.
+    </string>
+    <string name="about_approach_card2_img_desc">Icon representing cross-functional partnership</string>
+    <string name="about_approach_card3_title">Strategic Design &amp; Hands-on Execution</string>
+    <string name="about_approach_card3_desc">
+        I blend high-level strategy with meticulous execution, ensuring every interaction is intentional, purposeful, and designed to solve real user problems.
+    </string>
+    <string name="about_approach_card3_img_desc">Icon representing strategic design and execution</string>
     <string name="about_image_description">Amanda Bicalho profile drawing</string>
     <string name="about_my_journey">My design journey</string>
     <string name="about_my_journey_paragraph_1">

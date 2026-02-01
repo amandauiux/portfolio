@@ -3,7 +3,7 @@ package com.amandabicalho.portfolio.pages
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.components.template.PageLayoutData
 import com.amandabicalho.portfolio.components.template.about.AboutHero
-import com.amandabicalho.portfolio.components.template.about.AboutMeSection
+import com.amandabicalho.portfolio.components.template.about.AboutApproach
 import com.amandabicalho.portfolio.components.template.about.AboutWorkExperience
 import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.ui.unit.dp
@@ -52,7 +52,7 @@ fun AboutPage() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         AboutHero()
-        AboutMeSection()
+        AboutApproach()
         AboutWorkExperience(
             experiences = listOf(
                 WorkExperience(
