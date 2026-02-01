@@ -76,7 +76,6 @@ fun AboutPage() {
                     endDate = LocalDate.parse("2023-01-01"),
                 ),
             ),
-            onViewResumeClick = { /* Handle resume click */ },
         )
     }
 }
