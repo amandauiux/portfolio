@@ -80,9 +80,9 @@ val AboutWorkExperienceListStyle = CssStyle {
 }
 
 @Composable
+@Composable
 fun AboutWorkExperience(
     experiences: List<WorkExperience>,
-    onViewResumeClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     GridSection(
@@ -98,8 +98,6 @@ fun AboutWorkExperience(
                 text = Res.string.about_work_experience,
                 style = Theme.typography.headlineSmall,
             )
-            // only show the button on desktop
-            ViewResumeButton(onViewResumeClick)
         }
         Section(
             attrs = AboutWorkExperienceListStyle.toAttrs(),
@@ -107,28 +105,6 @@ fun AboutWorkExperience(
             experiences.forEach { experience ->
                 WorkExperienceCard(experience)
             }
-
-            // Only show the button on mobile
-            ViewResumeButton(
-                onViewResumeClick = onViewResumeClick,
-                modifier = Modifier.width(Width.FitContent),
-            )
         }
-    }
-}
-
-@Composable
-private fun ViewResumeButton(
-    onViewResumeClick: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    OutlinedButton(
-        onClick = onViewResumeClick,
-        modifier = modifier,
-    ) {
-        Text(
-            text = Res.string.about_view_resume,
-            style = Theme.typography.bodySmall,
-        )
     }
 }
