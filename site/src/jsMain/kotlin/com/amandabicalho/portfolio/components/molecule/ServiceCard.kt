@@ -10,12 +10,16 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.border
 import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
+import com.varabyte.kobweb.compose.ui.modifiers.fontSize
+import com.varabyte.kobweb.compose.ui.modifiers.lineHeight
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.size
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.LineStyle
+import org.jetbrains.compose.web.css.px
 
 val ServiceCardStyle = CssStyle {
     base {
@@ -27,6 +31,14 @@ val ServiceCardStyle = CssStyle {
                 style(LineStyle.Solid)
             }
             .padding(20.dp)
+    }
+}
+
+val ServiceCardDescriptionStyle = CssStyle {
+    Breakpoint.LG {
+        Modifier
+            .fontSize(16.px)
+            .lineHeight(24.px)
     }
 }
 
@@ -57,6 +69,7 @@ fun ServiceCard(
         Text(
             text = description,
             style = Theme.typography.bodyMedium,
+            modifier = ServiceCardDescriptionStyle.toModifier(),
         )
     }
 }
