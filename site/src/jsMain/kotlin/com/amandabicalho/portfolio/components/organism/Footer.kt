@@ -8,6 +8,7 @@ import com.amandabicalho.portfolio.core.designsystem.components.atom.button.Text
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridDefaults
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridStyle
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridVars
+import com.amandabicalho.portfolio.core.designsystem.components.atom.icon.Behance
 import com.amandabicalho.portfolio.core.designsystem.components.atom.icon.LinkedIn
 import com.amandabicalho.portfolio.core.designsystem.components.atom.icon.Logo
 import com.amandabicalho.portfolio.core.extensions.padding
@@ -269,6 +270,25 @@ fun Footer(
 
                     Text(
                         text = "LinkedIn",
+                        style = Theme.typography.bodySmall,
+                        modifier = Modifier.padding(start = 8.dp),
+                    )
+                }
+            }
+            A(
+                href = "https://www.behance.net/amanda-bicalho/projects",
+                attrs = FooterLinkedInStyle
+                    .toAttrs {
+                        target(ATarget.Blank)
+                    }
+            ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Behance()
+
+                    Text(
+                        text = "Behance",
                         style = Theme.typography.bodySmall,
                         modifier = Modifier.padding(start = 8.dp),
                     )
