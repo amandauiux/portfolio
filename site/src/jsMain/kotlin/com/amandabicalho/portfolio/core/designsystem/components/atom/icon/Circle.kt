@@ -20,6 +20,8 @@ fun Circle(
             attr("viewBox", "0 0 12 13")
             attr("fill", "none")
             attr("xmlns", "http://www.w3.org/2000/svg")
+            attr("aria-hidden", "true")
+            attr("focusable", "false")
         }
     ) {
         Path {
