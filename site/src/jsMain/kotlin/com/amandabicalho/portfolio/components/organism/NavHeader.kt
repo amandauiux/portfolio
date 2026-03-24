@@ -45,6 +45,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.justifySelf
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.size
 import com.varabyte.kobweb.compose.ui.modifiers.zIndex
+import com.varabyte.kobweb.compose.ui.attrsModifier
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.overlay.Overlay
 import com.varabyte.kobweb.silk.style.CssStyle
@@ -218,6 +219,9 @@ private fun DesktopMenu(
                     SwitchButton(
                         checked = isDark,
                         onCheckChange = { onThemeToggleClick() },
+                        modifier = Modifier.attrsModifier {
+                            attr("aria-label", "Toggle dark mode")
+                        },
                     )
                     Moon()
                 }
@@ -236,7 +240,8 @@ private fun MobileMenu(
     IconButton(
         onClick = { isMenuOpen = true },
         icon = { Menu(modifier = Modifier.size(40.dp)) },
-        modifier = NavHeaderMenuButtonStyle.toModifier(),
+        modifier = NavHeaderMenuButtonStyle.toModifier()
+            .attrsModifier { attr("aria-label", "Open navigation menu") },
     )
     if (isMenuOpen) {
         Overlay(
