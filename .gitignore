@@ -387,3 +387,6 @@ obj/
 !/gradle/wrapper/gradle-wrapper.jar
 
 # End of https://www.toptal.com/developers/gitignore/api/yarn,macos,kotlin,windows,intellij,visualstudiocode,android,androidstudio
+
+.claude/worktrees
+.claude/settings.local.json
