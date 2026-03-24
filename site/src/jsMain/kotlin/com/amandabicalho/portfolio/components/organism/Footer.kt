@@ -3,6 +3,7 @@ package com.amandabicalho.portfolio.components.organism
 import Res
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.colorScheme
+import com.amandabicalho.portfolio.typography
 import com.amandabicalho.portfolio.components.atom.Text
 import com.amandabicalho.portfolio.core.designsystem.components.atom.button.TextButton
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridDefaults
@@ -14,6 +15,7 @@ import com.amandabicalho.portfolio.core.designsystem.components.atom.icon.Logo
 import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.foundation.layout.PaddingValues
 import com.amandabicalho.portfolio.core.ui.theme.Theme
+import com.amandabicalho.portfolio.core.ui.theme.typography.toModifier
 import com.amandabicalho.portfolio.core.ui.unit.dp
 import com.varabyte.kobweb.compose.css.AlignItems
 import com.varabyte.kobweb.compose.css.Background
@@ -72,7 +74,7 @@ import org.jetbrains.compose.web.dom.A
 import org.jetbrains.compose.web.dom.Br
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Footer
-import org.jetbrains.compose.web.dom.H4
+import org.jetbrains.compose.web.dom.P
 
 object FooterVars {
     val BorderColor by StyleVariable<Color>()
@@ -196,6 +198,12 @@ val FooterLinkedInStyle = CssStyle {
     }
 }
 
+val FooterCallOutStyle = CssStyle {
+    base {
+        typography.titleLarge.toModifier()
+    }
+}
+
 val FooterCreditsStyle = CssStyle {
     base {
         Modifier
@@ -233,8 +241,8 @@ fun Footer(
             modifier = FooterContactContentStyle.toModifier(),
         ) {
             Logo(modifier = Modifier.size(50.dp))
-            H4(
-                attrs = Modifier.fillMaxWidth().toAttrs(),
+            P(
+                attrs = FooterCallOutStyle.toAttrs(),
             ) {
                 org.jetbrains.compose.web.dom.Text(value = Res.string.footer_contact_call_out_line_1)
                 Br()
@@ -261,6 +269,8 @@ fun Footer(
                 attrs = FooterLinkedInStyle
                     .toAttrs {
                         target(ATarget.Blank)
+                        attr("rel", "noopener noreferrer")
+                        attr("aria-label", "Visit LinkedIn profile")
                     }
             ) {
                 Row(
@@ -280,6 +290,8 @@ fun Footer(
                 attrs = FooterLinkedInStyle
                     .toAttrs {
                         target(ATarget.Blank)
+                        attr("rel", "noopener noreferrer")
+                        attr("aria-label", "Visit Behance portfolio")
                     }
             ) {
                 Row(
