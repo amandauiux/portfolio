@@ -138,7 +138,7 @@ val ProjectCardHoverElementStyle = CssStyle {
     base {
         typography
             .bodySmall
-            .copy(color = colorScheme.white)
+            .copy(color = colorScheme.background)
             .toModifier()
             .display(DisplayStyle.Flex)
             .gap(8.dp)
