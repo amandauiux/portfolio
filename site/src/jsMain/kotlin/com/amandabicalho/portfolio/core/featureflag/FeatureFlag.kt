@@ -7,7 +7,7 @@ enum class FeatureFlag(
 ) {
     EnableLightDarkMode(
         key = "enable_light_dark_mode",
-        enabled = false,
+        enabled = true,
         description = "Enable light/dark mode toggle",
     ),
     ShowAboutMyselfSection(
