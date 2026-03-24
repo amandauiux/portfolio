@@ -25,6 +25,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.outline
+import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.scrollBehavior
 import com.varabyte.kobweb.compose.ui.modifiers.setVariable
@@ -53,6 +54,7 @@ import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.StylePropertyValue
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.css.s
 
 @InitSilk
 fun initSiteStyles(context: InitSilkContext) {
@@ -70,6 +72,32 @@ fun initSiteStyles(context: InitSilkContext) {
                     .padding(all = 0.dp)
                     .outline(0.dp)
                     .boxSizing(BoxSizing.BorderBox)
+            }
+        }
+
+        layer("accessibility") {
+            registerStyle(":focus-visible") {
+                base {
+                    Modifier
+                        .outline {
+                            width(2.dp)
+                            style(LineStyle.Solid)
+                            color(LightColorScheme.primary.shade30)
+                        }
+                        .styleModifier {
+                            property("outline-offset", "2px")
+                        }
+                }
+            }
+
+            registerStyle("*") {
+                cssRule(CSSMediaQuery.MediaFeature("prefers-reduced-motion", StylePropertyValue("reduce"))) {
+                    Modifier.styleModifier {
+                        property("animation-duration", "0.01ms !important")
+                        property("animation-iteration-count", "1 !important")
+                        property("transition-duration", "0.01ms !important")
+                    }
+                }
             }
         }
 
