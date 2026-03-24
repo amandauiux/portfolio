@@ -51,6 +51,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.textDecorationLine
 import com.varabyte.kobweb.compose.ui.modifiers.textTransform
 import com.varabyte.kobweb.compose.ui.modifiers.transition
 import com.varabyte.kobweb.compose.ui.modifiers.translate
+import com.varabyte.kobweb.compose.ui.attrsModifier
 import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.style.CssStyle
@@ -89,6 +90,13 @@ val ProjectCardStyle = CssStyle {
                 property("text-decoration-color", colorScheme.black)
             }
     }
+
+    cssRule(":focus-within > .base-text") {
+        Modifier
+            .styleModifier {
+                property("text-decoration-color", colorScheme.black)
+            }
+    }
 }
 
 val ProjectCardTitleStyle = CssStyle {
@@ -115,6 +123,14 @@ val ProjectCardImageContainerStyle = CssStyle {
 
     cssRule(":hover") {
         Modifier.setVariable(ProjectCardVars.HoverElementOpacity, 1f)
+    }
+
+    cssRule(":focus-within") {
+        Modifier
+            .setVariable(ProjectCardVars.HoverElementOpacity, 1f)
+            .setVariable(ProjectCardVars.HoverElementX, 50.dp)
+            .setVariable(ProjectCardVars.HoverElementY, 50.dp)
+            .cursor(Cursor.Pointer)
     }
 }
 
@@ -192,6 +208,7 @@ object ProjectCardVars {
 fun ProjectCard(
     image: String,
     title: String,
+    imageDescription: String = title,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     tags: List<String> = emptyList(),
@@ -200,6 +217,17 @@ fun ProjectCard(
         modifier = ProjectCardStyle
             .toModifier()
             .then(modifier)
+            .attrsModifier {
+                attr("tabindex", "0")
+                attr("role", "link")
+                attr("aria-label", title)
+                onKeyDown { event ->
+                    if (event.key == "Enter" || event.key == " ") {
+                        event.preventDefault()
+                        onClick()
+                    }
+                }
+            }
             .onClick { onClick() },
     ) {
         Box(
@@ -236,6 +264,7 @@ fun ProjectCard(
             }
             Image(
                 src = image,
+                alt = imageDescription,
                 modifier = ProjectCardImageStyle.toModifier(),
             )
         }
