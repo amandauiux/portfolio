@@ -20,14 +20,14 @@ internal val LightColorScheme = ColorScheme(
 
 internal val DarkColorScheme = ColorScheme(
     primary = ColorShades(
-        shade10 = Color.argb(0xFFE8621F),
-        shade20 = Color.argb(0xFFD9480F),
-        shade30 = Color.argb(0xFFBE3F0D),
-        shade50 = Color.argb(0xFFA3360B),
+        shade10 = Color.argb(0xFFEE7233),
+        shade20 = Color.argb(0xFFE8621F),
+        shade30 = Color.argb(0xFFD95A1A),
+        shade50 = Color.argb(0xFFCC5A20),
     ),
     text = Color.argb(0xFFF5EDE6),
     background = Color.argb(0xFF1A1210),
-    gray = Color.argb(0xFF3A3230),
-    white = Color.argb(0xFF3A3230),
+    gray = Color.argb(0xFF6E625E),
+    white = Color.argb(0xFF6E625E),
     black = Color.argb(0xFFF5EDE6),
 )
