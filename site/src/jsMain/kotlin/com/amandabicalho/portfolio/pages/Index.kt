@@ -20,7 +20,8 @@ import com.varabyte.kobweb.compose.css.functions.url
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Spacer
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.graphics.Color
+import com.amandabicalho.portfolio.colorScheme
+import com.amandabicalho.portfolio.core.ui.theme.color.copy
 import com.varabyte.kobweb.compose.ui.modifiers.background
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
@@ -64,8 +65,8 @@ val HomeHeaderStyle = CssStyle {
                 Background.of(
                     image = BackgroundImage.of(
                         gradient = linearGradient(angle = 180.deg) {
-                            add(Color.argb(0xFFFFFFFF), 46.95.percent)
-                            add(Color.rgba(255, 255, 255, 0), 100.percent)
+                            add(colorScheme.background, 46.95.percent)
+                            add(colorScheme.background.copy(alpha = 0f), 100.percent)
                         },
                     ),
                 ),
@@ -86,8 +87,8 @@ val HomeHeaderStyle = CssStyle {
                 Background.of(
                     image = BackgroundImage.of(
                         gradient = linearGradient(angle = 90.deg) {
-                            add(Color.argb(0xFFFFFCF7), 24.71.percent)
-                            add(Color.rgba(255, 252, 247, 0), 100.percent)
+                            add(colorScheme.background, 24.71.percent)
+                            add(colorScheme.background.copy(alpha = 0f), 100.percent)
                         },
                     ),
                 ),
