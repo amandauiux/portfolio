@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "kobweb-dev",
+      "runtimeExecutable": "env",
+      "runtimeArgs": ["JAVA_HOME=/opt/homebrew/opt/java/libexec/openjdk.jdk/Contents/Home", "kobweb", "run"],
+      "port": 8080
+    }
+  ]
+}
