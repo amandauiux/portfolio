@@ -15,6 +15,7 @@ import com.amandabicalho.portfolio.core.designsystem.components.atom.icon.Logo
 import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.foundation.layout.PaddingValues
 import com.amandabicalho.portfolio.core.ui.theme.Theme
+import com.amandabicalho.portfolio.core.ui.theme.color.copy
 import com.amandabicalho.portfolio.core.ui.theme.typography.toModifier
 import com.amandabicalho.portfolio.core.ui.unit.dp
 import com.varabyte.kobweb.compose.css.AlignItems
@@ -92,10 +93,10 @@ val FooterVariant = GridStyle.addVariant {
                 Background.of(
                     image = BackgroundImage.of(
                         gradient = linearGradient(angle = 270.deg) {
-                            add(Color.argb(0xFFFFFCF7), 24.37.percent)
-                            add(Color.rgba(255, 252, 247, 0), 45.88.percent)
-                            add(Color.rgba(255, 252, 247, 0), 56.25.percent)
-                            add(Color.argb(0xFFFFFCF7), 78.28.percent)
+                            add(colorScheme.background, 24.37.percent)
+                            add(colorScheme.background.copy(alpha = 0f), 45.88.percent)
+                            add(colorScheme.background.copy(alpha = 0f), 56.25.percent)
+                            add(colorScheme.background, 78.28.percent)
                         },
                     ),
                 ),
