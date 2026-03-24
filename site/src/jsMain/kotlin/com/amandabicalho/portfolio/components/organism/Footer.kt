@@ -91,9 +91,9 @@ val FooterVariant = GridStyle.addVariant {
                     image = BackgroundImage.of(
                         gradient = linearGradient(angle = 270.deg) {
                             add(Color.argb(0xFFFFFCF7), 24.37.percent)
-                            add(Color.rgba(255, 255, 255, 0), 45.88.percent)
-                            add(Color.rgba(255, 255, 255, 0), 56.25.percent)
-                            add(Color.argb(0xFFFFFFFF), 78.28.percent)
+                            add(Color.rgba(255, 252, 247, 0), 45.88.percent)
+                            add(Color.rgba(255, 252, 247, 0), 56.25.percent)
+                            add(Color.argb(0xFFFFFCF7), 78.28.percent)
                         },
                     ),
                 ),
