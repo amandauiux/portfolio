@@ -13,6 +13,7 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.gridArea
 import com.varabyte.kobweb.compose.ui.modifiers.gridColumn
 import com.varabyte.kobweb.compose.ui.modifiers.gridColumnEnd
+import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.compose.ui.modifiers.gridColumnStart
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.setVariable
@@ -95,27 +96,29 @@ fun AboutApproach(modifier: Modifier = Modifier) {
             modifier = AboutApproachDescriptionStyle.toModifier(),
         )
 
+        val suffix = if (ColorMode.current == ColorMode.DARK) "_dark" else ""
+
         GridSection(
             modifier = AboutApproachCardSectionStyle.toModifier(),
         ) {
             ServiceCard(
                 title = Res.string.about_approach_card1_title,
                 description = Res.string.about_approach_card1_desc,
-                imageUrl = BasePath.prependTo(path = "images/ic_process_focused.svg"),
+                imageUrl = BasePath.prependTo(path = "images/ic_process_focused$suffix.svg"),
                 imageDescription = Res.string.about_approach_card1_img_desc,
                 modifier = AboutApproachServiceCardStyle.toModifier(),
             )
             ServiceCard(
                 title = Res.string.about_approach_card2_title,
                 description = Res.string.about_approach_card2_desc,
-                imageUrl = BasePath.prependTo(path = "images/ic_cross_functional.svg"),
+                imageUrl = BasePath.prependTo(path = "images/ic_cross_functional$suffix.svg"),
                 imageDescription = Res.string.about_approach_card2_img_desc,
                 modifier = AboutApproachServiceCardStyle.toModifier(),
             )
             ServiceCard(
                 title = Res.string.about_approach_card3_title,
                 description = Res.string.about_approach_card3_desc,
-                imageUrl = BasePath.prependTo(path = "images/ic_strategic_design.svg"),
+                imageUrl = BasePath.prependTo(path = "images/ic_strategic_design$suffix.svg"),
                 imageDescription = Res.string.about_approach_card3_img_desc,
                 modifier = AboutApproachServiceCardStyle.toModifier(),
             )
