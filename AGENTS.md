@@ -2,6 +2,8 @@
 
 This file tracks the agents and their responsibilities within this project, serving as the central context and rulebook for any AI agent working on this repository.
 
+**CRITICAL**: The [Design Rules & Best Practices](#design-rules--best-practices) must always be followed without drifting from the instructions laid in this file. Any differnce must be explicitly approved by the user.
+
 ## Project Overview
 This is a **static portfolio website** built using **Kotlin Multiplatform** (targeting JS) and the **Kobweb** framework (built on top of Compose HTML).
 
@@ -18,6 +20,9 @@ The source code is located in `site/src/jsMain/kotlin/com/amandabicalho/portfoli
 - `sections/` (or `ui/`): Larger sections of the pages (e.g., HeroSection, AboutSection).
 - `AppStyles.kt` / `SiteTheme.kt`: Global styles and theme definitions.
 - `AppEntry.kt`: The main entry point `main()`.
+
+## Design Rules & Best Practices
+
 
 ## Development Rules & Best Practices
 
