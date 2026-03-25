@@ -13,7 +13,7 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 fun Behance(
     modifier: Modifier = Modifier,
     fillColor: Color = Theme.colorScheme.primary[10],
-    strokeColor: Color = Theme.colorScheme.black,
+    strokeColor: Color = Color.argb(0xFF141414),
 ) {
     Svg(
         attrs = modifier.toAttrs {
