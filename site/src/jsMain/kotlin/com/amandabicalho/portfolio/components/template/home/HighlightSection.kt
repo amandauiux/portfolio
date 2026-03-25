@@ -135,7 +135,7 @@ fun HighlightSection(modifier: Modifier = Modifier) {
         Text(
             text = Res.string.home_big_statement,
             style = Theme.typography.headlineMedium.copy(
-                color = Theme.colorScheme.primary[50],
+                color = Theme.colorScheme.primary[30],
             ),
             modifier = HighlightSectionTitleStyle.toModifier(),
         )

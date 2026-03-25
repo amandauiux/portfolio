@@ -171,7 +171,7 @@ object ButtonDefaults {
         disabledContentColor: Color = contentColor.copy(alpha = 0.5f),
         disabledBorderColor: Color = Theme.colorScheme.primary[50].copy(alpha = 0.5f),
         hoverContainerColor: Color = Theme.colorScheme.primary[20],
-        hoverContentColor: Color = Theme.colorScheme.white,
+        hoverContentColor: Color = Theme.colorScheme.background,
         hoverBorderColor: Color = Theme.colorScheme.text,
     ): ButtonColors = ButtonColors(
         containerColor = containerColor,
