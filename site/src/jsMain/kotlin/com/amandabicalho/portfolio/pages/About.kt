@@ -57,9 +57,16 @@ fun AboutPage() {
             experiences = listOf(
                 WorkExperience(
                     title = "UX Designer",
+                    company = "Atlantic Lottery",
+                    url = "https://www.alc.ca",
+                    startDate = LocalDate.parse("2026-01-01"),
+                ),
+                WorkExperience(
+                    title = "UX Designer",
                     company = "The ChangeMakers",
                     url = "https://thechangemakers.com",
                     startDate = LocalDate.parse("2024-01-01"),
+                    endDate = LocalDate.parse("2026-01-01"),
                 ),
                 WorkExperience(
                     title = "UX Designer",
