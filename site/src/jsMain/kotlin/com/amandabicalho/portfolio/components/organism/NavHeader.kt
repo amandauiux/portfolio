@@ -122,10 +122,12 @@ val NavHeaderMenuMobileStyle = CssStyle {
     }
 }
 
-val NavHeaderMenuButtonStyle = CssStyle {
+val NavHeaderMobileActionsStyle = CssStyle {
     base {
         Modifier
-            .display(DisplayStyle.Block)
+            .display(DisplayStyle.Flex)
+            .flexDirection(FlexDirection.Row)
+            .alignItems(AlignItems.Center)
             .alignSelf(AlignSelf.Center)
             .justifySelf(JustifySelf.End)
     }
@@ -168,8 +170,10 @@ fun NavHeader(
         )
 
         MobileMenu(
+            isDark = isDark,
             onProjectsClick = onProjectsClick,
             onAboutClick = onAboutClick,
+            onThemeToggleClick = onThemeToggleClick,
         )
     }
 }
@@ -232,17 +236,36 @@ private fun DesktopMenu(
 
 @Composable
 private fun MobileMenu(
+    isDark: Boolean,
     onProjectsClick: () -> Unit,
     onAboutClick: () -> Unit,
+    onThemeToggleClick: () -> Unit,
 ) {
     var isMenuOpen by remember { mutableStateOf(false) }
 
-    IconButton(
-        onClick = { isMenuOpen = true },
-        icon = { Menu(modifier = Modifier.size(40.dp)) },
-        modifier = NavHeaderMenuButtonStyle.toModifier()
-            .attrsModifier { attr("aria-label", "Open navigation menu") },
-    )
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        modifier = NavHeaderMobileActionsStyle.toModifier(),
+    ) {
+        if (FeatureFlag.EnableLightDarkMode.enabled) {
+            Sun()
+            SwitchButton(
+                checked = isDark,
+                onCheckChange = { onThemeToggleClick() },
+                modifier = Modifier.attrsModifier {
+                    attr("aria-label", "Toggle dark mode")
+                },
+            )
+            Moon()
+        }
+        IconButton(
+            onClick = { isMenuOpen = true },
+            icon = { Menu(modifier = Modifier.size(40.dp)) },
+            modifier = Modifier
+                .attrsModifier { attr("aria-label", "Open navigation menu") },
+        )
+    }
     if (isMenuOpen) {
         Overlay(
             modifier = Modifier
