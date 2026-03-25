@@ -5,7 +5,8 @@
       "name": "kobweb-dev",
       "runtimeExecutable": "env",
       "runtimeArgs": ["JAVA_HOME=/opt/homebrew/opt/java/libexec/openjdk.jdk/Contents/Home", "kobweb", "run"],
-      "port": 8080
+      "port": 8080,
+      "autoPort": false
     }
   ]
 }
