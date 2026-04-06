@@ -3,9 +3,12 @@ package com.amandabicalho.portfolio.core.designsystem.components.atom.button
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.core.foundation.layout.PaddingValues
 import com.varabyte.kobweb.compose.foundation.layout.RowScope
+import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
+import com.varabyte.kobweb.compose.ui.modifiers.color
+import com.varabyte.kobweb.compose.ui.modifiers.textDecorationLine
 import com.varabyte.kobweb.silk.style.addVariant
 import com.varabyte.kobweb.silk.style.selectors.hover
 
@@ -14,9 +17,10 @@ val TextButtonVariant = ButtonStyle.addVariant {
         Modifier.backgroundColor(Colors.Transparent)
     }
     hover {
-        Modifier.backgroundColor(
-            ButtonDefaults.Vars.ContainerColor.value()
-        )
+        Modifier
+            .backgroundColor(Colors.Transparent)
+            .color(ButtonDefaults.Vars.HoverContentColor.value())
+            .textDecorationLine(TextDecorationLine.Underline)
     }
 }
 
