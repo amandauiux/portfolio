@@ -8,6 +8,7 @@ import com.amandabicalho.portfolio.core.designsystem.components.atom.button.Outl
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridDefaults
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridSection
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridVars
+import com.amandabicalho.portfolio.core.ui.animation.ScrollReveal
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.unit.dp
 import com.amandabicalho.portfolio.domain.Project
@@ -97,39 +98,48 @@ fun FeaturedProjects(
     GridSection(
         modifier = FeaturedProjectsStyle.toModifier().then(modifier),
     ) {
-        Text(
-            text = Res.string.featured_projects_title,
-            style = Theme.typography.headlineMedium,
-            modifier = FeaturedProjectsTitleStyle.toModifier(),
-        )
-        Column(
-            verticalArrangement = Arrangement.spacedBy(20.dp),
-            modifier = FeaturedProjectsDescriptionStyle.toModifier(),
-        ) {
+        ScrollReveal(modifier = FeaturedProjectsTitleStyle.toModifier()) {
             Text(
-                text = Res.string.featured_projects_description,
-                style = Theme.typography.bodyLarge,
+                text = Res.string.featured_projects_title,
+                style = Theme.typography.headlineMedium,
             )
-
-            OutlinedButton(
-                onClick = onViewAllProjectClick,
+        }
+        ScrollReveal(
+            modifier = FeaturedProjectsDescriptionStyle.toModifier(),
+            delay = 100,
+        ) {
+            Column(
+                verticalArrangement = Arrangement.spacedBy(20.dp),
             ) {
                 Text(
-                    text = Res.string.view_all_projects,
-                    style = Theme.typography.bodySmall,
+                    text = Res.string.featured_projects_description,
+                    style = Theme.typography.bodyLarge,
                 )
+
+                OutlinedButton(
+                    onClick = onViewAllProjectClick,
+                ) {
+                    Text(
+                        text = Res.string.view_all_projects,
+                        style = Theme.typography.bodySmall,
+                    )
+                }
             }
         }
 
         GridSection(modifier = FeatureWorkCardSectionStyle.toModifier()) {
-            projects.forEach { project ->
-                ProjectCard(
-                    image = project.image,
-                    title = project.title,
-                    onClick = { onProjectClick(project) },
-                    tags = project.tags,
+            projects.forEachIndexed { index, project ->
+                ScrollReveal(
                     modifier = FeatureWorkCardStyle.toModifier(),
-                )
+                    delay = index * 150,
+                ) {
+                    ProjectCard(
+                        image = project.image,
+                        title = project.title,
+                        onClick = { onProjectClick(project) },
+                        tags = project.tags,
+                    )
+                }
             }
         }
     }
