@@ -1,15 +1,12 @@
 package com.amandabicalho.portfolio.components.molecule
 
 import androidx.compose.runtime.Composable
-import com.amandabicalho.portfolio.colorScheme
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.unit.dp
 import com.amandabicalho.portfolio.components.atom.Text
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.border
-import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.lineHeight
 import com.varabyte.kobweb.compose.ui.modifiers.padding
@@ -18,19 +15,14 @@ import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
-import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.px
 
 val ServiceCardStyle = CssStyle {
     base {
         Modifier
-            .borderRadius(20.dp)
-            .border {
-                width(1.dp)
-                color(colorScheme.gray)
-                style(LineStyle.Solid)
-            }
-            .padding(20.dp)
+    }
+    Breakpoint.LG {
+        Modifier.padding(right = 40.dp)
     }
 }
 

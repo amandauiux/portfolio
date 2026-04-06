@@ -60,7 +60,7 @@ val AboutApproachCardSectionStyle = CssStyle {
         Modifier
             .gridColumnStart(GridDefaults.LEFT_AREA)
             .gridColumnEnd(GridDefaults.RIGHT_AREA)
-            .setVariable(GridVars.RowGap, 12.dp)
+            .setVariable(GridVars.RowGap, 40.dp)
     }
     Breakpoint.MD {
         Modifier.setVariable(GridVars.RowGap, 80.dp)
