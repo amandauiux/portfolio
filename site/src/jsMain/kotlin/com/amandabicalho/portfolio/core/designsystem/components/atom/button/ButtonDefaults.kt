@@ -142,12 +142,14 @@ object ButtonDefaults {
     fun textButtonColors(
         contentColor: Color = Theme.colorScheme.text,
         disabledContentColor: Color = Theme.colorScheme.text.copy(alpha = 0.5f),
-        hoveredContainerColor: Color = Theme.colorScheme.text.copy(alpha = 0.1f),
+        hoveredContainerColor: Color = Colors.Transparent,
+        hoverContentColor: Color = Theme.colorScheme.primary[50],
     ): ButtonColors = ButtonColors(
         containerColor = hoveredContainerColor,
         contentColor = contentColor,
         disabledContainerColor = Colors.Transparent,
         disabledContentColor = disabledContentColor,
+        hoverContentColor = hoverContentColor,
     )
 
     @Composable
