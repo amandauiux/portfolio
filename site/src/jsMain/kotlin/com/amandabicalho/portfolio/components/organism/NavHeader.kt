@@ -11,6 +11,7 @@ import com.amandabicalho.portfolio.components.atom.Text
 import com.amandabicalho.portfolio.core.designsystem.components.atom.button.IconButton
 import com.amandabicalho.portfolio.core.designsystem.components.atom.button.SwitchButton
 import com.amandabicalho.portfolio.core.designsystem.components.atom.button.TextButton
+import com.amandabicalho.portfolio.core.ui.animation.fadeInAnimation
 import com.amandabicalho.portfolio.core.designsystem.components.atom.icon.Menu
 import com.amandabicalho.portfolio.core.designsystem.components.atom.icon.Moon
 import com.amandabicalho.portfolio.core.designsystem.components.atom.icon.Sun
@@ -270,7 +271,8 @@ private fun MobileMenu(
         Overlay(
             modifier = Modifier
                 .classNames(FULL_SCREEN_MENU_CLASSNAME)
-                .zIndex(1000),
+                .zIndex(1000)
+                .fadeInAnimation(),
         ) {
             AppNavigationDialog(
                 onDismiss = { isMenuOpen = false },

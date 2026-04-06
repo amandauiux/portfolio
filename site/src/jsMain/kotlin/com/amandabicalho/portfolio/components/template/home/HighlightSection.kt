@@ -7,6 +7,7 @@ import com.amandabicalho.portfolio.components.atom.Text
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridDefaults
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridSection
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridVars
+import com.amandabicalho.portfolio.core.ui.animation.ScrollReveal
 import com.amandabicalho.portfolio.core.extensions.padding
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.theme.typography.Regular
@@ -67,15 +68,24 @@ val HighlightSectionTitleStyle = CssStyle {
     }
 }
 
-val HighlightSectionHighlightList = CssStyle {
+val HighlightSectionListAreaStyle = CssStyle {
     base {
         Modifier
             .gridColumn(start = GridDefaults.LEFT_AREA, end = GridDefaults.RIGHT_AREA)
-            .margin(0.dp)
     }
     Breakpoint.MD {
         Modifier
             .gridArea(GridDefaults.RIGHT_AREA)
+    }
+}
+
+val HighlightSectionHighlightList = CssStyle {
+    base {
+        Modifier
+            .margin(0.dp)
+    }
+    Breakpoint.MD {
+        Modifier
             .padding(start = 24.dp)
     }
 
@@ -132,24 +142,30 @@ fun HighlightSection(modifier: Modifier = Modifier) {
             .toModifier()
             .then(modifier),
     ) {
-        Text(
-            text = Res.string.home_big_statement,
-            style = Theme.typography.headlineMedium.copy(
-                color = Theme.colorScheme.primary[30],
-            ),
-            modifier = HighlightSectionTitleStyle.toModifier(),
-        )
+        ScrollReveal(modifier = HighlightSectionTitleStyle.toModifier()) {
+            Text(
+                text = Res.string.home_big_statement,
+                style = Theme.typography.headlineMedium.copy(
+                    color = Theme.colorScheme.primary[30],
+                ),
+            )
+        }
 
-        Ul(attrs = HighlightSectionHighlightList.toAttrs()) {
-            HighlightItem(
-                text = Res.string.home_highlights_vision,
-            )
-            HighlightItem(
-                text = Res.string.home_highlights_modern_effective,
-            )
-            HighlightItem(
-                text = Res.string.home_highlights_driven_by_empathy,
-            )
+        ScrollReveal(
+            modifier = HighlightSectionListAreaStyle.toModifier(),
+            delay = 100,
+        ) {
+            Ul(attrs = HighlightSectionHighlightList.toAttrs()) {
+                HighlightItem(
+                    text = Res.string.home_highlights_vision,
+                )
+                HighlightItem(
+                    text = Res.string.home_highlights_modern_effective,
+                )
+                HighlightItem(
+                    text = Res.string.home_highlights_driven_by_empathy,
+                )
+            }
         }
     }
 }

@@ -58,6 +58,22 @@ import org.jetbrains.compose.web.css.s
 
 @InitSilk
 fun initSiteStyles(context: InitSilkContext) {
+    // Register animation keyframes via a <style> element
+    kotlinx.browser.document.head?.let { head ->
+        val style = kotlinx.browser.document.createElement("style")
+        style.textContent = """
+            @keyframes fadeInUp {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+        """.trimIndent()
+        head.appendChild(style)
+    }
+
     context.stylesheet.apply {
         registerStyle("html") {
             cssRule(CSSMediaQuery.MediaFeature("prefers-reduced-motion", StylePropertyValue("no-preference"))) {

@@ -3,6 +3,7 @@ package com.amandabicalho.portfolio.components.template
 import androidx.compose.runtime.Composable
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridDefaults
 import com.amandabicalho.portfolio.core.designsystem.components.atom.content.GridHeader
+import com.amandabicalho.portfolio.core.ui.animation.FadeInUp
 import com.amandabicalho.portfolio.core.ui.theme.Theme
 import com.amandabicalho.portfolio.core.ui.unit.dp
 import com.amandabicalho.portfolio.components.atom.Text
@@ -51,18 +52,22 @@ fun HeroSection(
         modifier = modifier,
     ) {
         Column(HeroContainerStyle.toModifier()) {
-            Text(
-                text = title,
-                style = Theme.typography.headlineLarge.copy(
-                    color = Theme.colorScheme.primary[30],
-                ),
-                modifier = HeroTitleStyle.toModifier(),
-            )
-            subtitle?.let { subtitle ->
+            FadeInUp {
                 Text(
-                    text = subtitle,
-                    style = Theme.typography.titleSmall,
+                    text = title,
+                    style = Theme.typography.headlineLarge.copy(
+                        color = Theme.colorScheme.primary[30],
+                    ),
+                    modifier = HeroTitleStyle.toModifier(),
                 )
+            }
+            subtitle?.let { subtitle ->
+                FadeInUp(delay = 150) {
+                    Text(
+                        text = subtitle,
+                        style = Theme.typography.titleSmall,
+                    )
+                }
             }
         }
     }
