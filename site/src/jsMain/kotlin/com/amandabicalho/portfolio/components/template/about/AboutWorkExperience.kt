@@ -61,12 +61,10 @@ val AboutWorkExperienceListStyle = CssStyle {
             .display(DisplayStyle.Flex)
             .flexDirection(FlexDirection.Column)
             .fillMaxWidth()
-            .gap(20.dp)
     }
     Breakpoint.LG {
         Modifier
             .gridColumn(GridDefaults.RIGHT_AREA)
-            .gap(40.dp)
     }
 
     cssRule("> button") {

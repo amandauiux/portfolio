@@ -13,8 +13,7 @@ import com.amandabicalho.portfolio.typography
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.border
-import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
+import com.varabyte.kobweb.compose.ui.modifiers.borderBottom
 import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.flexDirection
@@ -42,13 +41,12 @@ val WorkExperienceCardStyle = CssStyle {
             .flexDirection(FlexDirection.Column)
             .fillMaxWidth()
             .gap(12.dp)
-            .padding(16.dp)
-            .border {
+            .padding(top = 20.dp, bottom = 20.dp)
+            .borderBottom {
                 width(1.dp)
                 color(colorScheme.gray)
                 style(LineStyle.Solid)
             }
-            .borderRadius(12.dp)
     }
 
     Breakpoint.LG {
